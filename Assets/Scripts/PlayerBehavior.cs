@@ -7,19 +7,17 @@ public class PlayerBehavior : MonoBehaviour
     // TO DO: Jump, Basic Movement, Grapple, Double Jump, Grounded Punch, Diving Punch, Wall Jump
 
     [Header("Player Movement")]
-    [SerializeField] private float movementSpeed = 10f; // Player's movement speed.
+    public float movementSpeed = 10f; // Player's movement speed.
     private float horizontalInput; // Player's horizontal input.
     private float verticalInput; // Player's vertical input.
     private Vector3 moveDirection; // Vector3 determining where player is moving.
     private Rigidbody rB; // Player's rigidbody.
 
     [Header("Ground Check")]
-    //public float playerHeight = .5f; // Float variable determining player's height, used in Ground Check.
-
-    [SerializeField] Transform groundCheck;
+    [SerializeField] Transform groundCheck; // Empty GameObject at player's feet that casts a sphere, detecting if the ground layer is stood on.
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.
 
-    private bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
+    public bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
     }    
@@ -29,9 +27,11 @@ public class PlayerBehavior : MonoBehaviour
     [Header("Air Variables")]
     [SerializeField] private float jumpForce = 7.5f; // Force behind a player's jump.
     [SerializeField] private float airMultiplier = 0.2f; // Float that slows players down midair.
+    
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector.
+    public KeyCode attackKey = KeyCode.LeftShift; // Attack Key is set to LShift by default, but it can be changed in the inspector.
 
     [Header("References")]
     public Transform player;
@@ -70,15 +70,16 @@ public class PlayerBehavior : MonoBehaviour
         // If player is midair, they have no drag when moving.
         else if (!IsGrounded())
         {
-            rB.drag = 0f;
+            rB.drag = rB.drag;
         }
+
     }
 
     // FixedUpdate is called once per physics update    
     void FixedUpdate()
     {
         PlayerDirection();
-        PlayerMovement();
+        PlayerMovement();        
     }
 
     // PlayerInput determines when players are inputting movement
@@ -115,13 +116,13 @@ public class PlayerBehavior : MonoBehaviour
         if (IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
-            rB.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);
+            rB.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Acceleration);
         }
         else if (!IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             // Also multiply by an airMultiplier to determine how much the player can move in the air.
-            rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Force);
+            rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);
         }
     }
 
@@ -174,7 +175,7 @@ public class PlayerBehavior : MonoBehaviour
         if (IsGrounded()) 
         {
             // Perform the player's jump by adding upwards force to their rigidbody.
-            rB.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
         }
 
     }
@@ -186,7 +187,7 @@ public class PlayerBehavior : MonoBehaviour
 
     void Attack() 
     {
-
-    }
+        
+    }    
 
 }

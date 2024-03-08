@@ -634,12 +634,12 @@ PrefabInstance:
     - target: {fileID: 5194701393107047857, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000008527747
+      value: -0.000000006118138
       objectReference: {fileID: 0}
     - target: {fileID: 5194701393107047857, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000011368336
+      value: -8.156086e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5194701393107047857, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -729,12 +729,12 @@ PrefabInstance:
     - target: {fileID: 8118746152745884777, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1e-45
+      value: -1.093962e-23
       objectReference: {fileID: 0}
     - target: {fileID: 8118746152745884777, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -1.18919945e-23
       objectReference: {fileID: 0}
     - target: {fileID: 8118746152745884777, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -759,12 +759,12 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000003892864
+      value: 0.000000012861374
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 6.8582495e-10
+      value: 0.0000000022658524
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -945,7 +945,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837643310}
-  m_LocalRotation: {x: -0.0000000011368335, y: 0.99123096, z: -0.13214095, w: -0.000000008527747}
+  m_LocalRotation: {x: -8.156086e-10, y: 0.99123096, z: -0.13214095, w: -0.0000000061181376}
   m_LocalPosition: {x: 0, y: 3, z: 5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -965,8 +965,8 @@ GameObject:
   - component: {fileID: 1935448045}
   - component: {fileID: 1935448044}
   - component: {fileID: 1935448043}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 6
+  m_Name: GrappleCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,13 +1086,13 @@ MonoBehaviour:
   gunTip: {fileID: 471649613}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   lr: {fileID: 183687164}
-  maxGrappleDistance: 25
+  maxGrappleDistance: 40.6
   grappleDelayTime: 1
-  overshootYAxis: 0
+  overshootYAxis: 2
   grapplingCd: 1
-  grappleKey: 317
+  grappleKey: 101
 --- !u!1 &2088649042
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class Grappling : MonoBehaviour
 
         grappling = true;
 
-        //pm.freeze = true;
+        Pb.freeze = true;
 
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
@@ -75,7 +75,7 @@ public class Grappling : MonoBehaviour
 
     private void ExecuteGrapple()
     {
-        //Pb.freeze = false;
+        Pb.freeze = false;
 
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
 
@@ -84,20 +84,20 @@ public class Grappling : MonoBehaviour
 
         if (grapplePointRelativeYPos < 0) highestPointOnArc = overshootYAxis;
 
-        //Pb.JumpToPosition(grapplePoint, highestPointOnArc);
+        Pb.JumpToPosition(grapplePoint, highestPointOnArc);
 
         Invoke(nameof(StopGrapple), 1f);
     }
 
     public void StopGrapple()
     {
-        //Pb.freeze = false;
+        Pb.freeze = false;
 
         grappling = false;
 
         grapplingCdTimer = grapplingCd;
 
-        //lr.enabled = false;
+        lr.enabled = false;
     }
 
     public bool IsGrappling()

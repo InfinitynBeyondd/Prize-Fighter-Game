@@ -13,6 +13,9 @@ public class PlayerBehavior : MonoBehaviour
     private Vector3 moveDirection; // Vector3 determining where player is moving.
     private Rigidbody rB; // Player's rigidbody.
 
+    public bool freeze = false; //To stop the player when they grapple
+    public bool activeGrapple = false; //To see if the player is grappling at the moment
+
     [Header("Ground Check")]
     [SerializeField] Transform groundCheck; // Empty GameObject at player's feet that casts a sphere, detecting if the ground layer is stood on.
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.
@@ -63,7 +66,7 @@ public class PlayerBehavior : MonoBehaviour
         PlayerInput();
 
         // If the player is on the ground, set the drag on their RB to the groundDrag variable.
-        if (IsGrounded())
+        if (IsGrounded() && !activeGrapple)
         {
             rB.drag = groundDrag;
         }
@@ -74,6 +77,10 @@ public class PlayerBehavior : MonoBehaviour
             rB.drag = rB.drag;
         }
 
+        if (freeze)
+        {
+            rB.velocity = Vector3.zero;
+        }
     }
 
     // FixedUpdate is called once per physics update    
@@ -105,6 +112,8 @@ public class PlayerBehavior : MonoBehaviour
 
     void PlayerMovement() 
     {
+        if (activeGrapple) return; //This stops player movement whenever the grapple is happening
+
         // This Vector3 determines the forward direction of the camera, allowing the player to move in the same direction as the camera.
         // If the camera rotates 180 degress, the player can still press the forward key to go forwards because that is the camera's orientation.
         Vector3 camForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
@@ -189,6 +198,51 @@ public class PlayerBehavior : MonoBehaviour
     void Attack() 
     {
         
-    }    
+    }
+
+
+    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity)
+            + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
+
+        return velocityXZ + velocityY;
+    }
+
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        activeGrapple = true;
+
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
+        Invoke(nameof(SetVelocity), 0.1f);
+
+        Invoke(nameof(ResetRestrictions), 3f);
+    }
+
+    private Vector3 velocityToSet;
+    private void SetVelocity()
+    {
+        enableMovementOnNextTouch = true;
+        rB.velocity = velocityToSet;
+    }
+    private bool enableMovementOnNextTouch;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            ResetRestrictions();
+
+            GetComponent<Grappling>().StopGrapple();
+        }
+    }
+
+    private void ResetRestrictions() { activeGrapple = false; }
 
 }

@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3699052319406116597}
   - component: {fileID: 8624862798465770573}
+  - component: {fileID: 5248843159255424479}
   - component: {fileID: 1213619247021265695}
   - component: {fileID: 1746079915479589344}
   - component: {fileID: 3598780258179921582}
@@ -68,7 +69,7 @@ Transform:
   - {fileID: 1256224739593081745}
   - {fileID: 3854103633190148231}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8624862798465770573
 MonoBehaviour:
@@ -96,6 +97,20 @@ MonoBehaviour:
   playerCharacter: {fileID: 3699052319406116597}
   orientation: {fileID: 1256224739593081745}
   m_Animator: {fileID: 3517818183096488740}
+--- !u!114 &5248843159255424479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046073566360240296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b2e82a6ae7d0247bccba9fd43b9b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerModel: {fileID: 0}
+  groundAttackFX: {fileID: 0}
 --- !u!114 &1213619247021265695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +125,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   divePunchCall: 0
   divePunchAirPause: 0.5
-  dropGrav: 10
   isDivePunchActive: 0
 --- !u!114 &1746079915479589344
 MonoBehaviour:

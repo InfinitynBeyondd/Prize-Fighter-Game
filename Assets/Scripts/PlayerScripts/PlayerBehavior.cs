@@ -23,14 +23,14 @@ public class PlayerBehavior : MonoBehaviour
     public bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
-    }    
+    }
 
     [SerializeField] private float groundDrag = 3f; // The amount of drag experienced when moving on the ground.
 
     [Header("Air Variables")]
     [SerializeField] private float jumpForce = 7.5f; // Force behind a player's jump.
     [SerializeField] private float airMultiplier = 0.2f; // Float that slows players down midair.
-    
+
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector.
@@ -47,14 +47,14 @@ public class PlayerBehavior : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
         rB = GetComponent<Rigidbody>(); // Gets the rigidbody.
         rB.freezeRotation = true; // Freeze player's rotation so they don't tilt or fall over.
 
         // Makes the cursor invisible on screen (will be used in finished release only, not during debugging).
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
-        
+
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.
     }
@@ -62,7 +62,7 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         PlayerInput();
 
         // If the player is on the ground, set the drag on their RB to the groundDrag variable.
@@ -87,7 +87,7 @@ public class PlayerBehavior : MonoBehaviour
     void FixedUpdate()
     {
         PlayerDirection();
-        PlayerMovement();        
+        PlayerMovement();
     }
 
     // PlayerInput determines when players are inputting movement
@@ -102,15 +102,15 @@ public class PlayerBehavior : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
 
-         // If the player clicked the jump key and they are grounded, let them jump.
+        // If the player clicked the jump key and they are grounded, let them jump.
         if (Input.GetKeyDown(jumpKey) && IsGrounded())
-        {    
+        {
             Jump(); // Makes the player jump.
         }
 
     }
 
-    void PlayerMovement() 
+    void PlayerMovement()
     {
         if (activeGrapple) return; //This stops player movement whenever the grapple is happening
 
@@ -132,7 +132,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             // Multiply by an airMultiplier to determine how much the player can move in the air.
-            rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);            
+            rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);
         }
     }
 
@@ -177,12 +177,12 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    void Jump() 
+    void Jump()
     {
         // Make sure the player's y velocity is at zero so they always jump the exact same height.
         rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
 
-        if (IsGrounded()) 
+        if (IsGrounded())
         {
             // Perform the player's jump by adding upwards force to their rigidbody.
             rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
@@ -190,14 +190,14 @@ public class PlayerBehavior : MonoBehaviour
 
     }
 
-    void Grapple() 
+    void Grapple()
     {
 
     }
 
-    void Attack() 
+    void Attack()
     {
-        
+
     }
 
 

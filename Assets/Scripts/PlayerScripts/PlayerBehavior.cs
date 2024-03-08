@@ -228,7 +228,7 @@ public class PlayerBehavior : MonoBehaviour
     private void SetVelocity()
     {
         enableMovementOnNextTouch = true;
-        rB.velocity = velocityToSet;
+        rB.velocity = velocityToSet * 4 ;
     }
     private bool enableMovementOnNextTouch;
 

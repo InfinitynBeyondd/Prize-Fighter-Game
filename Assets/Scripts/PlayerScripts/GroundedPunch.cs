@@ -11,10 +11,11 @@ public class GroundedPunch : MonoBehaviour
 
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject groundAttackFX;
-
+    public Animator attackAnim;
     //public float currentPlayerXPos;
     //public float currentPlayerYPos;
     //public float currentPlayerZPos;
+    bool attacking;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +31,16 @@ public class GroundedPunch : MonoBehaviour
     {
         if (pB.IsGrounded() && Input.GetKeyDown(pB.attackKey) && !groundAttackFX.activeSelf) 
         {
-            Attack();
+            Attack();            
         }        
     }
 
     void Attack()
     {
-        groundAttackFX.transform.Translate(Vector3.forward);
+        //groundAttackFX.transform.Translate(Vector3.forward);
         groundAttackFX.SetActive(true);
+        attacking = groundAttackFX.activeSelf;
+        attackAnim.SetBool("Attacking", attacking);
         StartCoroutine("AttackReset");
         //groundAttackFX.transform.position += new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f);
         //groundAttackFX.transform.Translate(new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f));
@@ -48,6 +51,8 @@ public class GroundedPunch : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         groundAttackFX.SetActive(false);
         groundAttackFX.transform.position = new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, playerModel.transform.position.z + 1.5f);
+        attacking = groundAttackFX.activeSelf;
+        attackAnim.SetBool("Attacking", attacking);
     }
 
 }

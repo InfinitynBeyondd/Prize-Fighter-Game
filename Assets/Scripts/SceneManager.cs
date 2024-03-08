@@ -5,7 +5,7 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     // TO DO:
-    // DYLAN: Scene Management, Respawn
+    // Scene Management, Respawn
 
     // Start is called before the first frame update
     void Start()

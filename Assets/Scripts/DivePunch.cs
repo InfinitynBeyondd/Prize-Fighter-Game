@@ -29,6 +29,7 @@ public class DivePunch : MonoBehaviour
         {
             divePunchCall = true;
         }
+
     }
 
     // FixedUpdate is called once per physics change
@@ -39,7 +40,8 @@ public class DivePunch : MonoBehaviour
         {
             DivePunchCalled();
         }
-        divePunchCall = false;
+        divePunchCall = false; 
+
     }
 
     private void OnCollisionEnter(Collision other)

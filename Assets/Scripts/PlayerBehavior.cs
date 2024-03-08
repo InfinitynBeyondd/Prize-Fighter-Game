@@ -38,7 +38,8 @@ public class PlayerBehavior : MonoBehaviour
     public Transform playerCharacter;
     public Transform orientation; // The orientation or direction of the player.
     private float rotationSpeed = 10f; // Speed determining player's rotation.
-    private GameManager gM; // Script reference.
+    private GameManager gM; // Script reference to GameManager.
+    private GravityScalePhysX gSPX; // Script reference to GravityScalePhysX.
     [SerializeField] Animator m_Animator; // Player animator.
 
     // Start is called before the first frame update
@@ -52,7 +53,7 @@ public class PlayerBehavior : MonoBehaviour
         //Cursor.visible = false;
         
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
-
+        gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.
     }
 
     // Update is called once per frame
@@ -121,8 +122,8 @@ public class PlayerBehavior : MonoBehaviour
         else if (!IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
-            // Also multiply by an airMultiplier to determine how much the player can move in the air.
-            rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);
+            // Multiply by an airMultiplier to determine how much the player can move in the air.
+            rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);            
         }
     }
 

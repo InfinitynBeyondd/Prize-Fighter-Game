@@ -12,10 +12,11 @@ public class GroundedPunch : MonoBehaviour
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject groundAttackFX;
     public Animator attackAnim;
+    bool attacking;
+    
     //public float currentPlayerXPos;
     //public float currentPlayerYPos;
     //public float currentPlayerZPos;
-    bool attacking;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class GroundedPunch : MonoBehaviour
         }        
     }
 
+    // For now, the attack will be translated through the animator. This does crate a slight bug of the attack being displaced, but the hitbox should be wide enough to cover for it.
     void Attack()
     {
         //groundAttackFX.transform.Translate(Vector3.forward);
@@ -46,6 +48,7 @@ public class GroundedPunch : MonoBehaviour
         //groundAttackFX.transform.Translate(new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f));
     }
 
+    // Coroutine that resets the attack status.
     IEnumerator AttackReset() 
     {
         yield return new WaitForSeconds(0.5f);

@@ -10,7 +10,8 @@ public class DivePunch : MonoBehaviour
 
     [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private float divePunchAirPause = .5f; // Player pauses midair once the dive punch is called.
-    //[SerializeField] private float dropGrav = 150f; // Float determining player's speed of descent in the dive punch.
+    [SerializeField] private float gravConstant = 5f; // The default value of the gravity scale for the object.
+    [SerializeField] private float dropGravMult = 3f; // Factor determining player's speed of descent in the dive punch.
     [SerializeField] private bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
 
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class DivePunch : MonoBehaviour
         pB = GetComponent<PlayerBehavior>();
         rB = GetComponent<Rigidbody>();
         gSPX = GetComponent<GravityScalePhysX>();
+        gSPX.gravityScale = gravConstant;
     }
 
     // Update is called once per frame
@@ -81,22 +83,22 @@ public class DivePunch : MonoBehaviour
     IEnumerator DivePunchDrop()
     {
         yield return new WaitForSeconds(divePunchAirPause);
-        gSPX.gravityScale = 15f;
+        gSPX.gravityScale = gravConstant * dropGravMult;
         //rB.AddForce(Vector3.down * dropGrav, ForceMode.VelocityChange);        
     }
 
     // Player has less control over the character while dive punching.
     void DivePunchMovementChange()
     {
-        pB.movementSpeed = (pB.movementSpeed/2);
+        pB.movementSpeed = (pB.defaultMovementSpeed/dropGravMult);
         //rB.angularVelocity = Vector3.zero;
     }
 
     // Sets movement variables back to their usual state when a dive punch is over.
     void DivePunchEnd()
     {        
-        pB.movementSpeed = 10f;
-        gSPX.gravityScale = 1f;
+        pB.movementSpeed = pB.defaultMovementSpeed;
+        gSPX.gravityScale = gravConstant;
         isDivePunchActive = false;
     }
 

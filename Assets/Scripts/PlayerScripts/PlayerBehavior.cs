@@ -7,7 +7,8 @@ public class PlayerBehavior : MonoBehaviour
     // TO DO: Jump, Basic Movement, Grapple, Double Jump, Grounded Punch, Diving Punch, Wall Jump
 
     [Header("Player Movement")]
-    public float movementSpeed = 10f; // Player's movement speed.
+    public float movementSpeed = 15f; // Player's movement speed.
+    public float defaultMovementSpeed = 15f; // Default movement speed that will be used to determine movement speed calculations.
     private float horizontalInput; // Player's horizontal input.
     private float verticalInput; // Player's vertical input.
     private Vector3 moveDirection; // Vector3 determining where player is moving.
@@ -21,7 +22,7 @@ public class PlayerBehavior : MonoBehaviour
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.    
 
     public bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
-    {
+    {        
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
     }
 
@@ -30,6 +31,8 @@ public class PlayerBehavior : MonoBehaviour
     [Header("Air Variables")]
     public float jumpForce = 7.5f; // Force behind a player's jump.
     [SerializeField] private float airMultiplier = 0.2f; // Float that slows players down midair.
+    [SerializeField] private int airTimeJumps;
+    [SerializeField] private int airTimeJumpsMax;
 
 
     [Header("Keybinds")]
@@ -55,6 +58,8 @@ public class PlayerBehavior : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
+        airTimeJumpsMax = 1;
+
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.
     }
@@ -69,6 +74,7 @@ public class PlayerBehavior : MonoBehaviour
         if (IsGrounded() && !activeGrapple)
         {
             rB.drag = groundDrag;
+            airTimeJumps = 0;
         }
 
         // If player is midair, they have no drag when moving.
@@ -102,10 +108,13 @@ public class PlayerBehavior : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
 
-        // If the player clicked the jump key and they are grounded, let them jump.
-        if (Input.GetKeyDown(jumpKey) && IsGrounded())
+        // If the player clicked the jump key and they are grounded OR if the player is not grounded but hasn't used a jump midair, let them jump.
+        // Pressing the Jump Key will take away one of the jumps the player can do.
+        // if (Input.GetKeyDown(jumpKey) && (IsGrounded() || (!IsGrounded() && airTimeJumps < airTimeJumpsMax)))
+        if (Input.GetKeyDown(jumpKey) && (IsGrounded() || airTimeJumps < airTimeJumpsMax))
         {
             Jump(); // Makes the player jump.
+            
         }
 
     }
@@ -182,11 +191,13 @@ public class PlayerBehavior : MonoBehaviour
         // Make sure the player's y velocity is at zero so they always jump the exact same height.
         rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
 
-        if (IsGrounded())
+        if (airTimeJumps < airTimeJumpsMax)
         {
             // Perform the player's jump by adding upwards force to their rigidbody.
             rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-        }
+        }        
+
+        airTimeJumps++;
 
     }
 

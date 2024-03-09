@@ -34,7 +34,6 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private int airTimeJumps;
     [SerializeField] private int airTimeJumpsMax;
 
-
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector.
     public KeyCode attackKey = KeyCode.LeftShift; // Attack Key is set to LShift by default, but it can be changed in the inspector.
@@ -58,7 +57,7 @@ public class PlayerBehavior : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
-        airTimeJumpsMax = 1;
+        airTimeJumpsMax = 1;        
 
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.
@@ -251,7 +250,8 @@ public class PlayerBehavior : MonoBehaviour
             ResetRestrictions();
 
             GetComponent<Grappling>().StopGrapple();
-        }
+        }        
+
     }
 
     private void ResetRestrictions() { activeGrapple = false; }

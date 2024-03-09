@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3598780258179921582}
   - component: {fileID: 4798756074261486031}
   - component: {fileID: 2485997080466642452}
+  - component: {fileID: 6308502450714271253}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -73,7 +74,7 @@ Transform:
   - {fileID: 6792310041834410424}
   - {fileID: 2664419629016565631}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8624862798465770573
 MonoBehaviour:
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  defaultMovementSpeed: 15
   freeze: 0
   activeGrapple: 0
   groundCheck: {fileID: 3854103633190148231}
@@ -97,6 +99,8 @@ MonoBehaviour:
   groundDrag: 3
   jumpForce: 25
   airMultiplier: 0.2
+  airTimeJumps: 0
+  airTimeJumpsMax: 0
   jumpKey: 32
   attackKey: 304
   player: {fileID: 3699052319406116597}
@@ -132,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   divePunchCall: 0
   divePunchAirPause: 0.5
+  gravConstant: 5
+  dropGravMult: 3
   isDivePunchActive: 0
 --- !u!114 &1746079915479589344
 MonoBehaviour:
@@ -217,6 +223,24 @@ MonoBehaviour:
   overshootYAxis: 2
   grapplingCd: 1
   grappleKey: 101
+--- !u!114 &6308502450714271253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046073566360240296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a777a037c8502a945bed6092abbb0624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallFaceCheck: 0
+  wallJumping: 0
+  pB: {fileID: 0}
+  rB: {fileID: 0}
+  faceCollider: {fileID: 2426334993789844560}
+  vectorForceConstant: 3
 --- !u!1 &1743701475303383840
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +531,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -633,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2664419629016565631
 Transform:
   m_ObjectHideFlags: 0

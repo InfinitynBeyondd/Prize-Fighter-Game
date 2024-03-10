@@ -29,6 +29,12 @@ public class RandomMovement : MonoBehaviour //don't forget to change the script 
             }
         }
 
+        if (agent == null)
+        {
+            Debug.LogError("NavMeshAgent is not assigned!");
+            return;
+        }
+
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {

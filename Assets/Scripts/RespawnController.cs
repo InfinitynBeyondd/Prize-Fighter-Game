@@ -15,7 +15,7 @@ public class RespawnController : MonoBehaviour
     }    
 
     // Once the player collides with anything forcing a respawn, it will be sent back to the level's designated spawn point.
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.transform.tag == "Player")
         {

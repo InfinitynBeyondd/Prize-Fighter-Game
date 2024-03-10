@@ -23,7 +23,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
     {        
-        return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+        return Physics.CheckSphere(groundCheck.position, 0.25f, groundLayer);
     }
 
     [SerializeField] private float groundDrag = 3f; // The amount of drag experienced when moving on the ground.

@@ -75,7 +75,7 @@ Transform:
   - {fileID: 2664419629016565631}
   - {fileID: 1854561223358576155}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8624862798465770573
 MonoBehaviour:
@@ -89,17 +89,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f786b15a4c7f1468866029abfaad7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  defaultMovementSpeed: 15
+  movementSpeed: 5
+  defaultMovementSpeed: 11
   freeze: 0
   activeGrapple: 0
   groundCheck: {fileID: 3854103633190148231}
   groundLayer:
     serializedVersion: 2
     m_Bits: 72
+  gCR: 0.35
   groundDrag: 3
   jumpForce: 25
-  airMultiplier: 0.2
+  airMultiplier: 0.25
   airTimeJumps: 0
   airTimeJumpsMax: 0
   jumpKey: 32

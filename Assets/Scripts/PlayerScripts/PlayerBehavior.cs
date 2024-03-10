@@ -20,10 +20,11 @@ public class PlayerBehavior : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] Transform groundCheck; // Empty GameObject at player's feet that casts a sphere, detecting if the ground layer is stood on.
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.    
+    public float gCR = .35f; // Ground Check Radius
 
     public bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
     {        
-        return Physics.CheckSphere(groundCheck.position, 0.25f, groundLayer);
+        return Physics.CheckSphere(groundCheck.position, gCR, groundLayer);
     }
 
     [SerializeField] private float groundDrag = 3f; // The amount of drag experienced when moving on the ground.
@@ -60,7 +61,7 @@ public class PlayerBehavior : MonoBehaviour
         airTimeJumpsMax = 1;        
 
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
-        gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.
+        gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.        
     }
 
     // Update is called once per frame

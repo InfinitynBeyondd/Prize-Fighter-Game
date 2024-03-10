@@ -17,7 +17,7 @@ public class RespawnController : MonoBehaviour
     // Once the player collides with anything forcing a respawn, it will be sent back to the level's designated spawn point.
     private void OnCollisionEnter(Collision other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.CompareTag("Player"))
         {
             Debug.Log("OUT OF BOUNDS - Moving back to spawn point!");
             other.transform.position = respawnPoint.transform.position;

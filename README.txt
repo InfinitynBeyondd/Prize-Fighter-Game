@@ -12,7 +12,7 @@ CONTROLS:
 HOW TO PLAY:
 •Players enter levels from the hub world.
 •Levels contain tokens used to progress to new levels, as well as stickers to unlock things in the Gallery Mode.
-•Players must clear levels by making it to the end and facing a boss, and the tokens they gather will unlock new levels.
+•Players must clear levels by making it to the end, and the tokens they gather will unlock new levels.
 
 AREAS FOR FEEDBACK:
 •Level difficulty

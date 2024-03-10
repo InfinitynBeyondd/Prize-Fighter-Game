@@ -7,15 +7,20 @@ public class SceneManager : MonoBehaviour
     // TO DO:
     // Scene Management, Respawn
 
-    // Start is called before the first frame update
+    //~~~Chelle's Contribution~~~
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Quit Game.");
+            Application.Quit();
+        }      
+
     }
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }

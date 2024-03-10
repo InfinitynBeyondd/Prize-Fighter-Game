@@ -95,7 +95,7 @@ MonoBehaviour:
   groundCheck: {fileID: 3854103633190148231}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   groundDrag: 3
   jumpForce: 25
   airMultiplier: 0.2
@@ -240,7 +240,11 @@ MonoBehaviour:
   pB: {fileID: 0}
   rB: {fileID: 0}
   faceCollider: {fileID: 2426334993789844560}
-  vectorForceConstant: 3
+  vectorForceConstant: 4
+  vectorForceZConstant: 0.25
+  wallJumpable:
+    serializedVersion: 2
+    m_Bits: 72
 --- !u!1 &1743701475303383840
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 4798756074261486031}
   - component: {fileID: 2485997080466642452}
   - component: {fileID: 6308502450714271253}
+  - component: {fileID: 7180266975876901289}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -75,7 +76,7 @@ Transform:
   - {fileID: 2664419629016565631}
   - {fileID: 1854561223358576155}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8624862798465770573
 MonoBehaviour:
@@ -109,6 +110,7 @@ MonoBehaviour:
   playerCharacter: {fileID: 3699052319406116597}
   orientation: {fileID: 1256224739593081745}
   m_Animator: {fileID: 3517818183096488740}
+  rC: {fileID: 0}
 --- !u!114 &5248843159255424479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +249,20 @@ MonoBehaviour:
   wallJumpable:
     serializedVersion: 2
     m_Bits: 72
+--- !u!114 &7180266975876901289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046073566360240296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3605b5d79112e4583fbf19dff645ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+  pathToRespawn: {x: 0, y: 0, z: 0}
 --- !u!1 &1743701475303383840
 GameObject:
   m_ObjectHideFlags: 0

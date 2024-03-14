@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3212762534890236761}
   - component: {fileID: 6692626219971870852}
   - component: {fileID: 7513460230098745634}
-  - component: {fileID: 1789536560099153247}
   m_Layer: 0
   m_Name: SampleOutOfBounds
   m_TagString: ForceRespawn
@@ -33,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3212762534890236761
 MeshFilter:
@@ -106,16 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 0.15, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1789536560099153247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4166109915154468451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3605b5d79112e4583fbf19dff645ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}

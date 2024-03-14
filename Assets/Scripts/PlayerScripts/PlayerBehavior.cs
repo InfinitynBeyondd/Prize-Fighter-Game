@@ -47,7 +47,7 @@ public class PlayerBehavior : MonoBehaviour
     private GameManager gM; // Script reference to GameManager.
     private GravityScalePhysX gSPX; // Script reference to GravityScalePhysX.
     [SerializeField] Animator m_Animator; // Player animator.
-    public RespawnController rC;
+    //public RespawnController rC;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +58,8 @@ public class PlayerBehavior : MonoBehaviour
         // Makes the cursor invisible on screen (will be used in finished release only, not during debugging).
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
+
+        //player.transform.position = rC.respawnPoint.transform.position;
 
         airTimeJumpsMax = 1;        
 
@@ -253,17 +255,7 @@ public class PlayerBehavior : MonoBehaviour
             GetComponent<Grappling>().StopGrapple();
         }        
 
-    }
-
-    // Player Controller will detect when a checkpoint is crossed, then it will set the respawn coordinates to that checkpoint'a position.
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.CompareTag("Checkpoint")) 
-        {
-            rC.pathToRespawn = other.transform.position;
-            Debug.Log("CHECKPOINT CROSSED - Respawn position has been set to: " + other.transform.position);
-        }
-    }
+    }    
 
     private void ResetRestrictions() { activeGrapple = false; }
 

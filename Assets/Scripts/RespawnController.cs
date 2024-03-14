@@ -5,7 +5,7 @@ using UnityEngine;
 public class RespawnController : MonoBehaviour
 {
     [Header("Out of Bounds")]
-    [SerializeField] GameObject respawnPoint;
+    public GameObject respawnPoint;
     public Vector3 pathToRespawn;
 
 
@@ -19,11 +19,23 @@ public class RespawnController : MonoBehaviour
     // Once the player collides with anything forcing a respawn, it will be sent back to the level's designated spawn point.
     private void OnCollisionEnter(Collision other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("ForceRespawn"))
         {
             Debug.Log("OUT OF BOUNDS - Moving back to spawn point!");
-            other.transform.position = pathToRespawn;
+            transform.position = pathToRespawn;
         }
+    }
+
+    // Detect when a checkpoint is crossed, then set the respawn coordinates to that checkpoint's position.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Checkpoint"))
+        {
+            respawnPoint = other.gameObject;
+            pathToRespawn = other.transform.position;
+            Debug.Log("CHECKPOINT CROSSED - Respawn position has been set to: " + other.transform.position);
+        }
+        
     }
 
     // Update is called once per frame

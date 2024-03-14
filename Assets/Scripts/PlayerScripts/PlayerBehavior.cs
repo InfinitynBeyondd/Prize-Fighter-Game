@@ -47,7 +47,6 @@ public class PlayerBehavior : MonoBehaviour
     private GameManager gM; // Script reference to GameManager.
     private GravityScalePhysX gSPX; // Script reference to GravityScalePhysX.
     [SerializeField] Animator m_Animator; // Player animator.
-    //public RespawnController rC;
 
     // Start is called before the first frame update
     void Start()
@@ -203,16 +202,6 @@ public class PlayerBehavior : MonoBehaviour
         airTimeJumps++;
 
     }
-
-    /* void Grapple()
-    {
-
-    }
-
-    void Attack()
-    {
-
-    } */
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {

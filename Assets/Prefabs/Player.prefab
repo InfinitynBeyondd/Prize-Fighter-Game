@@ -76,7 +76,7 @@ Transform:
   - {fileID: 2664419629016565631}
   - {fileID: 1854561223358576155}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8624862798465770573
 MonoBehaviour:
@@ -110,7 +110,6 @@ MonoBehaviour:
   playerCharacter: {fileID: 3699052319406116597}
   orientation: {fileID: 1256224739593081745}
   m_Animator: {fileID: 3517818183096488740}
-  rC: {fileID: 0}
 --- !u!114 &5248843159255424479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +222,7 @@ MonoBehaviour:
     m_Bits: 64
   lr: {fileID: 7824613774135167843}
   maxGrappleDistance: 40.6
-  grappleDelayTime: 1
+  grappleDelayTime: 0.25
   overshootYAxis: 2
   grapplingCd: 1
   grappleKey: 101
@@ -728,7 +727,7 @@ GameObject:
   - component: {fileID: 4111309270120328470}
   m_Layer: 7
   m_Name: Feetbox
-  m_TagString: Untagged
+  m_TagString: PlayerFeet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,7 +762,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

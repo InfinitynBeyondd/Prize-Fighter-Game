@@ -5,7 +5,9 @@ using UnityEngine;
 public class Grappling : MonoBehaviour
 {
     [Header("References")]
-    private PlayerBehavior Pb;
+    private PlayerBehavior pB;
+    private GravityScalePhysX gSPX;
+    private DivePunch dP;
     public Transform cam;
     public Transform gunTip;
     public LayerMask whatIsGrappleable;
@@ -29,7 +31,9 @@ public class Grappling : MonoBehaviour
 
     private void Start()
     {
-        Pb = GetComponent<PlayerBehavior>();
+        pB = GetComponent<PlayerBehavior>();
+        gSPX = gameObject.GetComponent<GravityScalePhysX>();
+        dP = GetComponent<DivePunch>();
     }
 
     private void Update()
@@ -53,7 +57,8 @@ public class Grappling : MonoBehaviour
 
         grappling = true;
 
-        Pb.freeze = true;
+        gSPX.gravityScale = 0f;
+        //pB.freeze = true;
 
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
@@ -75,7 +80,8 @@ public class Grappling : MonoBehaviour
 
     private void ExecuteGrapple()
     {
-        Pb.freeze = false;
+        gSPX.gravityScale = dP.gravConstant;
+        //pB.freeze = false;
 
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
 
@@ -84,14 +90,16 @@ public class Grappling : MonoBehaviour
 
         if (grapplePointRelativeYPos < 0) highestPointOnArc = overshootYAxis;
 
-        Pb.JumpToPosition(grapplePoint, highestPointOnArc);
+        pB.JumpToPosition(grapplePoint, highestPointOnArc);
 
         Invoke(nameof(StopGrapple), 1f);
     }
 
     public void StopGrapple()
     {
-        Pb.freeze = false;
+        gSPX.gravityScale = dP.gravConstant;
+        //pB.cTCounter = pB.coyoteTime;
+        //pB.freeze = false;
 
         grappling = false;
 

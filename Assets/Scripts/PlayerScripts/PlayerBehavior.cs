@@ -31,9 +31,11 @@ public class PlayerBehavior : MonoBehaviour
 
     [Header("Air Variables")]
     public float jumpForce = 7.5f; // Force behind a player's jump.
-    [SerializeField] private float airMultiplier = 0.2f; // Float that slows players down midair.
-    [SerializeField] private int airTimeJumps;
-    [SerializeField] private int airTimeJumpsMax;
+    [SerializeField] private float airMultiplier = 0.2f; // Float that slows player down in midair.
+    [SerializeField] private int airTimeJumps; // Amount of jumps player has done in midair.
+    [SerializeField] private int airTimeJumpsMax; // Limit of jumps player can do in midair.
+    public float coyoteTime; // Mechanic that allows players to use their initial jump when not on the ground. Set this in the inspector.
+    public float cTCounter; // Counter for coyote time. When grounded, it will be set to whatever coyoteTime is.
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector.
@@ -60,8 +62,6 @@ public class PlayerBehavior : MonoBehaviour
 
         //player.transform.position = rC.respawnPoint.transform.position;
 
-        airTimeJumpsMax = 1;        
-
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.        
     }
@@ -76,6 +76,7 @@ public class PlayerBehavior : MonoBehaviour
         if (IsGrounded() && !activeGrapple)
         {
             rB.drag = groundDrag;
+            cTCounter = coyoteTime;
             airTimeJumps = 0;
         }
 
@@ -83,12 +84,23 @@ public class PlayerBehavior : MonoBehaviour
         else if (!IsGrounded())
         {
             rB.drag = rB.drag;
+            cTCounter -= Time.deltaTime;
+
+            /*if (Input.GetKeyDown(jumpKey) && cTCounter > 0) 
+            {
+                airTimeJumps = 0;
+            } */
         }
 
         if (freeze)
-        {
-            rB.velocity = Vector3.zero;
+        {            
+            //rB.velocity = Vector3.zero;
         }
+
+        /*if (cTCounter == coyoteTime) 
+        {
+            airTimeJumps = 0;
+        }*/
     }
 
     // FixedUpdate is called once per physics update    
@@ -112,12 +124,17 @@ public class PlayerBehavior : MonoBehaviour
 
         // If the player clicked the jump key and they are grounded OR if the player is not grounded but hasn't used a jump midair, let them jump.
         // Pressing the Jump Key will take away one of the jumps the player can do.
-        // if (Input.GetKeyDown(jumpKey) && (IsGrounded() || (!IsGrounded() && airTimeJumps < airTimeJumpsMax)))
-        if (Input.GetKeyDown(jumpKey) && (IsGrounded() || airTimeJumps < airTimeJumpsMax))
+        // if (Input.GetKeyDown(jumpKey) && (IsGrounded() || airTimeJumps < airTimeJumpsMax))
+        //if (Input.GetKeyDown(jumpKey) && (cTCounter > 0f || airTimeJumps < airTimeJumpsMax))
+        if (Input.GetKeyDown(jumpKey) && airTimeJumps < airTimeJumpsMax)
         {
             Jump(); // Makes the player jump.
-            
         }
+
+        /* if (Input.GetKeyUp(jumpKey))
+        {
+            cTCounter = 0f;
+        } */
 
     }
 
@@ -134,6 +151,7 @@ public class PlayerBehavior : MonoBehaviour
         // When the player clicks the key to move right, they are moving right on the screen rather than in the world because their movement is based on the direction the camera is facing.
         moveDirection = camForward * verticalInput + Camera.main.transform.right * horizontalInput;
 
+        // if (IsGrounded())
         if (IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
@@ -191,16 +209,15 @@ public class PlayerBehavior : MonoBehaviour
     void Jump()
     {
         // Make sure the player's y velocity is at zero so they always jump the exact same height.
-        rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
 
-        if (airTimeJumps < airTimeJumpsMax)
+        if (airTimeJumps < airTimeJumpsMax && cTCounter > 0f)        
         {
             // Perform the player's jump by adding upwards force to their rigidbody.
+            rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
             rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-        }        
+        }
 
         airTimeJumps++;
-
     }
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
@@ -242,7 +259,7 @@ public class PlayerBehavior : MonoBehaviour
             ResetRestrictions();
 
             GetComponent<Grappling>().StopGrapple();
-        }        
+        }
 
     }    
 

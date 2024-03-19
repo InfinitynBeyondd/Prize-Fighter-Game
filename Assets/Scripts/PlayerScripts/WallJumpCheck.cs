@@ -35,7 +35,7 @@ public class WallJumpCheck : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward, Color.red, vectorForceConstant);
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1f, wallJumpable) || Physics.Raycast(transform.position, -transform.forward, out hit, 1f, wallJumpable))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 2f, wallJumpable) || Physics.Raycast(transform.position, -transform.forward, out hit, 2f, wallJumpable))
         {
             wallFaceCheck = true;
         }

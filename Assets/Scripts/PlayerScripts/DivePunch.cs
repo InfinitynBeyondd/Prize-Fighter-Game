@@ -10,7 +10,7 @@ public class DivePunch : MonoBehaviour
 
     [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private float divePunchAirPause = .5f; // Player pauses midair once the dive punch is called.
-    [SerializeField] private float gravConstant = 5f; // The default value of the gravity scale for the object.
+    public float gravConstant = 5f; // The default value of the gravity scale for the object.
     [SerializeField] private float dropGravMult = 3f; // Factor determining player's speed of descent in the dive punch.
     [SerializeField] private bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
 

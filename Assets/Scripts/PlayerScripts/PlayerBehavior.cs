@@ -57,10 +57,8 @@ public class PlayerBehavior : MonoBehaviour
         rB.freezeRotation = true; // Freeze player's rotation so they don't tilt or fall over.
 
         // Makes the cursor invisible on screen (will be used in finished release only, not during debugging).
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-
-        //player.transform.position = rC.respawnPoint.transform.position;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.        
@@ -72,7 +70,7 @@ public class PlayerBehavior : MonoBehaviour
 
         PlayerInput();
 
-        // If the player is on the ground, set the drag on their RB to the groundDrag variable.
+        // If the player is on the ground, set the drag on their RB to the groundDrag variable. Coyote Time Counter is set to max.
         if (IsGrounded() && !activeGrapple)
         {
             rB.drag = groundDrag;
@@ -80,27 +78,25 @@ public class PlayerBehavior : MonoBehaviour
             airTimeJumps = 0;
         }
 
-        // If player is midair, they have no drag when moving.
+        // If player is midair, they have no drag when moving. Coyote Time Counter decreases for every frame spent midair.
         else if (!IsGrounded())
         {
             rB.drag = rB.drag;
             cTCounter -= Time.deltaTime;
 
-            /*if (Input.GetKeyDown(jumpKey) && cTCounter > 0) 
-            {
-                airTimeJumps = 0;
-            } */
         }
 
         if (freeze)
         {            
-            //rB.velocity = Vector3.zero;
+            rB.velocity = Vector3.zero;
         }
 
-        /*if (cTCounter == coyoteTime) 
+        // Coyote Time Counter cannot be less than 0. Set it to 0 if it goes under.
+        if (cTCounter < 0f) 
         {
-            airTimeJumps = 0;
-        }*/
+            cTCounter = 0f;
+        }
+
     }
 
     // FixedUpdate is called once per physics update    
@@ -124,17 +120,10 @@ public class PlayerBehavior : MonoBehaviour
 
         // If the player clicked the jump key and they are grounded OR if the player is not grounded but hasn't used a jump midair, let them jump.
         // Pressing the Jump Key will take away one of the jumps the player can do.
-        // if (Input.GetKeyDown(jumpKey) && (IsGrounded() || airTimeJumps < airTimeJumpsMax))
-        //if (Input.GetKeyDown(jumpKey) && (cTCounter > 0f || airTimeJumps < airTimeJumpsMax))
         if (Input.GetKeyDown(jumpKey) && airTimeJumps < airTimeJumpsMax)
         {
             Jump(); // Makes the player jump.
         }
-
-        /* if (Input.GetKeyUp(jumpKey))
-        {
-            cTCounter = 0f;
-        } */
 
     }
 
@@ -210,14 +199,20 @@ public class PlayerBehavior : MonoBehaviour
     {
         // Make sure the player's y velocity is at zero so they always jump the exact same height.
 
-        if (airTimeJumps < airTimeJumpsMax && cTCounter > 0f)        
+        if (airTimeJumps < airTimeJumpsMax)        
         {
             // Perform the player's jump by adding upwards force to their rigidbody.
             rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
             rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
         }
 
-        airTimeJumps++;
+        // The counter for the player's midair jumps increases with each jump performed whenever IsGrounded() is false.
+        // Any jumps performed in midair while Coyote Time Counter is greater than 0 will not be counted as air jumps.
+        // This means players can get extra jumps midair if they mash while grounded; a balanced Coyote Time variable must be found.
+        if (cTCounter <= 0f) 
+        {
+            airTimeJumps++;
+        }
     }
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)

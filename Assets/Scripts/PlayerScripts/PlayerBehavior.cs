@@ -14,9 +14,6 @@ public class PlayerBehavior : MonoBehaviour
     private Vector3 moveDirection; // Vector3 determining where player is moving.
     private Rigidbody rB; // Player's rigidbody.
 
-    public bool freeze = false; //To stop the player when they grapple
-    public bool activeGrapple = false; //To see if the player is grappling at the moment
-
     [Header("Ground Check")]
     [SerializeField] Transform groundCheck; // Empty GameObject at player's feet that casts a sphere, detecting if the ground layer is stood on.
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.    
@@ -36,6 +33,11 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private int airTimeJumpsMax; // Limit of jumps player can do in midair.
     public float coyoteTime; // Mechanic that allows players to use their initial jump when not on the ground. Set this in the inspector.
     public float cTCounter; // Counter for coyote time. When grounded, it will be set to whatever coyoteTime is.
+
+    [Header("Grappling Variables")]
+    public bool freeze = false; //To stop the player when they grapple
+    public bool activeGrapple = false; //To see if the player is grappling at the moment
+    public bool enableMovementOnNextTouch; // Boolean that lets players move when they land.
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector.
@@ -122,25 +124,22 @@ public class PlayerBehavior : MonoBehaviour
         // Pressing the Jump Key will take away one of the jumps the player can do.
         if (Input.GetKeyDown(jumpKey) && airTimeJumps < airTimeJumpsMax)
         {
-            Jump(); // Makes the player jump.
+            Jump(); 
         }
 
     }
 
     void PlayerMovement()
-    {
-        if (activeGrapple) return; //This stops player movement whenever the grapple is happening
-
+    {        
         // This Vector3 determines the forward direction of the camera, allowing the player to move in the same direction as the camera.
         // If the camera rotates 180 degress, the player can still press the forward key to go forwards because that is the camera's orientation.
         Vector3 camForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
         // Set the player's move direction to their input times the camera's transform. This makes the player's movement based on the directon the camera is facing.
         // Doing this ensures that the player is always going in the direction the camera is facing.
-        // When the player clicks the key to move right, they are moving right on the screen rather than in the world because their movement is based on the direction the camera is facing.
+        // When the player clicks the key to move right, they are moving right on the screen rather than in the world because movement is based on the camera's direction.
         moveDirection = camForward * verticalInput + Camera.main.transform.right * horizontalInput;
 
-        // if (IsGrounded())
         if (IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
@@ -208,13 +207,14 @@ public class PlayerBehavior : MonoBehaviour
 
         // The counter for the player's midair jumps increases with each jump performed whenever IsGrounded() is false.
         // Any jumps performed in midair while Coyote Time Counter is greater than 0 will not be counted as air jumps.
-        // This means players can get extra jumps midair if they mash while grounded; a balanced Coyote Time variable must be found.
+        // This means players can get extra jumps midair if they mash while grounded; a balanced Coyote Time variable must be found (or this can made a feature).
         if (cTCounter <= 0f) 
         {
             airTimeJumps++;
         }
     }
 
+    // Vector3 formula used to calculate the velocity of the grapple's pull.
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
         float gravity = Physics.gravity.y;
@@ -228,6 +228,7 @@ public class PlayerBehavior : MonoBehaviour
         return velocityXZ + velocityY;
     }
 
+    // Function that sends the player to the part of the grapple surface hit by the grapple beam in a parabola defined by the function call.
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
     {
         activeGrapple = true;
@@ -244,8 +245,8 @@ public class PlayerBehavior : MonoBehaviour
         enableMovementOnNextTouch = true;
         rB.velocity = velocityToSet * 4 ;
     }
-    private bool enableMovementOnNextTouch;
-
+    
+    // When the player touches a surface, enableMovementOnNextTouch is set to false and the player gets proper control back.
     private void OnCollisionEnter(Collision collision)
     {
         if (enableMovementOnNextTouch)
@@ -258,6 +259,10 @@ public class PlayerBehavior : MonoBehaviour
 
     }    
 
-    private void ResetRestrictions() { activeGrapple = false; }
+    // activeGrapple is set to false.
+    private void ResetRestrictions() 
+    { 
+        activeGrapple = false; 
+    }
 
 }

@@ -6,11 +6,13 @@ using UnityEngine;
 public class ItemCollection : MonoBehaviour
 {
     [SerializeField] GameManager gM;
+    CollectableCounters cCounters;
 
     // Start is called before the first frame update
     void Start()
     {
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        cCounters = GameObject.Find("Canvas").GetComponent<CollectableCounters>();
     }
 
     // Update is called once per frame
@@ -21,11 +23,20 @@ public class ItemCollection : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player") && this.transform.CompareTag("Sticker"))
         {
-            Debug.Log("Sticker Get!");
+            Debug.Log("Got a Sticker!");
             this.gameObject.SetActive(false);
             gM.stickersCollected++;
+            cCounters.UpdateCollectedCount();
+        }
+
+        if (other.transform.CompareTag("Player") && this.transform.CompareTag("Coin"))
+        {
+            Debug.Log("Coin Collected!");
+            this.gameObject.SetActive(false);
+            gM.coinsCollected++;
+            cCounters.UpdateCollectedCount();
         }
     }
 }

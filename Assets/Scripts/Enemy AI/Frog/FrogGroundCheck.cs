@@ -5,7 +5,7 @@ using UnityEngine;
 public class FrogGroundCheck : MonoBehaviour
 {
 
-    [Header("Ground Check")]
+    [Header("CHECK PRE-BUILD!")]
     [SerializeField] Rigidbody frogBody; // Frog's jump timer. Once it hits zero, the frog will jump.
     [SerializeField] float frogJumpTimer; // A timer that controls when the frog will jump.
     [SerializeField] float frogJumpTimerMax = 300f; // Max value of the frog's jump timer. SET IN THE INSPECTOR BECAUSE IT WILL VARY BY FROG!
@@ -48,7 +48,11 @@ public class FrogGroundCheck : MonoBehaviour
     {
         if (frogJumpTimer <= 0)
         {
-            frogBody.AddForce(new Vector3(0, frogJumpForce, 0), ForceMode.VelocityChange);
+            //IN-BUILD FORCES (MULTIPLY THE ENGINE FORCES!)
+            frogBody.AddForce(new Vector3(0, 3 * frogJumpForce, 0), ForceMode.VelocityChange);
+
+            //IN-ENGINE FORCES:
+            //frogBody.AddForce(new Vector3(0, frogJumpForce, 0), ForceMode.VelocityChange);
         }
         else 
         {

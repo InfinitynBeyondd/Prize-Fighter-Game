@@ -55,7 +55,7 @@ public class WallJumpCheck : MonoBehaviour
         {
             // Depending on how the ray collides with the wall, the positions along the x axis and z axis change.
             rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
-            rB.AddForce(transform.up * vectorForceConstant, ForceMode.VelocityChange);
+            rB.AddForce(transform.up * 4f* (vectorForceConstant), ForceMode.VelocityChange);
 
             if (Physics.Raycast(transform.position, transform.forward, vectorForceConstant, wallJumpable))
             {

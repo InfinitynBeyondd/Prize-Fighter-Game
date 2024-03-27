@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class FrogHitbox : MonoBehaviour
 {
-    Rigidbody PlayerBody;
-    Vector3 PlayerVelocity;
+    Rigidbody playerBody;
+    Vector3 playerVelocity;
     public float dispelForce = 100f;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerBody = other.GetComponent<Rigidbody>();
-            PlayerVelocity = PlayerBody.velocity;
+            playerBody = other.GetComponent<Rigidbody>();
+            playerVelocity = playerBody.velocity;
 
-            PlayerBody.AddForce(new Vector3(600, 600,600) + PlayerVelocity, ForceMode.Impulse);
+            playerBody.AddForce(new Vector3(dispelForce, dispelForce, dispelForce) + playerVelocity, ForceMode.Impulse);
 
-            Debug.LogWarning("Hitbox is working" + PlayerVelocity);
+            Debug.LogWarning("Hitbox is working" + playerVelocity);
         }
     }
 }

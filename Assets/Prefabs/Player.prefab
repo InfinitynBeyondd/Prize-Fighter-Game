@@ -76,7 +76,7 @@ Transform:
   - {fileID: 2664419629016565631}
   - {fileID: 1854561223358576155}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8624862798465770573
 MonoBehaviour:
@@ -92,8 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   defaultMovementSpeed: 11
-  freeze: 0
-  activeGrapple: 0
   groundCheck: {fileID: 3854103633190148231}
   groundLayer:
     serializedVersion: 2
@@ -106,6 +104,9 @@ MonoBehaviour:
   airTimeJumpsMax: 1
   coyoteTime: 0.25
   cTCounter: 0
+  freeze: 0
+  activeGrapple: 0
+  enableMovementOnNextTouch: 0
   jumpKey: 32
   attackKey: 304
   player: {fileID: 3699052319406116597}
@@ -581,7 +582,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5fb6403bde3cec0449f8dbfb1ead7539, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

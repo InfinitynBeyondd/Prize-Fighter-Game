@@ -444,6 +444,11 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 560649145}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4468329763937896835, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -503,6 +508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835581246111899229, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: gravityScale
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5406773835421941608, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -1269,12 +1279,12 @@ PrefabInstance:
     - target: {fileID: 8118746152745884777, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.023101756
+      value: 0.023101747
       objectReference: {fileID: 0}
     - target: {fileID: 8118746152745884777, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0021139097
+      value: 0.002113909
       objectReference: {fileID: 0}
     - target: {fileID: 8118746152745884777, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}

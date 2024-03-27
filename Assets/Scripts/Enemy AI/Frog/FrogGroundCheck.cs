@@ -6,13 +6,10 @@ public class FrogGroundCheck : MonoBehaviour
 {
 
     [Header("Ground Check")]
-    [SerializeField] Rigidbody frogBody;
-    [SerializeField] float frogJumpTimer;
-    [SerializeField] float frogJumpTimerMax = 300f;
-    [SerializeField] Transform frogGroundCheck; // Empty GameObject below the frog that casts a sphere, detecting if the ground layer overlaps.
-    [SerializeField] LayerMask groundLayer; // Layer mask determining what is a ground layer.    
-    [SerializeField] float gCR; // Ground Check Radius    
-    [SerializeField] bool onGround;
+    [SerializeField] Rigidbody frogBody; // Frog's jump timer. Once it hits zero, the frog will jump.
+    [SerializeField] float frogJumpTimer; // A timer that controls when the frog will jump.
+    [SerializeField] float frogJumpTimerMax = 300f; // Max value of the frog's jump timer. SET IN THE INSPECTOR BECAUSE IT WILL VARY BY FROG!
+    [SerializeField] float frogJumpForce; // Distance that the frog jumps up with. SET IN THE INSPECTOR BECAUSE IT WILL VARY BY FROG!
 
     // Start is called before the first frame update
     void Start()
@@ -21,32 +18,37 @@ public class FrogGroundCheck : MonoBehaviour
         frogJumpTimer = frogJumpTimerMax;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            frogJumpTimer--;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            frogJumpTimer = frogJumpTimerMax;
-        }
-    }
-
+    // Update is called once per frame
     void Update()
     {
         FrogJump();
     }
 
+    // When the frog's hitbox intersects with a ground or default layer, its timer will decrease until it hits 0.
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            frogJumpTimer--;
+        }
+    }
+
+    // When the frog's hitbox no longer intersects with a ground or default layer, its timer will reset to the max value.
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            frogJumpTimer = frogJumpTimerMax;
+        }
+    }
+
+
+    // The frog will jump based on the force assigned to it in the inspector. Once the timer resets, the force will stop being applied.
     private void FrogJump()
     {
         if (frogJumpTimer <= 0)
         {
-            frogBody.AddForce(Vector3.up, ForceMode.VelocityChange);
+            frogBody.AddForce(new Vector3(0, frogJumpForce, 0), ForceMode.VelocityChange);
         }
         else 
         {
@@ -54,56 +56,6 @@ public class FrogGroundCheck : MonoBehaviour
         }
     }
 
-    /*public bool IsGrounded() // Bool that says when the frog is on a ground layer- a small sphere is cast at the frog's feet to determine if they're standing on solid ground.
-    {
-        return Physics.CheckSphere(frogGroundCheck.position, gCR, groundLayer);
-    }
+    // If it feels like a frog falls too slowly, edit the gravity value of the frog using the GravityScalePhysX script.
 
-    OLD
-    void Start()
-    {
-        frogBody = GetComponentInParent<Rigidbody>();
-        frogJumpTimer = frogJumpTimerMax;
-        frogGroundCheck = this.transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {        
-        if (frogJumpTimer <= 0)
-        {
-            frogJumpTimer = 0;            
-        }
-
-        if (IsGrounded())
-        {
-            frogJumpTimer--;
-            onGround = true;
-        }
-        else if (!IsGrounded())
-        {
-            frogJumpTimer = frogJumpTimerMax;
-            onGround = false;
-        }
-        
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(frogGroundCheck.position, gCR);
-        Gizmos.color = Color.green;
-    }
-
-    private void FrogJump()
-    {
-        if (frogJumpTimer <= 0)
-        {
-            frogBody.AddForce(new Vector3(0, .5f, 0), ForceMode.VelocityChange);
-        }
-        else 
-        {
-            frogBody.AddForce(Vector3.zero);
-        }
-    }
-    */
 }

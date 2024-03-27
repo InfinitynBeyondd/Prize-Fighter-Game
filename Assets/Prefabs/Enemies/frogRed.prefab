@@ -82,13 +82,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frogBody: {fileID: 8191316741463110124}
   frogJumpTimer: 0
-  frogJumpTimerMax: 300
-  frogGroundCheck: {fileID: 7393618079595724994}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  gCR: 0.1
-  onGround: 0
+  frogJumpTimerMax: 150
+  frogJumpForce: 0
 --- !u!1 &744990786053933720
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +121,7 @@ Transform:
   - {fileID: 7331305266559828733}
   - {fileID: 4468329763937896835}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!65 &9025182224862255549
 BoxCollider:
@@ -188,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f909452ca6bd084885a3859cfa90777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityScale: 1
+  gravityScale: 3
 --- !u!1 &1165660222381219996
 GameObject:
   m_ObjectHideFlags: 0

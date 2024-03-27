@@ -707,6 +707,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogRed (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -735,27 +740,27 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.63580215
+      value: 0.6391237
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06533894
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.766313
+      value: 0.769104
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06519877
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.965
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -765,7 +770,7 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 10.549
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3592,6 +3597,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogRed (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -3620,27 +3630,27 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9793253
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20229192
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 23.342
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -5635,6 +5645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: frogRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -8521,12 +8536,12 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6787109
+      value: -0.6787108
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.11957181
+      value: -0.11957183
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -8536,7 +8551,7 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12572129
+      value: -0.1257213
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8637,6 +8652,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogRed (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -8645,7 +8665,7 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.009999999
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -8670,27 +8690,27 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6953004
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12867807
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.69529915
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12867977
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 20.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -9193,6 +9213,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogRed (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -9226,27 +9251,27 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.23911949
+      value: 0.2588191
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.09904681
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8923983
+      value: -0.9659258
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.36964428
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -12420,6 +12445,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogRed (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -12448,27 +12478,27 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9709173
+      value: 0.97525173
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.012146477
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.22090635
+      value: 0.22109745
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.09150147
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.965
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -12478,7 +12508,7 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 10.549
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17204,6 +17234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: frogRed (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -23010,6 +23045,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogRed (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -23038,22 +23078,22 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99962103
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027530288
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -23063,7 +23103,7 @@ PrefabInstance:
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -3.155
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -24862,6 +24902,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: frogRed (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}
@@ -32327,6 +32372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: frogRed (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688460142356953578, guid: 187dfccf63c5b004bad3818a0a1411e6,
+        type: 3}
+      propertyPath: frogJumpForce
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4496846358318690541, guid: 187dfccf63c5b004bad3818a0a1411e6,
         type: 3}

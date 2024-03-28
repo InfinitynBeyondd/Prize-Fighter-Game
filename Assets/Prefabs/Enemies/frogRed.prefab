@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6043180904351278258}
   - component: {fileID: 6222677400105118709}
   - component: {fileID: 3688460142356953578}
+  - component: {fileID: 8320331336766140585}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -84,6 +85,27 @@ MonoBehaviour:
   frogJumpTimer: 0
   frogJumpTimerMax: 60
   frogJumpForce: 0
+--- !u!65 &8320331336766140585
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492670570573206702}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 282.82913, y: 40.686043, z: 292.06784}
+  m_Center: {x: -6.2432885, y: 16.627623, z: 8.546316}
 --- !u!1 &744990786053933720
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +115,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4496846358318690541}
-  - component: {fileID: 9025182224862255549}
   - component: {fileID: 8191316741463110124}
   - component: {fileID: 4835581246111899229}
   m_Layer: 3
@@ -121,29 +142,8 @@ Transform:
   - {fileID: 7331305266559828733}
   - {fileID: 4468329763937896835}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!65 &9025182224862255549
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744990786053933720}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 235.04312, y: 39.905674, z: 205.01646}
-  m_Center: {x: -3.0755877, y: 28.556541, z: 5.99339}
 --- !u!54 &8191316741463110124
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -236,8 +236,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 227.75175, y: 32.22616, z: 205.79532}
-  m_Center: {x: -4.6830893, y: 59.219444, z: 12.500679}
+  m_Size: {x: 235.25357, y: 72.740105, z: 205.79532}
+  m_Center: {x: -0.9321451, y: 38.962425, z: 12.500679}
 --- !u!114 &8771127607572190151
 MonoBehaviour:
   m_ObjectHideFlags: 0

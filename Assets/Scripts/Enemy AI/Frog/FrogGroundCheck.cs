@@ -49,10 +49,10 @@ public class FrogGroundCheck : MonoBehaviour
         if (frogJumpTimer <= 0)
         {
             //IN-BUILD FORCES (MULTIPLY THE ENGINE FORCES!)
-            frogBody.AddForce(new Vector3(0, 3 * frogJumpForce, 0), ForceMode.VelocityChange);
+            //frogBody.AddForce(new Vector3(0, 3 * frogJumpForce, 0), ForceMode.VelocityChange);
 
             //IN-ENGINE FORCES:
-            //frogBody.AddForce(new Vector3(0, frogJumpForce, 0), ForceMode.VelocityChange);
+            frogBody.AddForce(new Vector3(0, frogJumpForce, 0), ForceMode.VelocityChange);
         }
         else 
         {

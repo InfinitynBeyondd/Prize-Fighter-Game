@@ -17,7 +17,8 @@ public class FrogHitbox : MonoBehaviour
 
             playerBody.AddForce(new Vector3(dispelForce, dispelForce, dispelForce) + playerVelocity, ForceMode.Impulse);
 
-            Debug.LogWarning("Hitbox is working" + playerVelocity);
+            Debug.Log("Frog Hitbox Entered: Flinging back!");
         }
     }
+
 }

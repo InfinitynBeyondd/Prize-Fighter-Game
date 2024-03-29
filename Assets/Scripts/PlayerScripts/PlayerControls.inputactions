@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "bde46769-9ee8-4d1e-a523-9698940da080",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -173,23 +182,23 @@
                 },
                 {
                     "name": "",
-                    "id": "6029958a-599a-4e7a-a1e6-6b0c7bb094b0",
-                    "path": "<Gamepad>/leftStick/x",
+                    "id": "fd12da99-b937-4638-b5a8-9ff621209575",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovePlayer",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "33bb45dc-7935-49b1-b1f2-ede66a44b61c",
-                    "path": "<Gamepad>/leftStick/y",
+                    "id": "36889c6d-0e92-4a77-b044-c8e42b58e3c0",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovePlayer",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

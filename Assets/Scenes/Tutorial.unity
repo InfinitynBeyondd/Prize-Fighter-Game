@@ -123,6 +123,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41498120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41498121}
+  m_Layer: 6
+  m_Name: Grapplable Surfaces
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &41498121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41498120}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -205.6541, y: -83.36562, z: 4.2828074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 114412749}
+  - {fileID: 651914048}
+  - {fileID: 2043846727}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &99636092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,7 +248,7 @@ GameObject:
   - component: {fileID: 114412748}
   - component: {fileID: 114412747}
   - component: {fileID: 114412746}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Grapple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,12 +334,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114412745}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.8181734, y: 44.112015, z: 6.975952}
+  m_LocalPosition: {x: 202.83592, y: 127.47764, z: 2.6931448}
   m_LocalScale: {x: 27.781595, y: 1, z: 18.29438}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 41498121}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &271901487
 PrefabInstance:
@@ -1157,7 +1191,7 @@ GameObject:
   - component: {fileID: 651914047}
   - component: {fileID: 651914046}
   - component: {fileID: 651914045}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Grapple (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,12 +1277,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651914044}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.8181734, y: 21.48, z: 72.93}
-  m_LocalScale: {x: 12.177351, y: 0.22366, z: 5.3941}
+  m_LocalPosition: {x: 202.83592, y: 104.84563, z: 68.647194}
+  m_LocalScale: {x: 12.177351, y: 0.22366, z: 5.3940997}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 41498121}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &664855028
 GameObject:
@@ -1546,7 +1580,7 @@ GameObject:
   - component: {fileID: 812131421}
   - component: {fileID: 812131420}
   - component: {fileID: 812131419}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Button_Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2476,7 +2510,7 @@ GameObject:
   - component: {fileID: 1160253728}
   - component: {fileID: 1160253727}
   - component: {fileID: 1160253726}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Button_Placeholder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2688,7 +2722,7 @@ GameObject:
   - component: {fileID: 1301752807}
   - component: {fileID: 1301752806}
   - component: {fileID: 1301752805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Button_Placeholder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3021,7 +3055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1549031209}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3736,7 +3770,7 @@ GameObject:
   - component: {fileID: 2043846726}
   - component: {fileID: 2043846725}
   - component: {fileID: 2043846724}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Grapple (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3822,12 +3856,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043846723}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.8181734, y: 21.48, z: 137.74}
-  m_LocalScale: {x: 19.328821, y: 0.22366, z: 5.3941}
+  m_LocalPosition: {x: 202.83592, y: 104.84563, z: 133.4572}
+  m_LocalScale: {x: 19.328821, y: 0.22366, z: 5.3940997}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 41498121}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &2055514711
 PrefabInstance:

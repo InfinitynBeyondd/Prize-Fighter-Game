@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class PlayerBehavior : MonoBehaviour
     public bool enableMovementOnNextTouch; // Boolean that lets players move when they land.
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector.
+    public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector. ((DEPRECATED TO USE INPUT SYSTEM
     public KeyCode attackKey = KeyCode.LeftShift; // Attack Key is set to LShift by default, but it can be changed in the inspector.
 
     [Header("References")]
@@ -120,13 +121,6 @@ public class PlayerBehavior : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
 
-        // If the player clicked the jump key and they are grounded OR if the player is not grounded but hasn't used a jump midair, let them jump.
-        // Pressing the Jump Key will take away one of the jumps the player can do.
-        if (Input.GetKeyDown(jumpKey) && airTimeJumps < airTimeJumpsMax)
-        {
-            Jump(); 
-        }
-
     }
 
     void PlayerMovement()
@@ -194,23 +188,26 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        // Make sure the player's y velocity is at zero so they always jump the exact same height.
-
-        if (airTimeJumps < airTimeJumpsMax)        
+        if (context.performed) //This makes sure the content is only triggered once by the input once it is performed
         {
-            // Perform the player's jump by adding upwards force to their rigidbody.
-            rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
-            rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-        }
+            // Make sure the player's y velocity is at zero so they always jump the exact same height.
 
-        // The counter for the player's midair jumps increases with each jump performed whenever IsGrounded() is false.
-        // Any jumps performed in midair while Coyote Time Counter is greater than 0 will not be counted as air jumps.
-        // This means players can get extra jumps midair if they mash while grounded; a balanced Coyote Time variable must be found (or this can made a feature).
-        if (cTCounter <= 0f) 
-        {
-            airTimeJumps++;
+            if (airTimeJumps < airTimeJumpsMax)
+            {
+                // Perform the player's jump by adding upwards force to their rigidbody.
+                rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
+                rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+            }
+
+            // The counter for the player's midair jumps increases with each jump performed whenever IsGrounded() is false.
+            // Any jumps performed in midair while Coyote Time Counter is greater than 0 will not be counted as air jumps.
+            // This means players can get extra jumps midair if they mash while grounded; a balanced Coyote Time variable must be found (or this can made a feature).
+            if (cTCounter <= 0f)
+            {
+                airTimeJumps++;
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GroundedPunch : MonoBehaviour
 {
@@ -27,25 +28,20 @@ public class GroundedPunch : MonoBehaviour
         groundAttackFX.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (pB.IsGrounded() && Input.GetKeyDown(pB.attackKey) && !groundAttackFX.activeSelf) 
-        {
-            Attack();            
-        }        
-    }
 
     // For now, the attack will be translated through the animator. This does crate a slight bug of the attack being displaced, but the hitbox should be wide enough to cover for it.
-    void Attack()
+    public void Attack(InputAction.CallbackContext context)
     {
-        //groundAttackFX.transform.Translate(Vector3.forward);
-        groundAttackFX.SetActive(true);
-        attacking = groundAttackFX.activeSelf;
-        attackAnim.SetBool("Attacking", attacking);
-        StartCoroutine("AttackReset");
-        //groundAttackFX.transform.position += new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f);
-        //groundAttackFX.transform.Translate(new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f));
+        if (pB.IsGrounded() && !groundAttackFX.activeSelf && context.performed) //Checks if player is grounded, Attack anim is not active, and if button was pressed
+        {
+            //groundAttackFX.transform.Translate(Vector3.forward);
+            groundAttackFX.SetActive(true);
+            attacking = groundAttackFX.activeSelf;
+            attackAnim.SetBool("Attacking", attacking);
+            StartCoroutine("AttackReset");
+            //groundAttackFX.transform.position += new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f);
+            //groundAttackFX.transform.Translate(new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f));
+        }
     }
 
     // Coroutine that resets the attack status.

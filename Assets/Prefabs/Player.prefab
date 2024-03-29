@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3699052319406116597}
+  - component: {fileID: 6386195672802278760}
   - component: {fileID: 8624862798465770573}
   - component: {fileID: 5248843159255424479}
   - component: {fileID: 1213619247021265695}
@@ -79,6 +80,109 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6386195672802278760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046073566360240296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ad8d7ea769e23e44596f5f8061be3ced,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8624862798465770573}
+        m_TargetAssemblyTypeName: PlayerBehavior, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 007c755c-b2d4-441f-8a56-b014c8421c01
+    m_ActionName: Gameplay/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5248843159255424479}
+        m_TargetAssemblyTypeName: GroundedPunch, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8a28047f-b8c0-4b77-90bc-5d02727bf83e
+    m_ActionName: Gameplay/Punch[/Keyboard/leftShift,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1213619247021265695}
+        m_TargetAssemblyTypeName: DivePunch, Assembly-CSharp
+        m_MethodName: DivePunchCalled
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b5b23e1c-8cc5-458b-94db-4c7b14eb7437
+    m_ActionName: Gameplay/GroundPound[/Keyboard/leftShift,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2485997080466642452}
+        m_TargetAssemblyTypeName: Grappling, Assembly-CSharp
+        m_MethodName: StartGrapple
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dd0d1549-02e9-4bd8-81bc-bfcbfa153078
+    m_ActionName: Gameplay/Grapple[/Keyboard/e,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6fe2fdf-27a0-4060-ab58-0fb3469190d0
+    m_ActionName: Gameplay/MovePlayer[/XInputControllerWindows/leftStick/x,/XInputControllerWindows/leftStick/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3930c533-f013-488c-9b3c-fbff41f27786
+    m_ActionName: Gameplay/MoveCamera
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &8624862798465770573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf1321352182044b9cdbd550c334c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  divePunchCall: 0
   divePunchAirPause: 0.5
   gravConstant: 5
   dropGravMult: 3
@@ -229,7 +332,6 @@ MonoBehaviour:
   grappleDelayTime: 0.25
   overshootYAxis: 2
   grapplingCd: 1
-  grappleKey: 101
 --- !u!114 &6308502450714271253
 MonoBehaviour:
   m_ObjectHideFlags: 0

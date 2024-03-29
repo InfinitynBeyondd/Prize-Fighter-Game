@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DivePunch : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class DivePunch : MonoBehaviour
     Rigidbody rB;
     GravityScalePhysX gSPX;
 
-    [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
+    //[SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private float divePunchAirPause = .5f; // Player pauses midair once the dive punch is called.
     public float gravConstant = 5f; // The default value of the gravity scale for the object.
     [SerializeField] private float dropGravMult = 3f; // Factor determining player's speed of descent in the dive punch.
@@ -21,29 +22,6 @@ public class DivePunch : MonoBehaviour
         rB = GetComponent<Rigidbody>();
         gSPX = GetComponent<GravityScalePhysX>();
         gSPX.gravityScale = gravConstant;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // If Left Shift is pressed down and the player isn't grounded, this cues the dive punch. 
-        if (Input.GetKeyDown(pB.attackKey) && !pB.IsGrounded())
-        {
-            divePunchCall = true;
-        }
-
-    }
-
-    // FixedUpdate is called once per physics change
-    void FixedUpdate()
-    {
-        // When divePunchCall is true and a dive punch isn't already in action, it sets the dive punch in action.
-        if (divePunchCall && !isDivePunchActive)
-        {
-            DivePunchCalled();
-        }
-        divePunchCall = false; 
-
     }
 
     private void OnCollisionEnter(Collision other)
@@ -65,11 +43,14 @@ public class DivePunch : MonoBehaviour
     */
 
     // Set the dive punch to be active so that it can't be called repeatedly, cue the midair pause, then begin to fall with faster gravity applied.
-    void DivePunchCalled()
+    public void DivePunchCalled(InputAction.CallbackContext context)
     {
-        isDivePunchActive = true;
-        MidairPause();
-        StartCoroutine("DivePunchDrop");
+        if (!isDivePunchActive && !pB.IsGrounded() && context.performed) //If divepunch is not active, and the player is not grounded, and button is pressed then do divepunch
+        {
+            isDivePunchActive = true;
+            MidairPause();
+            StartCoroutine("DivePunchDrop");
+        }
     }
 
     // As the dive punch activates, the player pauses briefly in midair, and the player's influence over input is halved.

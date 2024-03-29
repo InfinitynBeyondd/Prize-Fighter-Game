@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class WallJumpCheck : MonoBehaviour
 {
@@ -44,14 +45,7 @@ public class WallJumpCheck : MonoBehaviour
         else
         {
             wallFaceCheck = false;
-        }
-
-        // When hugging the wall in midair and the Jump Key is pressed, activate the wall jump.
-        if (Input.GetKeyDown(pB.jumpKey) && !pB.IsGrounded() && wallFaceCheck) 
-        {
-            wallJumping = true;
-            Invoke(nameof(WallJumpEnd), 0.2f);            
-        }        
+        }       
 
         if (wallJumping) 
         {
@@ -69,10 +63,20 @@ public class WallJumpCheck : MonoBehaviour
             }
 
         }
-    }    
+    }
 
+    public void WallJump(InputAction.CallbackContext context)
+    {
+        if (!pB.IsGrounded() && wallFaceCheck && context.performed) // When hugging the wall in midair and the Jump Key is pressed, activate the wall jump.
+        {
+            wallJumping = true;
+            Invoke(nameof(WallJumpEnd), 0.2f);
+        }
+    }
     void WallJumpEnd()
     {        
         wallJumping = false;
-    } 
+    }
+
+
 }

@@ -60,7 +60,7 @@ public class PlayerBehavior : MonoBehaviour
         rB.freezeRotation = true; // Freeze player's rotation so they don't tilt or fall over.
 
         // Makes the cursor invisible on screen (will be used in finished release only, not during debugging).
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
@@ -119,8 +119,17 @@ public class PlayerBehavior : MonoBehaviour
         bool hasHorizontalInput = !Mathf.Approximately(horizontalInput, 0f);
         bool hasVerticalInput = !Mathf.Approximately(verticalInput, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
-        m_Animator.SetBool("IsWalking", isWalking);
 
+        if (IsGrounded() && isWalking)
+        {
+            m_Animator.SetBool("isWalking", isWalking);
+            //m_Animator.SetBool("isStopped", false);
+        }
+        /*else if (IsGrounded() && !isWalking) 
+        {
+            m_Animator.SetBool("isWalking", isWalking);
+            m_Animator.SetBool("isStopped", true);
+        }*/
     }
 
     void PlayerMovement()
@@ -138,12 +147,20 @@ public class PlayerBehavior : MonoBehaviour
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             rB.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Acceleration);
+            m_Animator.SetBool("isFalling", false);
         }
         else if (!IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             // Multiply by an airMultiplier to determine how much the player can move in the air.
+            //m_Animator.SetBool("isWalking", false);
             rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);
+
+            if (airTimeJumps == 0) 
+            {
+                m_Animator.SetBool("isFalling", true);
+            }
+
         }
     }
 
@@ -199,6 +216,8 @@ public class PlayerBehavior : MonoBehaviour
                 // Perform the player's jump by adding upwards force to their rigidbody.
                 rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
                 rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+                m_Animator.SetBool("isFalling", false);
+                m_Animator.SetBool("isJump", true);
             }
 
             // The counter for the player's midair jumps increases with each jump performed whenever IsGrounded() is false.

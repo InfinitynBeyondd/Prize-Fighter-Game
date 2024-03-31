@@ -9,9 +9,9 @@ public class GroundedPunch : MonoBehaviour
     
     //Rigidbody rB;
     //GravityScalePhysX gSPX;
-
+    
+    [SerializeField] GameObject groundAttackHitbox;
     [SerializeField] GameObject playerModel;
-    [SerializeField] GameObject groundAttackFX;
     public Animator attackAnim;
     bool attacking;
     
@@ -22,36 +22,34 @@ public class GroundedPunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pB = GetComponent<PlayerBehavior>();
         //rB = GetComponent<Rigidbody>();
-        
-        groundAttackFX.SetActive(false);
+        pB = GetComponent<PlayerBehavior>();
+        attackAnim.GetComponentInParent<Animator>();
+        groundAttackHitbox.SetActive(false);
     }
 
 
     // For now, the attack will be translated through the animator. This does crate a slight bug of the attack being displaced, but the hitbox should be wide enough to cover for it.
     public void Attack(InputAction.CallbackContext context)
     {
-        if (pB.IsGrounded() && !groundAttackFX.activeSelf && context.performed) //Checks if player is grounded, Attack anim is not active, and if button was pressed
-        {
-            //groundAttackFX.transform.Translate(Vector3.forward);
-            groundAttackFX.SetActive(true);
-            attacking = groundAttackFX.activeSelf;
-            attackAnim.SetBool("Attacking", attacking);
-            StartCoroutine("AttackReset");
-            //groundAttackFX.transform.position += new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f);
-            //groundAttackFX.transform.Translate(new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, 10f));
+        //if (pB.IsGrounded() && !groundAttackHitbox.activeSelf && context.performed)
+
+        if (pB.IsGrounded() && !groundAttackHitbox.activeSelf && context.performed) //Checks if player is grounded, Attack anim is not active, and if button was pressed
+        {            
+            groundAttackHitbox.SetActive(true);
+            attacking = groundAttackHitbox.activeSelf;
+            attackAnim.SetBool("isPunching", attacking);
+            StartCoroutine("AttackReset");            
         }
     }
 
     // Coroutine that resets the attack status.
     IEnumerator AttackReset() 
     {
-        yield return new WaitForSeconds(0.5f);
-        groundAttackFX.SetActive(false);
-        groundAttackFX.transform.position = new Vector3(playerModel.transform.position.x, playerModel.transform.position.y, playerModel.transform.position.z + 1.5f);
-        attacking = groundAttackFX.activeSelf;
-        attackAnim.SetBool("Attacking", attacking);
+        yield return new WaitForSeconds(0.5f);        
+        groundAttackHitbox.SetActive(false);
+        attacking = groundAttackHitbox.activeSelf;
+        attackAnim.SetBool("isPunching", attacking);
     }
 
 }

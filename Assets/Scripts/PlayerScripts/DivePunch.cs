@@ -9,10 +9,12 @@ public class DivePunch : MonoBehaviour
     Rigidbody rB;
     GravityScalePhysX gSPX;
 
-    //[SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private float divePunchAirPause = .5f; // Player pauses midair once the dive punch is called.
     public float gravConstant = 5f; // The default value of the gravity scale for the object.
     [SerializeField] private float dropGravMult = 3f; // Factor determining player's speed of descent in the dive punch.
+
+    public Animator attackAnim;
+    [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
 
     // Start is called before the first frame update
@@ -21,26 +23,18 @@ public class DivePunch : MonoBehaviour
         pB = GetComponent<PlayerBehavior>();
         rB = GetComponent<Rigidbody>();
         gSPX = GetComponent<GravityScalePhysX>();
+        attackAnim = GetComponentInChildren<Animator>();
         gSPX.gravityScale = gravConstant;
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        // Upon colliding with something, the player's dive punch ends. If this becomes incongruent with wall jump code later on, fill out the method below.
+        // Upon colliding with something, the player's dive punch ends. 
         if (other.GetContact(0).normal.y >= 0.5f) 
         {
             DivePunchEnd();
         }
     }
-
-    /* void GroundCheckForDivePunch() 
-    {
-        if (pB.IsGrounded()) 
-        {
-
-        }
-    } 
-    */
 
     // Set the dive punch to be active so that it can't be called repeatedly, cue the midair pause, then begin to fall with faster gravity applied.
     public void DivePunchCalled(InputAction.CallbackContext context)
@@ -58,6 +52,8 @@ public class DivePunch : MonoBehaviour
     {
         DivePunchMovementChange();
         gSPX.gravityScale = 0;
+        divePunchCall = true;
+        attackAnim.SetBool("isDiveHolding", divePunchCall);
     }
     
     // Coroutine that forces the descent to be faster than the usual falling speed.
@@ -65,7 +61,8 @@ public class DivePunch : MonoBehaviour
     {
         yield return new WaitForSeconds(divePunchAirPause);
         gSPX.gravityScale = gravConstant * dropGravMult;
-        //rB.AddForce(Vector3.down * dropGrav, ForceMode.VelocityChange);        
+        divePunchCall = false;
+        attackAnim.SetBool("isDiving", isDivePunchActive);
     }
 
     // Player has less control over the character while dive punching.
@@ -81,6 +78,7 @@ public class DivePunch : MonoBehaviour
         pB.movementSpeed = pB.defaultMovementSpeed;
         gSPX.gravityScale = gravConstant;
         isDivePunchActive = false;
+        attackAnim.SetBool("isDiving", isDivePunchActive);
     }
 
 }

@@ -13,6 +13,7 @@ public class Grappling : MonoBehaviour
     public Transform gunTip;
     public LayerMask whatIsGrappleable;
     public LineRenderer lr;
+    public Animator grappleAnim;
 
     [Header("Grappling")]
     public float maxGrappleDistance;
@@ -33,6 +34,7 @@ public class Grappling : MonoBehaviour
         pB = GetComponent<PlayerBehavior>();
         gSPX = gameObject.GetComponent<GravityScalePhysX>();
         dP = GetComponent<DivePunch>();
+        grappleAnim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -62,7 +64,8 @@ public class Grappling : MonoBehaviour
             }
 
             grappling = true;
-
+            grappleAnim.SetBool("isGrappling", grappling);
+            grappleAnim.SetBool("isStopped", false);
             gSPX.gravityScale = 0f;
 
             RaycastHit hit;
@@ -108,6 +111,9 @@ public class Grappling : MonoBehaviour
         gSPX.gravityScale = dP.gravConstant;
 
         grappling = false;
+
+        grappleAnim.SetBool("isGrappling", grappling);
+        grappleAnim.SetBool("isStopped", true);
 
         grapplingCdTimer = grapplingCd;
 

@@ -33,6 +33,15 @@ public class FrogGroundCheck : MonoBehaviour
         }
     }
 
+    // If a player gets caught under a frog, the frog will jump again prevent a softlock.
+    private void OnCollisionStay(Collision collider)
+    {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Player") && frogJumpTimer == 0)
+        {
+            FrogJump();
+        }
+    }
+
     // When the frog's hitbox no longer intersects with a ground or default layer, its timer will reset to the max value.
     private void OnTriggerExit(Collider other)
     {

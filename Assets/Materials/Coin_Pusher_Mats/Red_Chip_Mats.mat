@@ -241,10 +241,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _1st2nd_Shades_Feather: 0.0001
-    - _1st_ShadeColor_Feather: 0.25
-    - _1st_ShadeColor_Step: 0.321
+    - _1st_ShadeColor_Feather: 0.3
+    - _1st_ShadeColor_Step: 0.704
     - _2nd_ShadeColor_Feather: 0.0001
-    - _2nd_ShadeColor_Step: 0
+    - _2nd_ShadeColor_Step: 0.237
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ARSampler_AlphaOn: 0
@@ -274,8 +274,8 @@ Material:
     - _AutoRenderQueue: 1
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
-    - _BaseColor_Step: 0.321
-    - _BaseShade_Feather: 0.25
+    - _BaseColor_Step: 0.704
+    - _BaseShade_Feather: 0.3
     - _Base_Speed: 0
     - _Blend: 0
     - _BlendMode: 0
@@ -436,7 +436,7 @@ Material:
     - _SecondShadeOverridden: 0
     - _SecondShadeVisible: 1
     - _Set_SystemShadowsToBase: 1
-    - _ShadeColor_Step: 0
+    - _ShadeColor_Step: 0.237
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -494,11 +494,11 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _Unlit_Intensity: 0
+    - _Unlit_Intensity: 0.6
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _Use_1stAs2nd: 0
-    - _Use_BaseAs1st: 0
+    - _Use_1stAs2nd: 1
+    - _Use_BaseAs1st: 1
     - _WorkflowMode: 1
     - _ZOverDrawMode: 0
     - _ZTestDepthEqualForOpaque: 4
@@ -514,15 +514,15 @@ Material:
     - _utsVersionY: 9
     - _utsVersionZ: 6
     m_Colors:
-    - _1st_ShadeColor: {r: 0.990566, g: 0.31305623, b: 0.31305623, a: 1}
-    - _2nd_ShadeColor: {r: 0.6698113, g: 0, b: 0, a: 1}
+    - _1st_ShadeColor: {r: 0.6226415, g: 0, b: 0, a: 1}
+    - _2nd_ShadeColor: {r: 0.20754719, g: 0, b: 0, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.990566, g: 0.62144, b: 0.62144, a: 1}
+    - _BaseColor: {r: 0.9433962, g: 0.51174796, b: 0.51174796, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.99056596, g: 0.62143993, b: 0.62143993, a: 1}
+    - _Color: {r: 0.9433962, g: 0.5117479, b: 0.5117479, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

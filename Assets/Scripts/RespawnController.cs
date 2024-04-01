@@ -23,7 +23,7 @@ public class RespawnController : MonoBehaviour
         {
             Debug.Log("OUT OF BOUNDS - Moving back to spawn point!");
             transform.position = pathToRespawn;
-            SoundFXManager.Instance.PlaySoundFXClip(hexdogFall, transform, 0.3f);
+            SoundFXManager.Instance.PlaySoundFXClip(hexdogFall, transform, 0.7f);
         }
     }
 

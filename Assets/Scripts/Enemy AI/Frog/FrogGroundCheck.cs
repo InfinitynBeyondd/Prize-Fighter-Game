@@ -10,6 +10,7 @@ public class FrogGroundCheck : MonoBehaviour
     [SerializeField] float frogJumpTimer; // A timer that controls when the frog will jump.
     [SerializeField] float frogJumpTimerMax = 300f; // Max value of the frog's jump timer. SET IN THE INSPECTOR BECAUSE IT WILL VARY BY FROG!
     [SerializeField] float frogJumpForce; // Distance that the frog jumps up with. SET IN THE INSPECTOR BECAUSE IT WILL VARY BY FROG!
+    [SerializeField] int buildMultiple = 2; // Frogs have different physics in engine than in build. Use this int to debug depending on version.
 
     // Start is called before the first frame update
     void Start()
@@ -58,10 +59,10 @@ public class FrogGroundCheck : MonoBehaviour
         if (frogJumpTimer <= 0)
         {
             //IN-BUILD FORCES (MULTIPLY THE ENGINE FORCES!)
-            //frogBody.AddForce(new Vector3(0, 3 * frogJumpForce, 0), ForceMode.VelocityChange);
+            frogBody.AddForce(new Vector3(0, buildMultiple * frogJumpForce, 0), ForceMode.VelocityChange);
 
             //IN-ENGINE FORCES:
-            frogBody.AddForce(new Vector3(0, frogJumpForce, 0), ForceMode.VelocityChange);
+            //frogBody.AddForce(new Vector3(0, frogJumpForce, 0), ForceMode.VelocityChange);
         }
         else 
         {

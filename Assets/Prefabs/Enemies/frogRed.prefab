@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dispelForce: 0
+  playerHit: {fileID: 8300000, guid: 764ac823938e95248a1a384af528ce23, type: 3}
 --- !u!114 &3688460142356953578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +64,11 @@ MonoBehaviour:
   frogJumpTimer: 0
   frogJumpTimerMax: 60
   frogJumpForce: 0
+  buildMultiple: 2
+  frogJumps:
+  - {fileID: 8300000, guid: ab8fe779925719c4caa823bad95ef69a, type: 3}
+  - {fileID: 8300000, guid: 599db353b1fc77445ae4eedece5265a2, type: 3}
+  - {fileID: 8300000, guid: bb558b31b69ea6d40961de65811e5bc6, type: 3}
 --- !u!65 &8320331336766140585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,7 +127,7 @@ Transform:
   - {fileID: 4468329763937896835}
   - {fileID: 8336656420051691299}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!54 &8191316741463110124
 Rigidbody:
@@ -173,7 +179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7331305266559828733}
   - component: {fileID: 8315607574871484152}
-  - component: {fileID: 8771127607572190151}
   m_Layer: 3
   m_Name: Jumpbox
   m_TagString: Untagged
@@ -215,20 +220,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 235.25357, y: 62.71691, z: 205.79532}
-  m_Center: {x: -0.9321451, y: 33.95083, z: 12.500679}
---- !u!114 &8771127607572190151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165660222381219996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf3598875863f34c894e61ce869f8ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 235.25356, y: 56.333107, z: 205.79532}
+  m_Center: {x: -0.9321497, y: 30.758928, z: 12.500676}
 --- !u!1 &2669642608348379816
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8336656420051691299}
   - component: {fileID: 4758128857376878214}
+  - component: {fileID: 2108121328350801985}
   m_Layer: 3
   m_Name: Bouncebox
   m_TagString: Untagged
@@ -379,6 +373,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 235.25357, y: 7.670605, z: 205.79532}
   m_Center: {x: -0.9321451, y: 71.49706, z: 12.500679}
+--- !u!114 &2108121328350801985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165565524936375059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf3598875863f34c894e61ce869f8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frogJump: {fileID: 8300000, guid: 2c43759adf7585b488044b1fd5669d35, type: 3}
 --- !u!1 &7306805108153791343
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,8 @@ public class DivePunch : MonoBehaviour
     public Animator attackAnim;
     [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
-
+    [SerializeField] private AudioClip hexdogdivePunch1;
+    [SerializeField] private AudioClip hexdogdivePunch2;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,7 @@ public class DivePunch : MonoBehaviour
         gSPX.gravityScale = 0;
         divePunchCall = true;
         attackAnim.SetBool("isDiveHolding", divePunchCall);
+        SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch1, transform, 0.5f);
     }
     
     // Coroutine that forces the descent to be faster than the usual falling speed.
@@ -63,6 +65,7 @@ public class DivePunch : MonoBehaviour
         gSPX.gravityScale = gravConstant * dropGravMult;
         divePunchCall = false;
         attackAnim.SetBool("isDiving", isDivePunchActive);
+        SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch2, transform, 0.5f);
     }
 
     // Player has less control over the character while dive punching.

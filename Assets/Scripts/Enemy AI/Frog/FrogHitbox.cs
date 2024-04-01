@@ -8,6 +8,7 @@ public class FrogHitbox : MonoBehaviour
     Vector3 playerVelocity;
     public float dispelForce = 100f;
 
+    [SerializeField] private AudioClip playerHit;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -16,7 +17,7 @@ public class FrogHitbox : MonoBehaviour
             playerVelocity = playerBody.velocity;
 
             playerBody.AddForce(new Vector3(dispelForce, dispelForce, dispelForce) + playerVelocity, ForceMode.Impulse);
-
+            SoundFXManager.Instance.PlaySoundFXClip(playerHit, transform, 0.5f);
             Debug.Log("Frog Hitbox Entered: Flinging back!");
         }
     }

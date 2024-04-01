@@ -71,6 +71,11 @@ MonoBehaviour:
   frogJumpTimer: 0
   frogJumpTimerMax: 60
   frogJumpForce: 3
+  buildMultiple: 2
+  frogJumps:
+  - {fileID: 8300000, guid: ab8fe779925719c4caa823bad95ef69a, type: 3}
+  - {fileID: 8300000, guid: 599db353b1fc77445ae4eedece5265a2, type: 3}
+  - {fileID: 8300000, guid: bb558b31b69ea6d40961de65811e5bc6, type: 3}
 --- !u!114 &8683678476136828048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dispelForce: 350
+  playerHit: {fileID: 8300000, guid: 764ac823938e95248a1a384af528ce23, type: 3}
 --- !u!1 &632395783268871940
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,8 @@ public class GroundedPunch : MonoBehaviour
     [SerializeField] GameObject playerModel;
     public Animator attackAnim;
     bool attacking;
-    
+    [SerializeField] private AudioClip[] hexdogPunch;
+
     //public float currentPlayerXPos;
     //public float currentPlayerYPos;
     //public float currentPlayerZPos;
@@ -39,7 +40,8 @@ public class GroundedPunch : MonoBehaviour
             groundAttackHitbox.SetActive(true);
             attacking = groundAttackHitbox.activeSelf;
             attackAnim.SetBool("isPunching", attacking);
-            StartCoroutine("AttackReset");            
+            StartCoroutine("AttackReset");
+            SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogPunch, transform, 0.3f);
         }
     }
 

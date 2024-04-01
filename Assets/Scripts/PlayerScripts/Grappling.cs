@@ -14,6 +14,7 @@ public class Grappling : MonoBehaviour
     public LayerMask whatIsGrappleable;
     public LineRenderer lr;
     public Animator grappleAnim;
+    [SerializeField] private AudioClip hexdogGrapple;
 
     [Header("Grappling")]
     public float maxGrappleDistance;
@@ -58,6 +59,7 @@ public class Grappling : MonoBehaviour
         if (context.performed)
         {
             Debug.Log("I'm starting to grapple.");
+            SoundFXManager.Instance.PlaySoundFXClip(hexdogGrapple, transform, 0.5f);
             if (grapplingCdTimer > 0)
             {
                 return;

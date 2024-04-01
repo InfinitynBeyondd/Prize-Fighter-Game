@@ -52,6 +52,7 @@ public class PlayerBehavior : MonoBehaviour
     private GameManager gM; // Script reference to GameManager.
     private GravityScalePhysX gSPX; // Script reference to GravityScalePhysX.
     [SerializeField] Animator m_Animator; // Player animator.
+    [SerializeField] private AudioClip[] hexdogJumps;
 
     // Start is called before the first frame update
     void Start()
@@ -218,6 +219,7 @@ public class PlayerBehavior : MonoBehaviour
                 rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
                 m_Animator.SetBool("isFalling", false);
                 m_Animator.SetBool("isJump", true);
+                SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogJumps, transform, 0.3f);
             }
 
             // The counter for the player's midair jumps increases with each jump performed whenever IsGrounded() is false.

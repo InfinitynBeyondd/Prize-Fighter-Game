@@ -5,11 +5,15 @@ using UnityEngine;
 public class FrogJumpbox : MonoBehaviour
 {
 
-    /*private void OnTriggerEnter(Collider other)
+    [SerializeField] private AudioClip frogJump;
+
+    private void OnCollisionEnter(Collision collider)
     {
-        if (other.CompareTag("PlayerFeet"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Destroy(transform.parent.gameObject);
+            SoundFXManager.Instance.PlaySoundFXClip(frogJump, transform, 0.7f);
+            Debug.Log("bounced");
+
         }
-    } */
+    } 
 }

@@ -247,7 +247,7 @@ Transform:
   - {fileID: 1999493510212619129}
   - {fileID: 428212982764608302}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1888636749823344562
 MonoBehaviour:
@@ -403,6 +403,9 @@ MonoBehaviour:
   playerCharacter: {fileID: 7783715760353345192}
   orientation: {fileID: 1761879701594457643}
   m_Animator: {fileID: 6275692149118331842}
+  hexdogJumps:
+  - {fileID: 8300000, guid: 5def820587fd1ec46b59867cb8548647, type: 3}
+  - {fileID: 8300000, guid: e9b2b572209d4034bbb6bf6fbe117e88, type: 3}
 --- !u!114 &4172342236592691067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +421,10 @@ MonoBehaviour:
   groundAttackHitbox: {fileID: 8866468346377651383}
   playerModel: {fileID: 4991780463217914629}
   attackAnim: {fileID: 6275692149118331842}
+  hexdogPunch:
+  - {fileID: 8300000, guid: 1a728a91d03912a469c7c44d00da2254, type: 3}
+  - {fileID: 8300000, guid: 1cdf39c20031ed74bb53327a021f5073, type: 3}
+  - {fileID: 8300000, guid: cbe1c59094968bb46ae4e0f82c3f3ed0, type: 3}
 --- !u!114 &7119508056376352228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +443,8 @@ MonoBehaviour:
   attackAnim: {fileID: 6275692149118331842}
   divePunchCall: 0
   isDivePunchActive: 0
+  hexdogdivePunch1: {fileID: 8300000, guid: 272a92914f7939e4f9bad438aecc7233, type: 3}
+  hexdogdivePunch2: {fileID: 8300000, guid: 95ef0f1155082b946abebc6b0afa3db3, type: 3}
 --- !u!114 &8900311700160656861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +525,7 @@ MonoBehaviour:
     m_Bits: 64
   lr: {fileID: 2741045048869181857}
   grappleAnim: {fileID: 0}
+  hexdogGrapple: {fileID: 8300000, guid: 7a1450442d061354ca101b228b3bf5a1, type: 3}
   maxGrappleDistance: 40.6
   grappleDelayTime: 0.25
   overshootYAxis: 2
@@ -557,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
   pathToRespawn: {x: 0, y: 0, z: 0}
+  hexdogFall: {fileID: 8300000, guid: f057b7419c2e0c0499acdbcdca086201, type: 3}
 --- !u!1 &5661442663108640303
 GameObject:
   m_ObjectHideFlags: 0

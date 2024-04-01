@@ -8,6 +8,9 @@ public class ItemCollection : MonoBehaviour
     [SerializeField] GameManager gM;
     CollectableCounters cCounters;
 
+    [SerializeField] private AudioClip coinCollect;
+    [SerializeField] private AudioClip stickerCollect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class ItemCollection : MonoBehaviour
         if (other.transform.CompareTag("Player") && this.transform.CompareTag("Sticker"))
         {
             Debug.Log("Got a Sticker!");
+            SoundFXManager.Instance.PlaySoundFXClip(stickerCollect, transform, 0.6f);
             this.gameObject.SetActive(false);
             gM.stickersCollected++;
             cCounters.UpdateCollectedCount();
@@ -37,6 +41,7 @@ public class ItemCollection : MonoBehaviour
             this.gameObject.SetActive(false);
             gM.coinsCollected++;
             cCounters.UpdateCollectedCount();
+            SoundFXManager.Instance.PlaySoundFXClip(coinCollect, transform, 0.7f);
         }
     }
 }

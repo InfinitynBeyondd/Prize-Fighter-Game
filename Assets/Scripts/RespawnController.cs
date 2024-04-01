@@ -8,7 +8,7 @@ public class RespawnController : MonoBehaviour
     public GameObject respawnPoint;
     public Vector3 pathToRespawn;
 
-
+    [SerializeField] private AudioClip hexdogFall;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,7 @@ public class RespawnController : MonoBehaviour
         {
             Debug.Log("OUT OF BOUNDS - Moving back to spawn point!");
             transform.position = pathToRespawn;
+            SoundFXManager.Instance.PlaySoundFXClip(hexdogFall, transform, 0.3f);
         }
     }
 

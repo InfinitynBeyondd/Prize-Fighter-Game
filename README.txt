@@ -52,6 +52,6 @@ RELEASE NOTES (SPRINT 1 - Prototype):
 •Sloped surfaces must have Slope physics material applied
 
 KNOWN BUGS:
-•Frogs - Jumping force is a set value, but presumably due to collision errors, the jump heights are inconsistent.
 •Animation Controller - Player animations are triggered incorrectly. Due to time constraints, not all work as intended.
-•Physics - Physics applications in-engine vary from physics applications in-build. This creates inconsistencies with frogs and the wall jump.
+•Physics - Sometimes, the frogs will infinitely ascend due to a check meant to bypass softlocking the player. 
+In these instances, players will have to find other ways to get around frog-based platforming challenges.

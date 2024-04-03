@@ -25,7 +25,8 @@ Material:
   stringTagMap:
     IgnoreProjection: False
     RenderType: Opaque
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - SRPDEFAULTUNLIT
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -107,7 +108,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive_Tex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b0bfe6842f6272f42919df0b7ff58bfe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -127,7 +128,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cd0e561dcd2ca81498e3fe032c49b85e, type: 3}
+        m_Texture: {fileID: 2800000, guid: c44a56107f8fc5646bb621ae35b7804c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -171,11 +172,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Set_1st_ShadePosition:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cd0e561dcd2ca81498e3fe032c49b85e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Set_2nd_ShadePosition:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cd0e561dcd2ca81498e3fe032c49b85e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Set_HighColorMask:
@@ -238,7 +239,7 @@ Material:
     m_Floats:
     - _1st2nd_Shades_Feather: 1
     - _1st_ShadeColor_Feather: 0.0001
-    - _1st_ShadeColor_Step: 0.69
+    - _1st_ShadeColor_Step: 0.289
     - _2nd_ShadeColor_Feather: 1
     - _2nd_ShadeColor_Step: 1
     - _AORemapMax: 1
@@ -270,7 +271,7 @@ Material:
     - _AutoRenderQueue: 1
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
-    - _BaseColor_Step: 0.69
+    - _BaseColor_Step: 0.289
     - _BaseShade_Feather: 0.0001
     - _Base_Speed: 0
     - _Blend: 0
@@ -348,7 +349,7 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
-    - _HighColor_Power: 0
+    - _HighColor_Power: 0.705
     - _HighlightOverridden: 0
     - _HighlightVisible: 1
     - _InvTilingScale: 1
@@ -359,7 +360,7 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _IsBaseMapAlphaAsClippingMask: 0
-    - _Is_BLD: 0
+    - _Is_BLD: 1
     - _Is_BakedNormal: 0
     - _Is_BlendAddToHiColor: 1
     - _Is_BlendAddToMatCap: 1
@@ -399,8 +400,8 @@ Material:
     - _OUTLINE: 0
     - _ObjectSpaceUVMapping: 0
     - _OcclusionStrength: 1
-    - _Offset_X_Axis_BLD: -0.05
-    - _Offset_Y_Axis_BLD: 0.09
+    - _Offset_X_Axis_BLD: 0.356
+    - _Offset_Y_Axis_BLD: 0.399
     - _Offset_Z: 0
     - _OutlineOverridden: 0
     - _OutlineVisible: 1
@@ -490,7 +491,7 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _Unlit_Intensity: 0
+    - _Unlit_Intensity: 0.11
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
     - _Use_1stAs2nd: 1
@@ -510,8 +511,8 @@ Material:
     - _utsVersionY: 9
     - _utsVersionZ: 6
     m_Colors:
-    - _1st_ShadeColor: {r: 0.7714489, g: 0.8301887, b: 0.8301887, a: 1}
-    - _2nd_ShadeColor: {r: 0.19166073, g: 0.31284264, b: 0.5566038, a: 1}
+    - _1st_ShadeColor: {r: 0.740566, g: 1, b: 0.9867636, a: 1}
+    - _2nd_ShadeColor: {r: 0.25943398, g: 0.529647, b: 1, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
@@ -525,9 +526,9 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Emissive_Color: {r: 1, g: 1, b: 1, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

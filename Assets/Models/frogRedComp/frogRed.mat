@@ -32,7 +32,6 @@ Material:
   - _OUTLINE_NML
   m_InvalidKeywords:
   - _METALLICSPECGLOSSMAP
-  - _MatCap
   - _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -365,7 +364,7 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
-    - _HighColor_Power: 0
+    - _HighColor_Power: 0.421
     - _HighlightOverridden: 0
     - _HighlightVisible: 1
     - _InvTilingScale: 1
@@ -407,7 +406,7 @@ Material:
     - _Is_ViewShift: 0
     - _LightDirection_MaskOn: 0
     - _LinkDetailsWithBase: 1
-    - _MatCap: 1
+    - _MatCap: 0
     - _MaterialID: 1
     - _Metallic: 0
     - _Nearest_Distance: 0.5
@@ -544,7 +543,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighColor: {r: 1, g: 0, b: 0, a: 1}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

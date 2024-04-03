@@ -24,7 +24,7 @@ public class WallJumpCheck : MonoBehaviour
     {
         pB = GetComponent<PlayerBehavior>();
         rB = GetComponent<Rigidbody>();
-        vectorForceZConstant = vectorForceConstant / 16.0f;
+        vectorForceZConstant = vectorForceConstant / 3.0f;
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -50,13 +50,16 @@ public class WallJumpCheck : MonoBehaviour
         {
             wallFaceCheck = false;
             animator.SetBool("isWallSliding", wallFaceCheck);
-        }       
+        }               
+    }
 
-        if (wallJumping) 
+    void FixedUpdate()
+    {
+        if (wallJumping)
         {
             // Depending on how the ray collides with the wall, the positions along the x axis and z axis change.
             rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
-            rB.AddForce(transform.up * 4f* (vectorForceConstant), ForceMode.VelocityChange);
+            rB.AddForce(transform.up * 4f * (vectorForceConstant), ForceMode.VelocityChange);
 
             if (Physics.Raycast(transform.position, transform.forward, vectorForceConstant, wallJumpable))
             {

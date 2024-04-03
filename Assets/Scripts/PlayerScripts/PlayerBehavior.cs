@@ -61,7 +61,7 @@ public class PlayerBehavior : MonoBehaviour
         rB.freezeRotation = true; // Freeze player's rotation so they don't tilt or fall over.
 
         // Makes the cursor invisible on screen (will be used in finished release only, not during debugging).
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.

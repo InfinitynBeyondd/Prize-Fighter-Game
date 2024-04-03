@@ -20,7 +20,7 @@ public class FrogGroundCheck : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         FrogJump();
     }
@@ -28,18 +28,19 @@ public class FrogGroundCheck : MonoBehaviour
     // When the frog's hitbox intersects with a ground or default layer, its timer will decrease until it hits 0.
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Default"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Default") 
+            || other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             frogJumpTimer--;
         }
     }
 
-    // If a player gets caught under a frog, the frog will jump again prevent a softlock.
+    // If a player gets caught under a frog, the frog will jump again to prevent a softlock.
     private void OnCollisionStay(Collision collider)
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Player") && frogJumpTimer == 0)
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            FrogJump();
+            frogJumpTimer--;
         }
     }
 

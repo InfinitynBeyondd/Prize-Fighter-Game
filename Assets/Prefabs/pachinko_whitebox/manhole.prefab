@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5265503915046331457}
   - component: {fileID: 5647749556296745211}
   - component: {fileID: 180573009911378210}
+  - component: {fileID: 3196603752929359079}
   m_Layer: 0
   m_Name: manhole
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &5265503915046331457
 MeshFilter:
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a92e6a1bdebb49d4d827c91cd797f09b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,3 +108,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &3196603752929359079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689357710799313481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a622fb82e5dd9f04193387751b46e364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manholeMeshCollider: {fileID: 0}
+  zAxisMaxRotationSpeed: 0
+  zAxisRotationSpeed: 0
+  spinInitiated: 0

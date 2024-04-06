@@ -11,8 +11,7 @@ public class GroundedPunch : MonoBehaviour
     //GravityScalePhysX gSPX;
     
     [SerializeField] GameObject groundAttackHitbox;
-    [SerializeField] GameObject playerModel;
-    public Animator attackAnim;
+    [SerializeField] GameObject playerModel;    
     bool attacking;
     [SerializeField] private AudioClip[] hexdogPunch;
 
@@ -24,8 +23,7 @@ public class GroundedPunch : MonoBehaviour
     void Start()
     {
         //rB = GetComponent<Rigidbody>();
-        pB = GetComponent<PlayerBehavior>();
-        attackAnim.GetComponentInParent<Animator>();
+        pB = GetComponent<PlayerBehavior>();        
         groundAttackHitbox.SetActive(false);
     }
 
@@ -39,7 +37,7 @@ public class GroundedPunch : MonoBehaviour
         {            
             groundAttackHitbox.SetActive(true);
             attacking = groundAttackHitbox.activeSelf;
-            attackAnim.SetBool("isPunching", attacking);
+            // pB.m_Animator.SetBool("isPunching", attacking);
             StartCoroutine("AttackReset");
             SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogPunch, transform, 0.7f);
         }
@@ -51,7 +49,7 @@ public class GroundedPunch : MonoBehaviour
         yield return new WaitForSeconds(0.5f);        
         groundAttackHitbox.SetActive(false);
         attacking = groundAttackHitbox.activeSelf;
-        attackAnim.SetBool("isPunching", attacking);
+        // pB.m_Animator.SetBool("isPunching", attacking);
     }
 
 }

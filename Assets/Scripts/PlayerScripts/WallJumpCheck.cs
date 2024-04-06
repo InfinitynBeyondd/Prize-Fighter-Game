@@ -17,15 +17,13 @@ public class WallJumpCheck : MonoBehaviour
     [SerializeField] private float vectorForceConstant = 4.0f;
     [SerializeField] private float vectorForceZConstant;
     [SerializeField] private LayerMask wallJumpable;
-    [SerializeField] Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         pB = GetComponent<PlayerBehavior>();
         rB = GetComponent<Rigidbody>();
-        vectorForceZConstant = vectorForceConstant / 3.0f;
-        animator = GetComponentInChildren<Animator>();
+        vectorForceZConstant = vectorForceConstant / 3.0f;        
     }
 
     // Update is called once per frame
@@ -43,13 +41,13 @@ public class WallJumpCheck : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, 2f, wallJumpable))
         {
             wallFaceCheck = true;
-            animator.SetBool("isWallSliding", wallFaceCheck);
+            // pB.m_Animator.SetBool("isWallSliding", wallFaceCheck);
 
         }
         else
         {
             wallFaceCheck = false;
-            animator.SetBool("isWallSliding", wallFaceCheck);
+            // pB.m_Animator.SetBool("isWallSliding", wallFaceCheck);
         }               
     }
 

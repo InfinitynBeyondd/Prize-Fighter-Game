@@ -1539,6 +1539,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5757374657834875978, guid: 4439a05cb50698e428c93366f09ddf7d,
+        type: 3}
+      propertyPath: jumpTargetsArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8609709163510607469, guid: 4439a05cb50698e428c93366f09ddf7d,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1944,12 +1949,12 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.048611052
+      value: 0.048611067
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.008564049
+      value: 0.008564051
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -1959,7 +1964,7 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.17329149
+      value: -0.17329147
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

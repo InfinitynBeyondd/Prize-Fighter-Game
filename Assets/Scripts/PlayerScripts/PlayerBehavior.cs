@@ -51,7 +51,7 @@ public class PlayerBehavior : MonoBehaviour
     private float rotationSpeed = 10f; // Speed determining player's rotation.
     private GameManager gM; // Script reference to GameManager.
     private GravityScalePhysX gSPX; // Script reference to GravityScalePhysX.
-    [SerializeField] Animator m_Animator; // Player animator.
+    public Animator m_Animator; // Player animator.
     [SerializeField] private AudioClip[] hexdogJumps;
 
     // Start is called before the first frame update
@@ -123,8 +123,8 @@ public class PlayerBehavior : MonoBehaviour
 
         if (IsGrounded() && isWalking)
         {
-            m_Animator.SetBool("isWalking", isWalking);
-            //m_Animator.SetBool("isStopped", false);
+            // m_Animatornimator.SetBool("isWalking", isWalking);
+            // m_Animator.SetBool("isStopped", false);
         }
         /*else if (IsGrounded() && !isWalking) 
         {
@@ -148,7 +148,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             rB.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Acceleration);
-            m_Animator.SetBool("isFalling", false);
+            // m_Animatornimator.SetBool("isFalling", false);
         }
         else if (!IsGrounded())
         {
@@ -159,7 +159,7 @@ public class PlayerBehavior : MonoBehaviour
 
             if (airTimeJumps == 0) 
             {
-                m_Animator.SetBool("isFalling", true);
+                // m_Animatornimator.SetBool("isFalling", true);
             }
 
         }
@@ -217,8 +217,8 @@ public class PlayerBehavior : MonoBehaviour
                 // Perform the player's jump by adding upwards force to their rigidbody.
                 rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
                 rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-                m_Animator.SetBool("isFalling", false);
-                m_Animator.SetBool("isJump", true);
+                // m_Animatornimator.SetBool("isFalling", false);
+                // m_Animatornimator.SetBool("isJump", true);
                 SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogJumps, transform, 0.3f);
             }
 

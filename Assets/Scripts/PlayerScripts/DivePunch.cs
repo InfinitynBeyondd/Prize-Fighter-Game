@@ -12,8 +12,7 @@ public class DivePunch : MonoBehaviour
     [SerializeField] private float divePunchAirPause = .5f; // Player pauses midair once the dive punch is called.
     public float gravConstant = 5f; // The default value of the gravity scale for the object.
     [SerializeField] private float dropGravMult = 3f; // Factor determining player's speed of descent in the dive punch.
-
-    public Animator attackAnim;
+    
     [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
     [SerializeField] private AudioClip hexdogdivePunch1;
@@ -23,8 +22,7 @@ public class DivePunch : MonoBehaviour
     {
         pB = GetComponent<PlayerBehavior>();
         rB = GetComponent<Rigidbody>();
-        gSPX = GetComponent<GravityScalePhysX>();
-        attackAnim = GetComponentInChildren<Animator>();
+        gSPX = GetComponent<GravityScalePhysX>();        
         gSPX.gravityScale = gravConstant;
     }
 
@@ -54,7 +52,7 @@ public class DivePunch : MonoBehaviour
         DivePunchMovementChange();
         gSPX.gravityScale = 0;
         divePunchCall = true;
-        attackAnim.SetBool("isDiveHolding", divePunchCall);
+        // pB.mAnimator.SetBool("isDiveHolding", divePunchCall);
         SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch1, transform, 0.5f);
     }
     
@@ -64,7 +62,7 @@ public class DivePunch : MonoBehaviour
         yield return new WaitForSeconds(divePunchAirPause);
         gSPX.gravityScale = gravConstant * dropGravMult;
         divePunchCall = false;
-        attackAnim.SetBool("isDiving", isDivePunchActive);
+        // pB.mAnimator.SetBool("isDiving", isDivePunchActive);
         SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch2, transform, 0.5f);
     }
 
@@ -81,7 +79,7 @@ public class DivePunch : MonoBehaviour
         pB.movementSpeed = pB.defaultMovementSpeed;
         gSPX.gravityScale = gravConstant;
         isDivePunchActive = false;
-        attackAnim.SetBool("isDiving", isDivePunchActive);
+        // pB.mAnimator.SetBool("isDiving", isDivePunchActive);
     }
 
 }

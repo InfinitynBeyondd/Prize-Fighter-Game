@@ -13,7 +13,6 @@ public class Grappling : MonoBehaviour
     public Transform gunTip;
     public LayerMask whatIsGrappleable;
     public LineRenderer lr;
-    public Animator grappleAnim;
     [SerializeField] private AudioClip hexdogGrapple;
 
     [Header("Grappling")]
@@ -35,7 +34,6 @@ public class Grappling : MonoBehaviour
         pB = GetComponent<PlayerBehavior>();
         gSPX = gameObject.GetComponent<GravityScalePhysX>();
         dP = GetComponent<DivePunch>();
-        grappleAnim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -66,8 +64,8 @@ public class Grappling : MonoBehaviour
             }
 
             grappling = true;
-            grappleAnim.SetBool("isGrappling", grappling);
-            grappleAnim.SetBool("isStopped", false);
+            // pB.m_Animator.SetBool("isGrappling", grappling);
+            // pB.m_Animator.SetBool("isStopped", false);
             gSPX.gravityScale = 0f;
 
             RaycastHit hit;
@@ -114,8 +112,8 @@ public class Grappling : MonoBehaviour
 
         grappling = false;
 
-        grappleAnim.SetBool("isGrappling", grappling);
-        grappleAnim.SetBool("isStopped", true);
+        // pB.m_Animator.SetBool("isGrappling", grappling);
+        // pB.m_Animator.SetBool("isStopped", true);
 
         grapplingCdTimer = grapplingCd;
 

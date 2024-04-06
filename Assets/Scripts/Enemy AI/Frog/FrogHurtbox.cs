@@ -10,6 +10,7 @@ public class FrogHurtbox : MonoBehaviour
         if (other.CompareTag("Attack"))
         {
             Destroy(transform.parent.gameObject);
+            Debug.Log("PACKWATCH");
         }
     }
 }

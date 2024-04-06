@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class DivePunch : MonoBehaviour
 {
+    PlayerAnims pA;
     PlayerBehavior pB;
     Rigidbody rB;
     GravityScalePhysX gSPX;
@@ -20,6 +21,7 @@ public class DivePunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pA = GetComponent<PlayerAnims>();
         pB = GetComponent<PlayerBehavior>();
         rB = GetComponent<Rigidbody>();
         gSPX = GetComponent<GravityScalePhysX>();        
@@ -52,7 +54,7 @@ public class DivePunch : MonoBehaviour
         DivePunchMovementChange();
         gSPX.gravityScale = 0;
         divePunchCall = true;
-        // pB.mAnimator.SetBool("isDiveHolding", divePunchCall);
+        // pA.m_Animator.SetBool("isDiveHolding", divePunchCall);
         SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch1, transform, 0.5f);
     }
     
@@ -62,7 +64,7 @@ public class DivePunch : MonoBehaviour
         yield return new WaitForSeconds(divePunchAirPause);
         gSPX.gravityScale = gravConstant * dropGravMult;
         divePunchCall = false;
-        // pB.mAnimator.SetBool("isDiving", isDivePunchActive);
+        // pA.m_Animator.SetBool("isDiving", isDivePunchActive);
         SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch2, transform, 0.5f);
     }
 
@@ -79,7 +81,7 @@ public class DivePunch : MonoBehaviour
         pB.movementSpeed = pB.defaultMovementSpeed;
         gSPX.gravityScale = gravConstant;
         isDivePunchActive = false;
-        // pB.mAnimator.SetBool("isDiving", isDivePunchActive);
+        // pA.m_Animator.SetBool("isDiving", isDivePunchActive);
     }
 
 }

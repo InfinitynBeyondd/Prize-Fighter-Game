@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class Grappling : MonoBehaviour
 {
     [Header("References")]
+
+    [SerializeField] private PlayerAnims pA;
     private PlayerBehavior pB;
     private GravityScalePhysX gSPX;
     private DivePunch dP;
@@ -31,6 +33,7 @@ public class Grappling : MonoBehaviour
 
     private void Start()
     {
+        pA = GetComponent<PlayerAnims>();
         pB = GetComponent<PlayerBehavior>();
         gSPX = gameObject.GetComponent<GravityScalePhysX>();
         dP = GetComponent<DivePunch>();
@@ -64,8 +67,8 @@ public class Grappling : MonoBehaviour
             }
 
             grappling = true;
-            // pB.m_Animator.SetBool("isGrappling", grappling);
-            // pB.m_Animator.SetBool("isStopped", false);
+            // pA.m_Animator.SetBool("isGrappling", grappling);
+            // pA.m_Animator.SetBool("isStopped", false);
             gSPX.gravityScale = 0f;
 
             RaycastHit hit;
@@ -112,8 +115,8 @@ public class Grappling : MonoBehaviour
 
         grappling = false;
 
-        // pB.m_Animator.SetBool("isGrappling", grappling);
-        // pB.m_Animator.SetBool("isStopped", true);
+        // pA.m_Animator.SetBool("isGrappling", grappling);
+        // pA.m_Animator.SetBool("isStopped", true);
 
         grapplingCdTimer = grapplingCd;
 

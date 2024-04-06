@@ -213,11 +213,11 @@ GameObject:
   - component: {fileID: 4172342236592691067}
   - component: {fileID: 7119508056376352228}
   - component: {fileID: 8900311700160656861}
-  - component: {fileID: 8389062655759633908}
-  - component: {fileID: 7491821974659576580}
   - component: {fileID: 454813899600668790}
   - component: {fileID: 1733772610942573979}
   - component: {fileID: 1070082737574885782}
+  - component: {fileID: 8389062655759633908}
+  - component: {fileID: 7491821974659576580}
   m_Layer: 7
   m_Name: HexDogPlayer
   m_TagString: Player
@@ -402,10 +402,10 @@ MonoBehaviour:
   player: {fileID: 7783715760353345192}
   playerCharacter: {fileID: 7783715760353345192}
   orientation: {fileID: 1761879701594457643}
-  m_Animator: {fileID: 6275692149118331842}
   hexdogJumps:
   - {fileID: 8300000, guid: 5def820587fd1ec46b59867cb8548647, type: 3}
   - {fileID: 8300000, guid: e9b2b572209d4034bbb6bf6fbe117e88, type: 3}
+  m_Animator: {fileID: 6275692149118331842}
 --- !u!114 &4172342236592691067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundAttackHitbox: {fileID: 8866468346377651383}
   playerModel: {fileID: 4991780463217914629}
-  attackAnim: {fileID: 6275692149118331842}
   hexdogPunch:
   - {fileID: 8300000, guid: 1a728a91d03912a469c7c44d00da2254, type: 3}
   - {fileID: 8300000, guid: 1cdf39c20031ed74bb53327a021f5073, type: 3}
@@ -440,7 +439,6 @@ MonoBehaviour:
   divePunchAirPause: 0.5
   gravConstant: 5
   dropGravMult: 3
-  attackAnim: {fileID: 6275692149118331842}
   divePunchCall: 0
   isDivePunchActive: 0
   hexdogdivePunch1: {fileID: 8300000, guid: 272a92914f7939e4f9bad438aecc7233, type: 3}
@@ -458,6 +456,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 1
+--- !u!114 &454813899600668790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991780463217914629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518249bb8782db24b9f2764d9de806b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pA: {fileID: 0}
+  cam: {fileID: 7924981267383440514}
+  gunTip: {fileID: 7924981267383440514}
+  whatIsGrappleable:
+    serializedVersion: 2
+    m_Bits: 64
+  lr: {fileID: 2741045048869181857}
+  hexdogGrapple: {fileID: 8300000, guid: 7a1450442d061354ca101b228b3bf5a1, type: 3}
+  maxGrappleDistance: 40.6
+  grappleDelayTime: 0.25
+  overshootYAxis: 2
+  grapplingCd: 1
+--- !u!114 &1733772610942573979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991780463217914629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a777a037c8502a945bed6092abbb0624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallFaceCheck: 0
+  wallJumping: 0
+  pA: {fileID: 0}
+  pB: {fileID: 3015112013192362088}
+  rB: {fileID: 7491821974659576580}
+  faceCollider: {fileID: 2023102594309919708}
+  vectorForceConstant: 4
+  vectorForceZConstant: 0.25
+  wallJumpable:
+    serializedVersion: 2
+    m_Bits: 72
+--- !u!114 &1070082737574885782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991780463217914629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3605b5d79112e4583fbf19dff645ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+  pathToRespawn: {x: 0, y: 0, z: 0}
+  hexdogFall: {fileID: 8300000, guid: f057b7419c2e0c0499acdbcdca086201, type: 3}
 --- !u!65 &8389062655759633908
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -506,68 +566,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &454813899600668790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991780463217914629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 518249bb8782db24b9f2764d9de806b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 7924981267383440514}
-  gunTip: {fileID: 7924981267383440514}
-  whatIsGrappleable:
-    serializedVersion: 2
-    m_Bits: 64
-  lr: {fileID: 2741045048869181857}
-  grappleAnim: {fileID: 0}
-  hexdogGrapple: {fileID: 8300000, guid: 7a1450442d061354ca101b228b3bf5a1, type: 3}
-  maxGrappleDistance: 40.6
-  grappleDelayTime: 0.25
-  overshootYAxis: 2
-  grapplingCd: 1
---- !u!114 &1733772610942573979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991780463217914629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a777a037c8502a945bed6092abbb0624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallFaceCheck: 0
-  wallJumping: 0
-  pB: {fileID: 3015112013192362088}
-  rB: {fileID: 7491821974659576580}
-  faceCollider: {fileID: 2023102594309919708}
-  vectorForceConstant: 4
-  vectorForceZConstant: 0.25
-  wallJumpable:
-    serializedVersion: 2
-    m_Bits: 72
-  animator: {fileID: 6275692149118331842}
---- !u!114 &1070082737574885782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991780463217914629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3605b5d79112e4583fbf19dff645ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}
-  pathToRespawn: {x: 0, y: 0, z: 0}
-  hexdogFall: {fileID: 8300000, guid: f057b7419c2e0c0499acdbcdca086201, type: 3}
 --- !u!1 &5661442663108640303
 GameObject:
   m_ObjectHideFlags: 0

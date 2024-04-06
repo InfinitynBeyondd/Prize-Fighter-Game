@@ -19,6 +19,8 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] Transform groundCheck; // Empty GameObject at player's feet that casts a sphere, detecting if the ground layer is stood on.
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.    
     public float gCR = .35f; // Ground Check Radius
+    bool isWalking;
+    bool isFalling;
 
     public bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
     {        
@@ -50,8 +52,8 @@ public class PlayerBehavior : MonoBehaviour
     public Transform orientation; // The orientation or direction of the player.
     private float rotationSpeed = 10f; // Speed determining player's rotation.
     private GameManager gM; // Script reference to GameManager.
-    private GravityScalePhysX gSPX; // Script reference to GravityScalePhysX.
-    public Animator m_Animator; // Player animator.
+    private GravityScalePhysX gSPX; // Script reference to GravityScalePhysX.    
+    public Animator m_Animator;
     [SerializeField] private AudioClip[] hexdogJumps;
 
     // Start is called before the first frame update
@@ -66,6 +68,7 @@ public class PlayerBehavior : MonoBehaviour
 
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.        
+        m_Animator.GetComponentInChildren<Animator>(); // Get reference to Animator.
     }
 
     // Update is called once per frame
@@ -80,6 +83,7 @@ public class PlayerBehavior : MonoBehaviour
             rB.drag = groundDrag;
             cTCounter = coyoteTime;
             airTimeJumps = 0;
+            isFalling = false;
         }
 
         // If player is midair, they have no drag when moving. Coyote Time Counter decreases for every frame spent midair.
@@ -87,7 +91,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             rB.drag = rB.drag;
             cTCounter -= Time.deltaTime;
-
+            isFalling = true;
         }
 
         if (freeze)
@@ -119,18 +123,21 @@ public class PlayerBehavior : MonoBehaviour
         // Inputs used to switch between idle animation and moving animation.
         bool hasHorizontalInput = !Mathf.Approximately(horizontalInput, 0f);
         bool hasVerticalInput = !Mathf.Approximately(verticalInput, 0f);
-        bool isWalking = hasHorizontalInput || hasVerticalInput;
+        bool walkCheck = hasHorizontalInput || hasVerticalInput;
+
+        isWalking = walkCheck;
 
         if (IsGrounded() && isWalking)
         {
-            // m_Animatornimator.SetBool("isWalking", isWalking);
-            // m_Animator.SetBool("isStopped", false);
+            m_Animator.SetBool("isWalking", isWalking);            
+            m_Animator.SetBool("isFalling", false);
         }
-        /*else if (IsGrounded() && !isWalking) 
+        else if (IsGrounded() && !isWalking) 
         {
             m_Animator.SetBool("isWalking", isWalking);
-            m_Animator.SetBool("isStopped", true);
-        }*/
+            m_Animator.SetBool("isJump", false);
+            m_Animator.SetBool("isFalling", false);
+        }
     }
 
     void PlayerMovement()
@@ -148,18 +155,18 @@ public class PlayerBehavior : MonoBehaviour
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             rB.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Acceleration);
-            // m_Animatornimator.SetBool("isFalling", false);
+            // m_Animator.SetBool("isFalling", false);
         }
         else if (!IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             // Multiply by an airMultiplier to determine how much the player can move in the air.
-            //m_Animator.SetBool("isWalking", false);
+            // m_Animator.SetBool("isWalking", false);
             rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);
 
             if (airTimeJumps == 0) 
             {
-                // m_Animatornimator.SetBool("isFalling", true);
+                // m_Animator.SetBool("isFalling", true);
             }
 
         }
@@ -208,17 +215,19 @@ public class PlayerBehavior : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        m_Animator.SetBool("isJump", true);
         if (context.performed) //This makes sure the content is only triggered once by the input once it is performed
         {
             // Make sure the player's y velocity is at zero so they always jump the exact same height.
-
+            
+            
             if (airTimeJumps < airTimeJumpsMax)
             {
                 // Perform the player's jump by adding upwards force to their rigidbody.
                 rB.velocity = new Vector3(rB.velocity.x, 0f, rB.velocity.z);
                 rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-                // m_Animatornimator.SetBool("isFalling", false);
-                // m_Animatornimator.SetBool("isJump", true);
+                m_Animator.SetBool("isJumpMidAir", true);
+
                 SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogJumps, transform, 0.3f);
             }
 

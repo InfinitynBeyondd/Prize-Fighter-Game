@@ -5,24 +5,18 @@ using UnityEngine.InputSystem;
 
 public class GroundedPunch : MonoBehaviour
 {
-    PlayerBehavior pB;
-    
-    //Rigidbody rB;
-    //GravityScalePhysX gSPX;
+    //PlayerAnims pA;
+    PlayerBehavior pB;    
     
     [SerializeField] GameObject groundAttackHitbox;
     [SerializeField] GameObject playerModel;    
-    bool attacking;
     [SerializeField] private AudioClip[] hexdogPunch;
-
-    //public float currentPlayerXPos;
-    //public float currentPlayerYPos;
-    //public float currentPlayerZPos;
+    bool attacking;
 
     // Start is called before the first frame update
     void Start()
     {
-        //rB = GetComponent<Rigidbody>();
+        //pA = GetComponent<PlayerAnims>();
         pB = GetComponent<PlayerBehavior>();        
         groundAttackHitbox.SetActive(false);
     }
@@ -30,14 +24,12 @@ public class GroundedPunch : MonoBehaviour
 
     // For now, the attack will be translated through the animator. This does crate a slight bug of the attack being displaced, but the hitbox should be wide enough to cover for it.
     public void Attack(InputAction.CallbackContext context)
-    {
-        //if (pB.IsGrounded() && !groundAttackHitbox.activeSelf && context.performed)
-
+    {        
         if (pB.IsGrounded() && !groundAttackHitbox.activeSelf && context.performed) //Checks if player is grounded, Attack anim is not active, and if button was pressed
         {            
             groundAttackHitbox.SetActive(true);
             attacking = groundAttackHitbox.activeSelf;
-            // pB.m_Animator.SetBool("isPunching", attacking);
+            pB.m_Animator.SetBool("isPunching", attacking);
             StartCoroutine("AttackReset");
             SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogPunch, transform, 0.7f);
         }
@@ -49,7 +41,7 @@ public class GroundedPunch : MonoBehaviour
         yield return new WaitForSeconds(0.5f);        
         groundAttackHitbox.SetActive(false);
         attacking = groundAttackHitbox.activeSelf;
-        // pB.m_Animator.SetBool("isPunching", attacking);
+        pB.m_Animator.SetBool("isPunching", attacking);
     }
 
 }

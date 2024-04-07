@@ -18,6 +18,7 @@ public class WallJumpCheck : MonoBehaviour
     [SerializeField] private float vectorForceConstant = 4.0f;
     [SerializeField] private float vectorForceZConstant;
     [SerializeField] private LayerMask wallJumpable;
+    Vector3 wallJumpCheckPos;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class WallJumpCheck : MonoBehaviour
 
         rB = GetComponent<Rigidbody>();
         vectorForceZConstant = vectorForceConstant / 3.0f; 
+        
     }
 
     // Update is called once per frame
@@ -36,12 +38,14 @@ public class WallJumpCheck : MonoBehaviour
         //Debug.DrawRay(faceCollider.transform.position, Vector3.forward, Color.red, 3.0f);
 
         // Casts a ray in front of the player to see if the player is facing a wall.
-        Debug.DrawRay(transform.position, transform.forward, Color.red, vectorForceConstant);
+        wallJumpCheckPos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+        
+        Debug.DrawRay(wallJumpCheckPos, transform.forward, Color.red, vectorForceConstant);
 
         RaycastHit hit;
-
-        //if (Physics.Raycast(transform.position, transform.forward, out hit, 2f, wallJumpable) || Physics.Raycast(transform.position, -transform.forward, out hit, 2f, wallJumpable))
-        if (Physics.Raycast(transform.position, transform.forward, out hit, vectorForceZConstant, wallJumpable) && !wallJumping)
+        
+        //if (Physics.Raycast(transform.position, transform.forward, out hit, vectorForceZConstant, wallJumpable) && !wallJumping)
+        if (Physics.Raycast(wallJumpCheckPos, transform.forward, out hit, 2f, wallJumpable) && !wallJumping)
         {
             wallFaceCheck = true;
             pB.m_Animator.SetBool("isWallSliding", wallFaceCheck);

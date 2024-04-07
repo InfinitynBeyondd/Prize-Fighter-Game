@@ -146,59 +146,6 @@ Transform:
   m_Father: {fileID: 7783715760353345192}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4131213782757456099
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5495634751071451535}
-  - component: {fileID: 2023102594309919708}
-  m_Layer: 7
-  m_Name: WallChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5495634751071451535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4131213782757456099}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7783715760353345192}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2023102594309919708
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4131213782757456099}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.02}
-  m_Center: {x: 0, y: 0.5, z: 0.5}
 --- !u!1 &4991780463217914629
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +187,6 @@ Transform:
   - {fileID: 1761879701594457643}
   - {fileID: 1216937425510682235}
   - {fileID: 1057250304643150534}
-  - {fileID: 5495634751071451535}
   - {fileID: 166375477212640914}
   - {fileID: 8170900719832519568}
   - {fileID: 141740341586440632}
@@ -499,7 +445,7 @@ MonoBehaviour:
   pA: {fileID: 0}
   pB: {fileID: 3015112013192362088}
   rB: {fileID: 7491821974659576580}
-  faceCollider: {fileID: 2023102594309919708}
+  faceCollider: {fileID: 0}
   vectorForceConstant: 4
   vectorForceZConstant: 0.25
   wallJumpable:

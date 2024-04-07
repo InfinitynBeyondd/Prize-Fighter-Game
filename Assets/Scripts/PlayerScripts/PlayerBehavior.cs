@@ -19,6 +19,8 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] Transform groundCheck; // Empty GameObject at player's feet that casts a sphere, detecting if the ground layer is stood on.
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.    
     public float gCR = .35f; // Ground Check Radius
+    
+    // ANIMATION CONTROLS
     bool isWalking;
     bool isFalling;
 
@@ -32,8 +34,8 @@ public class PlayerBehavior : MonoBehaviour
     [Header("Air Variables")]
     public float jumpForce = 7.5f; // Force behind a player's jump.
     [SerializeField] private float airMultiplier = 0.2f; // Float that slows player down in midair.
-    [SerializeField] private int airTimeJumps; // Amount of jumps player has done in midair.
-    [SerializeField] private int airTimeJumpsMax; // Limit of jumps player can do in midair.
+    public int airTimeJumps; // Amount of jumps player has done in midair.
+    public int airTimeJumpsMax; // Limit of jumps player can do in midair.
     public float coyoteTime; // Mechanic that allows players to use their initial jump when not on the ground. Set this in the inspector.
     public float cTCounter; // Counter for coyote time. When grounded, it will be set to whatever coyoteTime is.
 
@@ -127,17 +129,17 @@ public class PlayerBehavior : MonoBehaviour
 
         isWalking = walkCheck;
 
-        if (IsGrounded() && isWalking)
-        {
-            m_Animator.SetBool("isWalking", isWalking);            
-            m_Animator.SetBool("isFalling", false);
-        }
-        else if (IsGrounded() && !isWalking) 
+        if (IsGrounded())
         {
             m_Animator.SetBool("isWalking", isWalking);
             m_Animator.SetBool("isJump", false);
             m_Animator.SetBool("isFalling", false);
         }
+        else if (!IsGrounded() && m_Animator.GetBool("isJump") == false) 
+        {
+            m_Animator.SetBool("isFalling", isFalling);
+        }
+        
     }
 
     void PlayerMovement()
@@ -155,19 +157,12 @@ public class PlayerBehavior : MonoBehaviour
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             rB.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Acceleration);
-            // m_Animator.SetBool("isFalling", false);
         }
         else if (!IsGrounded())
         {
             // Add force to the player's rigidbody by taking the normalized version of their move direction and multiplying it to adjust the speed.
             // Multiply by an airMultiplier to determine how much the player can move in the air.
-            // m_Animator.SetBool("isWalking", false);
             rB.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Acceleration);
-
-            if (airTimeJumps == 0) 
-            {
-                // m_Animator.SetBool("isFalling", true);
-            }
 
         }
     }
@@ -238,6 +233,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 airTimeJumps++;
             }
+            
         }
     }
 

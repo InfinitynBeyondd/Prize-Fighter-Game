@@ -41,16 +41,16 @@ public class WallJumpCheck : MonoBehaviour
         RaycastHit hit;
 
         //if (Physics.Raycast(transform.position, transform.forward, out hit, 2f, wallJumpable) || Physics.Raycast(transform.position, -transform.forward, out hit, 2f, wallJumpable))
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 2f, wallJumpable))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, vectorForceZConstant, wallJumpable) && !wallJumping)
         {
             wallFaceCheck = true;
-            // pA.m_Animator.SetBool("isWallSliding", wallFaceCheck);
+            pB.m_Animator.SetBool("isWallSliding", wallFaceCheck);
 
         }
         else
         {
             wallFaceCheck = false;
-            // pA.m_Animator.SetBool("isWallSliding", wallFaceCheck);
+            pB.m_Animator.SetBool("isWallSliding", wallFaceCheck);
         }               
     }
 
@@ -70,6 +70,8 @@ public class WallJumpCheck : MonoBehaviour
             {
                 rB.AddForce(transform.forward * vectorForceZConstant, ForceMode.VelocityChange);
             }
+           
+            pB.m_Animator.SetBool("isWallSliding", !wallJumping);
 
         }
     }

@@ -13,7 +13,8 @@ public class DivePunch : MonoBehaviour
     [SerializeField] private float divePunchAirPause = .5f; // Player pauses midair once the dive punch is called.
     public float gravConstant = 5f; // The default value of the gravity scale for the object.
     [SerializeField] private float dropGravMult = 3f; // Factor determining player's speed of descent in the dive punch.
-    
+
+    [SerializeField] GameObject divePunchHitbox;
     [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
     [SerializeField] private bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
     [SerializeField] private AudioClip hexdogdivePunch1;
@@ -21,11 +22,12 @@ public class DivePunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pA = GetComponent<PlayerAnims>();
+        // pA = GetComponent<PlayerAnims>();
         pB = GetComponent<PlayerBehavior>();
         rB = GetComponent<Rigidbody>();
         gSPX = GetComponent<GravityScalePhysX>();        
-        gSPX.gravityScale = gravConstant;
+        gSPX.gravityScale = gravConstant;        
+        divePunchHitbox.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -45,6 +47,8 @@ public class DivePunch : MonoBehaviour
             isDivePunchActive = true;
             MidairPause();
             StartCoroutine("DivePunchDrop");
+
+            pB.airTimeJumps = pB.airTimeJumpsMax;
         }
     }
 
@@ -54,7 +58,7 @@ public class DivePunch : MonoBehaviour
         DivePunchMovementChange();
         gSPX.gravityScale = 0;
         divePunchCall = true;
-        // pA.m_Animator.SetBool("isDiveHolding", divePunchCall);
+        pB.m_Animator.SetBool("isDiveHolding", divePunchCall);
         SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch1, transform, 0.5f);
     }
     
@@ -64,7 +68,9 @@ public class DivePunch : MonoBehaviour
         yield return new WaitForSeconds(divePunchAirPause);
         gSPX.gravityScale = gravConstant * dropGravMult;
         divePunchCall = false;
-        // pA.m_Animator.SetBool("isDiving", isDivePunchActive);
+        pB.m_Animator.SetBool("isDiveHolding", divePunchCall);
+        pB.m_Animator.SetBool("isDiving", true);
+        divePunchHitbox.SetActive(true);
         SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch2, transform, 0.5f);
     }
 
@@ -81,7 +87,9 @@ public class DivePunch : MonoBehaviour
         pB.movementSpeed = pB.defaultMovementSpeed;
         gSPX.gravityScale = gravConstant;
         isDivePunchActive = false;
-        // pA.m_Animator.SetBool("isDiving", isDivePunchActive);
+        pB.m_Animator.SetBool("isDiveHolding", isDivePunchActive);
+        pB.m_Animator.SetBool("isDiving", isDivePunchActive);
+        divePunchHitbox.SetActive(false);
     }
 
 }

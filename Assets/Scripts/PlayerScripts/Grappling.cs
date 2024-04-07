@@ -28,7 +28,6 @@ public class Grappling : MonoBehaviour
     public float grapplingCd;
     private float grapplingCdTimer;
 
-
     private bool grappling;
 
     private void Start()
@@ -67,8 +66,7 @@ public class Grappling : MonoBehaviour
             }
 
             grappling = true;
-            // pA.m_Animator.SetBool("isGrappling", grappling);
-            // pA.m_Animator.SetBool("isStopped", false);
+            pB.m_Animator.SetBool("isGrappling", grappling);
             gSPX.gravityScale = 0f;
 
             RaycastHit hit;
@@ -115,8 +113,8 @@ public class Grappling : MonoBehaviour
 
         grappling = false;
 
-        // pA.m_Animator.SetBool("isGrappling", grappling);
-        // pA.m_Animator.SetBool("isStopped", true);
+        pB.m_Animator.SetBool("isGrappling", grappling);
+        pB.m_Animator.SetBool("isDiveHolding", grappling);
 
         grapplingCdTimer = grapplingCd;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyFrogController : MonoBehaviour
 {
     [Header("JUMPING - DON'T SET BUILD MULTIPLE UNDER 1")]
-    [SerializeField] Rigidbody frogBody; // Frog's jump timer. Once it hits zero, the frog will jump.
+    [SerializeField] Rigidbody frogBody; // Frog's RB.
     [SerializeField] float frogJumpTimer; // A timer that controls when the frog will jump.
     [SerializeField] float frogJumpTimerMax = 300f; // Max value of the frog's jump timer. SET IN THE INSPECTOR BECAUSE IT WILL VARY BY FROG!
     [SerializeField] float frogJumpForce; // Distance that the frog jumps up with. SET IN THE INSPECTOR BECAUSE IT WILL VARY BY FROG!
@@ -15,18 +15,45 @@ public class EnemyFrogController : MonoBehaviour
     [SerializeField] Transform[] jumpTargetsArray;
     Queue<Transform> jumpTargetsQueue = new Queue<Transform>();
 
+    [SerializeField] Transform thisFrog; // Parent transform
+    [SerializeField] Transform frogTargets; // Target spots the frog will jump between. 
+    //[SerializeField] Transform nextJumpTarget; // 
+    [SerializeField] int jumpTargetIndex; // Index of the array that the frog is headed towards.
+    public float speedBetweenTargets; // The speed at which the frog travels between its targets.
+
     // Start is called before the first frame update
     void Start()
-    {
-        frogBody = GetComponentInParent<Rigidbody>();
+    {        
+        frogBody = transform.parent.GetComponentInParent<Rigidbody>();
         frogJumpTimer = frogJumpTimerMax;
+
+        thisFrog = gameObject.transform.parent.parent;
+        frogTargets = frogBody.transform.parent.GetChild(1);
+
+        jumpTargetIndex = 0;
+        speedBetweenTargets = 25f;
+
         SetJumpTargets();
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    // FixedUpdate is called once per physics change
     void FixedUpdate()
     {
-        FrogJumpToTarget();
+        if (frogJumpTimer <= 0)
+        {
+            FrogJumpToTarget();
+        }
+
+        if (frogBody.velocity.y != 0)
+        {
+            FrogMoveToTarget();
+        }
     }
 
     // When the frog's hitbox intersects with a ground or default layer, its timer will decrease until it hits 0.
@@ -57,39 +84,63 @@ public class EnemyFrogController : MonoBehaviour
         }
     }
 
-    // This function theoretically should enqueue all the children of JUMP TARGETS to jumpTargetsQueue.
-    private void SetJumpTargets() 
+    // This function enqueues all the children of JUMP TARGETS to jumpTargetsQueue. This automatically adjusts the array size to fit all the targets.
+    private void SetJumpTargets()
     {
-        GameObject thisFrog = transform.parent.gameObject;
 
-        for (int i = 0; i < thisFrog.transform.GetChild(4).childCount; i++) 
+        for (int i = 0; i < frogTargets.childCount; i++)
         {
-            jumpTargetsQueue.Enqueue(thisFrog.transform.GetChild(4).GetChild(i));
+            jumpTargetsQueue.Enqueue(frogTargets.GetChild(i));
         }
 
+        jumpTargetsArray = new Transform[frogTargets.childCount];
+
         jumpTargetsQueue.CopyTo(jumpTargetsArray, 0);
+    }
+
+    // Controls frog's movement to the targets. Some oddities exist where the frog stops briefly midair.
+    void FrogMoveToTarget()
+    {
+        frogBody.position = Vector3.MoveTowards(frogBody.position, jumpTargetsArray[jumpTargetIndex].position, speedBetweenTargets * Time.deltaTime);
+
+        FrogFaceTarget();
+
+        if (frogBody.position == jumpTargetsArray[jumpTargetIndex].position)
+        {
+            if (jumpTargetIndex + 1 < jumpTargetsArray.Length)
+            {
+                jumpTargetIndex++;
+            }
+            else
+            {
+                jumpTargetIndex = 0;
+            }
+
+        }
     }
 
     // The frog will jump towards the enqueued target based on the force assigned to it in the inspector. Once the timer resets, the force will stop being applied.
     private void FrogJumpToTarget()
     {
-        if (frogJumpTimer <= 0)
-        {
-            Transform nextJumpTarget = jumpTargetsQueue.Dequeue();
 
-            //frogBody.transform.Translate(new Vector3(nextJumpTarget.position.x, 0, nextJumpTarget.position.x));
+        // MULTIPLY THE ENGINE FORCES BY A PROPER VALUE - DO NOT SET IT TO ANYTHING UNDER 1!
 
-            jumpTargetsQueue.Enqueue(nextJumpTarget);
+        frogBody.AddForce(new Vector3(0, buildMultiple * frogJumpForce, 0), ForceMode.VelocityChange);
 
-            // MULTIPLY THE ENGINE FORCES BY A PROPER VALUE - DO NOT SET IT TO ANYTHING UNDER 1!
-            frogBody.AddForce(new Vector3(0, buildMultiple * frogJumpForce, 0), ForceMode.VelocityChange);
-            
-            SoundFXManager.Instance.PlayRandomSoundFXClip(frogJumps, transform, 0.2f);
-        }
-        else
-        {
-            frogBody.AddForce(Vector3.zero, ForceMode.VelocityChange);
-        }
+        SoundFXManager.Instance.PlayRandomSoundFXClip(frogJumps, transform, 0.2f);
+
+    }
+
+    // Snaps frog's rotation to the target it is headed for. A smoother transition would be nice, but this still works.
+    private void FrogFaceTarget()
+    {
+        Vector3 targetPosition = new Vector3(jumpTargetsArray[jumpTargetIndex].position.x, 0, jumpTargetsArray[jumpTargetIndex].position.z);
+        Vector3 thisFrogsPosition = new Vector3(thisFrog.position.x, 0, thisFrog.position.z);
+        Vector3 frogFacingDirection = (thisFrogsPosition - targetPosition);
+
+        Quaternion frogRotation = Quaternion.LookRotation(frogFacingDirection);
+
+        thisFrog.rotation = frogRotation;
     }
 
     // If it feels like a frog falls too slowly, edit the gravity value of the frog using the GravityScalePhysX script.

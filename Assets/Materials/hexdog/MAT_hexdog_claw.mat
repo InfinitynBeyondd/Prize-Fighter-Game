@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_hexdog
+  m_Name: MAT_hexdog_claw
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,7 +32,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _1st_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: c44a56107f8fc5646bb621ae35b7804c, type: 3}
+        m_Texture: {fileID: 2800000, guid: b18f5a432340cd248b55fc3d6b3d8097, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _2nd_ShadeMap:
@@ -108,7 +108,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive_Tex:
-        m_Texture: {fileID: 2800000, guid: b0bfe6842f6272f42919df0b7ff58bfe, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49040972719954e4b85020684c7e313b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -128,7 +128,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cd0e561dcd2ca81498e3fe032c49b85e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 326d2a9f82eedf74faf8f857238232ae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -349,7 +349,7 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
-    - _HighColor_Power: 0.467
+    - _HighColor_Power: 0.532
     - _HighlightOverridden: 0
     - _HighlightVisible: 1
     - _InvTilingScale: 1
@@ -491,11 +491,11 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _Unlit_Intensity: 0.39
+    - _Unlit_Intensity: 0.29
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
     - _Use_1stAs2nd: 1
-    - _Use_BaseAs1st: 0
+    - _Use_BaseAs1st: 1
     - _WorkflowMode: 1
     - _ZOverDrawMode: 0
     - _ZTestDepthEqualForOpaque: 4
@@ -511,8 +511,8 @@ Material:
     - _utsVersionY: 9
     - _utsVersionZ: 6
     m_Colors:
-    - _1st_ShadeColor: {r: 0.6462264, g: 0.70404226, b: 1, a: 1}
-    - _2nd_ShadeColor: {r: 0.25943398, g: 0.529647, b: 1, a: 1}
+    - _1st_ShadeColor: {r: 1, g: 0.48584908, b: 0.74456644, a: 1}
+    - _2nd_ShadeColor: {r: 0.735849, g: 0, b: 0.7023038, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
@@ -528,7 +528,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive_Color: {r: 1, g: 1, b: 1, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighColor: {r: 0.97490704, g: 0.7688679, b: 1, a: 1}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

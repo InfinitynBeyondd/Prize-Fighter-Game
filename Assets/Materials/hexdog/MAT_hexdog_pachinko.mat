@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_hexdog
+  m_Name: MAT_hexdog_pachinko
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,11 +32,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _1st_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: c44a56107f8fc5646bb621ae35b7804c, type: 3}
+        m_Texture: {fileID: 2800000, guid: b18f5a432340cd248b55fc3d6b3d8097, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _2nd_ShadeMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b18f5a432340cd248b55fc3d6b3d8097, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AngelRing_Sampler:
@@ -108,7 +108,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive_Tex:
-        m_Texture: {fileID: 2800000, guid: b0bfe6842f6272f42919df0b7ff58bfe, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4b90045ac7a5ef94b95ab80556a4cc73, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -128,7 +128,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cd0e561dcd2ca81498e3fe032c49b85e, type: 3}
+        m_Texture: {fileID: 2800000, guid: c0d9cabf09c51cc4983f907e931bb797, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -349,7 +349,7 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
-    - _HighColor_Power: 0.467
+    - _HighColor_Power: 0
     - _HighlightOverridden: 0
     - _HighlightVisible: 1
     - _InvTilingScale: 1
@@ -384,7 +384,7 @@ Material:
     - _Is_Ortho: 0
     - _Is_OutlineTex: 0
     - _Is_PingPong_Base: 0
-    - _Is_SpecularToHighColor: 1
+    - _Is_SpecularToHighColor: 0
     - _Is_UseTweakHighColorOnShadow: 0
     - _Is_UseTweakMatCapOnShadow: 0
     - _Is_ViewCoord_Scroll: 0
@@ -420,7 +420,7 @@ Material:
     - _RimLightOverridden: 0
     - _RimLightVisible: 1
     - _RimLight_FeatherOff: 0
-    - _RimLight_InsideMask: 0.502
+    - _RimLight_InsideMask: 0.611
     - _RimLight_Power: 1
     - _Rotate_EmissiveUV: 0
     - _Rotate_MatCapUV: 0
@@ -491,11 +491,11 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _Unlit_Intensity: 0.39
+    - _Unlit_Intensity: 1.11
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
     - _Use_1stAs2nd: 1
-    - _Use_BaseAs1st: 0
+    - _Use_BaseAs1st: 1
     - _WorkflowMode: 1
     - _ZOverDrawMode: 0
     - _ZTestDepthEqualForOpaque: 4
@@ -511,8 +511,8 @@ Material:
     - _utsVersionY: 9
     - _utsVersionZ: 6
     m_Colors:
-    - _1st_ShadeColor: {r: 0.6462264, g: 0.70404226, b: 1, a: 1}
-    - _2nd_ShadeColor: {r: 0.25943398, g: 0.529647, b: 1, a: 1}
+    - _1st_ShadeColor: {r: 0.31130454, g: 0.042452812, b: 1, a: 1}
+    - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}

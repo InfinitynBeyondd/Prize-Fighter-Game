@@ -16,7 +16,7 @@ public class DivePunch : MonoBehaviour
 
     [SerializeField] GameObject divePunchHitbox;
     [SerializeField] private bool divePunchCall = false; // Boolean detecting when dive punch function is called.
-    [SerializeField] private bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
+    public bool isDivePunchActive = false; // Boolean value that detects if the player is doing a dive punch already.
     [SerializeField] private AudioClip hexdogdivePunch1;
     [SerializeField] private AudioClip hexdogdivePunch2;
     // Start is called before the first frame update

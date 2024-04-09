@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: frogRedDed
+  m_Name: dedFrog
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
-  m_Parent: {fileID: 2100000, guid: 0ea5f5be9393d944d9f8592eb45d26a5, type: 2}
+  m_Parent: {fileID: 2100000, guid: ad37ed08a40258c4f8596bf8c36c87c8, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _EMISSIVE_SIMPLE
@@ -33,10 +33,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _1st_ShadeColor_Step: 0.426
-    - _BaseColor_Step: 0.426
-    - _Is_BlendAddToHiColor: 1
-    - _Is_SpecularToHighColor: 0
-    - _MatCap: 0
-    m_Colors: []
+    - _HighColor_Power: 0.429
+    - _Unlit_Intensity: 1.93
+    m_Colors:
+    - _BaseColor: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
+    - _Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
   m_BuildTextureStacks: []

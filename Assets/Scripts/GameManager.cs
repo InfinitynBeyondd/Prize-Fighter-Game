@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     public int coinsCollected;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         

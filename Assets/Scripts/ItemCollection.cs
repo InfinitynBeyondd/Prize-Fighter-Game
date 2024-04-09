@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemCollection : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ItemCollection : MonoBehaviour
 
     [SerializeField] private AudioClip coinCollect;
     [SerializeField] private AudioClip stickerCollect;
+    private GameObject GotStickerImageGO;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,10 @@ public class ItemCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyUp(KeyCode.K)) 
+        {
+            //StartCoroutine(WaitForXSeconds(5));
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,9 +35,16 @@ public class ItemCollection : MonoBehaviour
         {
             Debug.Log("Got a Sticker!");
             SoundFXManager.Instance.PlaySoundFXClip(stickerCollect, transform, 0.6f);
-            this.gameObject.SetActive(false);
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            this.gameObject.GetComponent<MeshCollider>().enabled = false;
             gM.stickersCollected++;
             cCounters.UpdateCollectedCount();
+
+            GotStickerImageGO = GameObject.FindWithTag("StickerImage");
+            Image GotStickerImage = GotStickerImageGO.GetComponent<Image>();
+            StartCoroutine(WaitForXSeconds(3,GotStickerImage));
+
+
         }
 
         if (other.transform.CompareTag("Player") && this.transform.CompareTag("Coin"))
@@ -43,5 +55,13 @@ public class ItemCollection : MonoBehaviour
             cCounters.UpdateCollectedCount();
             SoundFXManager.Instance.PlaySoundFXClip(coinCollect, transform, 0.7f);
         }
+    }
+
+    IEnumerator WaitForXSeconds(int seconds, Image GotStickerImage)
+    {
+        GotStickerImage.color = new Color(255, 255, 255, 255);
+        yield return new WaitForSeconds(seconds);
+        GotStickerImage.color = new Color(255, 255, 255, 0);
+        this.gameObject.SetActive(false) ;
     }
 }

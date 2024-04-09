@@ -7,6 +7,7 @@ public class Bumpers : MonoBehaviour
     GravityScalePhysX playerGSPX;
     Rigidbody playerBody;
     DivePunch playerDP;
+    [SerializeField] int constantFactor; // Factor to multiply upwards force by. SET IN THE INSPECTOR!
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class Bumpers : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            playerBody.AddForce(Vector3.up * playerGSPX.gravityScale * 3, ForceMode.VelocityChange);
+            playerBody.AddForce(Vector3.up * playerGSPX.gravityScale * constantFactor, ForceMode.VelocityChange);
 
             Debug.Log("Bumper Bounce!");
         }        

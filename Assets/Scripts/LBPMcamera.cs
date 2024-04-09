@@ -7,6 +7,6 @@ public class LBPMcamera : MonoBehaviour
 
 	void Update()
 	{
-		transform.position = new Vector3 (player.position.x, player.position.y + 1.0f , -1.0f);
+		transform.position = new Vector3 (player.position.x, player.position.y, -1.0f);
 	}
 }

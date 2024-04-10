@@ -35,6 +35,7 @@ public class RespawnController : MonoBehaviour
             respawnPoint = other.gameObject;
             pathToRespawn = other.transform.position;
             Debug.Log("CHECKPOINT CROSSED - Respawn position has been set to: " + other.transform.position);
+            other.GetComponent<Collider>().enabled = false;
         }
         
     }

@@ -5316,6 +5316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 833095622}
+  - component: {fileID: 833095623}
   m_Layer: 0
   m_Name: PATH 3
   m_TagString: Untagged
@@ -5341,6 +5342,27 @@ Transform:
   m_Father: {fileID: 245112487}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &833095623
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833095621}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f4aa6d5509c508341b3cf68dfa1b8cfe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &835519138
 PrefabInstance:
   m_ObjectHideFlags: 0

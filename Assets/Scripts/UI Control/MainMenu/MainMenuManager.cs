@@ -14,9 +14,17 @@ public class MainMenuManager : MonoBehaviour
     public GameObject gameGalleryScreen;
 
     public Button GoToLevelButton;
-    // Start is called before the first frame update
 
+    [Header("Sticker Sprites")]
+    public Image Sticker1Image;
+    public Sprite CoinPusherSticker;
+    public Image Sticker2Image;
+    public Sprite PachinkoSticker;
+    public Image Sticker3Image;
+    public Sprite ClawSticker;
 
+    [Header("Game Manager")]
+    public GameManager GameManager;
     public void GoToControlsScreen()
     {
         mainMenuScreen.SetActive(false);
@@ -33,9 +41,35 @@ public class MainMenuManager : MonoBehaviour
         mainMenuScreen.SetActive(true);
     }
 
-    public void GoToLevelOne()
+    //Gallery Functions
+    public void GoToGalleryScreen()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        mainMenuScreen.SetActive(false);
+        gameGalleryScreen.SetActive(true);
+    }
+    public void GoToMainFromGallery()
+    {
+        gameGalleryScreen.SetActive(false);
+        mainMenuScreen.SetActive(true);
+
+        //Checks how many stickers are collected and changes the sticker showed depending on that
+        if (GameManager.stickersCollected > 0 )
+        {
+            Sticker1Image.sprite = CoinPusherSticker;
+            if (GameManager.stickersCollected > 1)
+            {
+                Sticker2Image.sprite = PachinkoSticker;
+                if (GameManager.stickersCollected > 2)
+                {
+                    Sticker3Image.sprite = ClawSticker;
+                }
+            }
+        }
+    }
+
+    public void GoToHub()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         GoToLevelButton = GameObject.Find("GoControlButton").GetComponent<Button>();
         GoToLevelButton.Select();
 

@@ -6,17 +6,20 @@ public class ConeController : MonoBehaviour
 {
     [SerializeField] Rigidbody coneBody; // Cone's RB.
     [SerializeField] Transform coneTargets; // Transform of the cone's targets.
+    [SerializeField] Transform thisConesRotation; // Transform of the cone's targets.
+
     [SerializeField] Transform[] patrolTargetsArray; // Array where all the children of coneTargets are stored.
     Queue<Transform> patrolTargetsQueue = new Queue<Transform>(); // Queue used to create patrolTargetsArray.
     [SerializeField] int patrolTargetIndex; // Index of the array that the cone is headed towards.
     public float speedBetweenTargets; // The speed at which the cone travels between its targets.
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        coneBody = GetComponent<Rigidbody>();
-        
-        coneTargets = transform.parent.GetChild(1);
+        coneBody = GetComponent<Rigidbody>();        
+        coneTargets = transform.parent.GetChild(2);
+        //thisConesRotation = GetComponentInChildren<Transform>();
 
         patrolTargetIndex = 0;
         speedBetweenTargets = 5f;
@@ -55,7 +58,7 @@ public class ConeController : MonoBehaviour
     {
         coneBody.position = Vector3.MoveTowards(coneBody.position, patrolTargetsArray[patrolTargetIndex].position, speedBetweenTargets * Time.deltaTime);
 
-        //coneFaceTarget();
+        //ConeFaceTarget();
 
         if (coneBody.position == patrolTargetsArray[patrolTargetIndex].position)
         {
@@ -69,6 +72,18 @@ public class ConeController : MonoBehaviour
             }
 
         }
+    }
+
+    // Snaps cone's rotation to the target it is headed for. This doesn't work so we'll refine it during the polish period.
+    private void ConeFaceTarget()
+    {
+        Vector3 targetPosition = new Vector3(patrolTargetsArray[patrolTargetIndex].position.x, 0, patrolTargetsArray[patrolTargetIndex].position.z);
+        Vector3 thisConesPosition = new Vector3(thisConesRotation.transform.position.x, 0, thisConesRotation.position.z);
+        Vector3 coneFacingDirection = (thisConesPosition - targetPosition);
+
+        Quaternion coneRotation = Quaternion.LookRotation(coneFacingDirection);
+
+        transform.rotation = coneRotation;
     }
 
 }

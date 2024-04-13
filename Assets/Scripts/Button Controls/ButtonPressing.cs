@@ -49,12 +49,16 @@ public class ButtonPressing : MonoBehaviour
         if (buttonIsPressed && partneredAsset.CompareTag("ButtonActivated"))
         {
             //Debug.Log("Button pressed - TURN ON THIS TRANSFORM!");
-            partneredAsset.gameObject.SetActive(true);
+            partneredAsset.gameObject.SetActive(buttonIsPressed);
         }
         else if (buttonIsPressed && partneredAsset.CompareTag("ButtonDeactivated"))
         {
             //Debug.Log("Button pressed - TURN OFF THIS TRANSFORM!");
-            partneredAsset.gameObject.SetActive(false);
+            partneredAsset.gameObject.SetActive(!buttonIsPressed);
+        }
+        else if (buttonIsPressed && partneredAsset.CompareTag("ButtonAnimated")) 
+        {
+            partneredAsset.GetComponent<Animator>().SetBool("isButtonPressed", buttonIsPressed);
         }
     }
 

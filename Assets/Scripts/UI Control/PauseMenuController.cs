@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -50,5 +51,20 @@ public class PauseMenuController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void GoBackToHubOrMainMenu()
+    {
+        int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+
+        // If we're in the hub go back to main menu
+        if(currentSceneIndex == 1)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
     }
 }

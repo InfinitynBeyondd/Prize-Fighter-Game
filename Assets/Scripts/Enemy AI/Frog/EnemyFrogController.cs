@@ -107,15 +107,7 @@ public class EnemyFrogController : MonoBehaviour
 
         if (frogBody.position == jumpTargetsArray[jumpTargetIndex].position)
         {
-            if (jumpTargetIndex + 1 < jumpTargetsArray.Length)
-            {
-                jumpTargetIndex++;
-            }
-            else
-            {
-                jumpTargetIndex = 0;
-            }
-
+            SetNextJumpTarget();
         }
     }
 
@@ -141,6 +133,19 @@ public class EnemyFrogController : MonoBehaviour
         Quaternion frogRotation = Quaternion.LookRotation(frogFacingDirection);
 
         thisFrog.rotation = frogRotation;
+    }
+
+    // This function should theoretically create more consistency in the frog jumps to not immediately snap to the newest target.
+    private void SetNextJumpTarget() 
+    {
+        if (jumpTargetIndex + 1 < jumpTargetsArray.Length)
+        {
+            jumpTargetIndex++;
+        }
+        else
+        {
+            jumpTargetIndex = 0;
+        }
     }
 
     // If it feels like a frog falls too slowly, edit the gravity value of the frog using the GravityScalePhysX script.

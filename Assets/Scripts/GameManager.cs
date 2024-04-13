@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
     public int stickersCollected;
     public int coinsCollected;
 
+    [Header("Check if level beaten")]
+    public bool hasBeatTutorial;
+    public bool hasBeatCoinPusher;
+    public bool hasBeatPachinko;
+    public bool hasBeatClaw;
+
+
     // Start is called before the first frame update
 
     private void Awake()

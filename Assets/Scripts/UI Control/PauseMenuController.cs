@@ -9,6 +9,7 @@ public class PauseMenuController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
+    public GameObject GalleryMenuUI;
 
     // Update is called once per frame
     void Update()
@@ -66,5 +67,17 @@ public class PauseMenuController : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
+    }
+
+    public void GoToGallery()
+    {
+        PauseMenuUI.SetActive(false);
+        GalleryMenuUI.SetActive(true);
+    }
+
+    public void ExitGallery()
+    {
+        PauseMenuUI.SetActive(true);
+        GalleryMenuUI.SetActive(false);
     }
 }

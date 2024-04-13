@@ -6,8 +6,8 @@ public class ClawController : MonoBehaviour
 {
 
     public Animator clawAnimator;
-    public Transform fullClaw;
-    public Transform clawHead;
+    public Transform fullClaw; // Controls the transform for the claw's entire body.
+    public Transform clawHead; // Controls the transform for just the claw's head. May need to be strictly controlled through the animator.
 
     public float speedBetweenTargets;
     public float descentSpeed;
@@ -18,8 +18,6 @@ public class ClawController : MonoBehaviour
     
     [SerializeField] Transform[] clawTargetsArray;
     Queue<Transform> clawTargetsQueue = new Queue<Transform>();
-
-    //public float testDescend;        
 
     // Start is called before the first frame update
     void Start()
@@ -56,20 +54,30 @@ public class ClawController : MonoBehaviour
     // Entire Claw should first move from its start position to the target's position.
     void MoveFullClawToTarget() 
     {
+
         Vector3 positionAboveTarget = new Vector3(clawTargetsArray[clawTargetIndex].position.x, fullClaw.position.y, clawTargetsArray[clawTargetIndex].position.z);
 
-        fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
+        if (clawAnimator.GetBool("isRaised")) 
+        { 
+            fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);        
+        } 
 
-
-        if (fullClaw.position.x < clawTargetsArray[clawTargetIndex].position.x && fullClaw.position.z == clawTargetsArray[clawTargetIndex].position.z)
+        //if (IsInRangeX() && IsInRangeZ())
+        if (fullClaw.position.x == clawTargetsArray[clawTargetIndex].position.x && fullClaw.position.z == clawTargetsArray[clawTargetIndex].position.z)
         {
-            //Debug.Log("Target acquired.");
-            clawAnimator.SetBool("isOpen", true);
-            
-            Invoke(nameof(ClawHeadDescendToTarget), findToDescendDelay);            
-        }
+            //Debug.Log("Target acquired. New target set.");
 
-        //SetNextClawTarget();
+            //SetNextClawTarget();
+
+            clawAnimator.SetBool("isOpen", true);
+
+            ClawHeadDescendToTarget();
+            //Invoke(nameof(ClawHeadDescendToTarget), findToDescendDelay);
+
+            SetNextClawTarget();
+            //Invoke(nameof(SetNextClawTarget), findToDescendDelay * 6f);
+            
+        }
 
     }
 
@@ -77,6 +85,7 @@ public class ClawController : MonoBehaviour
     void ClawHeadDescendToTarget() 
     {
         //Debug.Log("DESCENT BEGINS NOW!");
+        clawAnimator.SetBool("isRaised", false);
         clawAnimator.SetBool("isDescending", true);
 
         Invoke(nameof(ClawHeadClose), findToDescendDelay * 3f);

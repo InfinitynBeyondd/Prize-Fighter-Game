@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ClawController : MonoBehaviour
 {
-
     public Animator clawAnimator;
     public Transform fullClaw; // Controls the transform for the claw's entire body.
     public Transform clawHead; // Controls the transform for just the claw's head. May need to be strictly controlled through the animator.
@@ -12,23 +11,37 @@ public class ClawController : MonoBehaviour
     public float speedBetweenTargets;
     public float descentSpeed;
     public int findToDescendDelay;
+    public int bossHP;
 
     [SerializeField] Transform clawTargets; // Target spots the claw will aim between. 
-    [SerializeField] int clawTargetIndex; // Index of the array that the claw is headed towards.
-    
+    [SerializeField] int clawTargetIndex; // Index of the target array that the claw is headed towards.    
     [SerializeField] Transform[] clawTargetsArray;
     Queue<Transform> clawTargetsQueue = new Queue<Transform>();
 
+    [SerializeField] enum StateOfClaw { Hunting, Distracted, Stuck, Damaged } // Enum that trafcks the state of the claw and controls movement patterns.
+    StateOfClaw currentState;
+
+    [Header("HOLOGRAM POSITIONS")]
+    [SerializeField] Transform[] hologramArray = new Transform[2];
+    [SerializeField] int hologramIndex; // Index of the hologram array that the claw is headed towards.
+    [SerializeField] Collider clawHurtbox;
+    [SerializeField] Collider clawHitbox;
+
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        currentState = StateOfClaw.Hunting;
+        hologramIndex = 0;
         SetClawTargetsForFirstPhase();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (hologramArray[hologramIndex].gameObject.activeSelf)
+        {
+            currentState = StateOfClaw.Distracted;
+        }
     }
 
     // FixedUpdate is called once per physics change
@@ -55,28 +68,41 @@ public class ClawController : MonoBehaviour
     void MoveFullClawToTarget() 
     {
 
-        Vector3 positionAboveTarget = new Vector3(clawTargetsArray[clawTargetIndex].position.x, fullClaw.position.y, clawTargetsArray[clawTargetIndex].position.z);
+        Vector3 positionAboveTarget;
 
-        if (clawAnimator.GetBool("isRaised")) 
-        { 
-            fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);        
-        } 
-
-        //if (IsInRangeX() && IsInRangeZ())
-        if (fullClaw.position.x == clawTargetsArray[clawTargetIndex].position.x && fullClaw.position.z == clawTargetsArray[clawTargetIndex].position.z)
+        if (currentState == StateOfClaw.Hunting)
         {
-            //Debug.Log("Target acquired. New target set.");
+            positionAboveTarget = new Vector3(clawTargetsArray[clawTargetIndex].position.x, fullClaw.position.y, clawTargetsArray[clawTargetIndex].position.z);
 
-            //SetNextClawTarget();
+            if (clawAnimator.GetBool("isRaised"))
+            {
+                fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
+            }
 
-            clawAnimator.SetBool("isOpen", true);
+            if (fullClaw.position.x == clawTargetsArray[clawTargetIndex].position.x && fullClaw.position.z == clawTargetsArray[clawTargetIndex].position.z)
+            {
+                clawAnimator.SetBool("isOpen", true);
 
-            ClawHeadDescendToTarget();
-            //Invoke(nameof(ClawHeadDescendToTarget), findToDescendDelay);
+                ClawHeadDescendToTarget();
+                SetNextClawTarget();                
+            }
+        }
+        else if (currentState == StateOfClaw.Distracted) 
+        {
+            positionAboveTarget = new Vector3(hologramArray[hologramIndex].position.x, fullClaw.position.y, hologramArray[hologramIndex].position.z);
 
-            SetNextClawTarget();
-            //Invoke(nameof(SetNextClawTarget), findToDescendDelay * 6f);
-            
+            if (clawAnimator.GetBool("isRaised"))
+            {
+                fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
+            }
+
+            if (fullClaw.position.x == hologramArray[hologramIndex].position.x && fullClaw.position.z == hologramArray[hologramIndex].position.z)
+            {
+                clawAnimator.SetBool("isOpen", true);
+
+                ClawHeadDescendToTarget();
+            }
+
         }
 
     }

@@ -125,7 +125,7 @@ public class ClawController : MonoBehaviour
     void ClawHeadClose() 
     {
         //Debug.Log("CLAW CLOSES!");
-        clawHitbox.gameObject.SetActive(true);
+        Invoke(nameof(TurnOnHitbox), findToDescendDelay / 2f);
 
         clawAnimator.SetBool("isDescending", false);
         clawAnimator.SetBool("isOpen", false);
@@ -166,6 +166,11 @@ public class ClawController : MonoBehaviour
         {
             clawTargetIndex = 0;
         }
+    }
+
+    void TurnOnHitbox()
+    {
+        clawHitbox.gameObject.SetActive(true);
     }
 
     void TurnOffHitbox() 

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class DivePunch : MonoBehaviour
 {
-    PlayerAnims pA;
+    //PlayerAnims pA;
     PlayerBehavior pB;
     Rigidbody rB;
     GravityScalePhysX gSPX;

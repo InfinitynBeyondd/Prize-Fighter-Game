@@ -17,7 +17,7 @@ public class ItemCollection : MonoBehaviour
     void Start()
     {
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        cCounters = GameObject.Find("Canvas").GetComponent<CollectableCounters>();
+        cCounters = GameObject.Find("LEVEL UI").GetComponentInChildren<CollectableCounters>();
     }
 
     // Update is called once per frame

@@ -44,10 +44,6 @@ public class PlayerBehavior : MonoBehaviour
     public bool activeGrapple = false; //To see if the player is grappling at the moment
     public bool enableMovementOnNextTouch; // Boolean that lets players move when they land.
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space; // Jump Key is set to Spacebar by default, but it can be changed in the inspector. ((DEPRECATED TO USE INPUT SYSTEM
-    public KeyCode attackKey = KeyCode.LeftShift; // Attack Key is set to LShift by default, but it can be changed in the inspector.
-
     [Header("References")]
     public Transform player;
     public Transform playerCharacter;

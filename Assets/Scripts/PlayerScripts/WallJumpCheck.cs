@@ -11,7 +11,7 @@ public class WallJumpCheck : MonoBehaviour
     [Header("Wall Jump Check")]
     [SerializeField] private bool wallFaceCheck;
     [SerializeField] private bool wallJumping;
-    [SerializeField] private PlayerAnims pA;
+    //[SerializeField] private PlayerAnims pA;
     [SerializeField] private PlayerBehavior pB;
     [SerializeField] private Rigidbody rB;
     [SerializeField] private Collider faceCollider;

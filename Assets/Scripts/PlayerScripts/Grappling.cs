@@ -7,7 +7,7 @@ public class Grappling : MonoBehaviour
 {
     [Header("References")]
 
-    [SerializeField] private PlayerAnims pA;
+    //[SerializeField] private PlayerAnims pA;
     private PlayerBehavior pB;
     private GravityScalePhysX gSPX;
     private DivePunch dP;
@@ -32,7 +32,7 @@ public class Grappling : MonoBehaviour
 
     private void Start()
     {
-        pA = GetComponent<PlayerAnims>();
+        //pA = GetComponent<PlayerAnims>();
         pB = GetComponent<PlayerBehavior>();
         gSPX = gameObject.GetComponent<GravityScalePhysX>();
         dP = GetComponent<DivePunch>();

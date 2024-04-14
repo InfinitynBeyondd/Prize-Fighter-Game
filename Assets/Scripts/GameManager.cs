@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public int stickersCollected;
     public int coinsCollected;
+    private bool skinCheck;
 
     [Header("Check if level beaten")]
     public bool hasBeatTutorial;
@@ -13,21 +15,44 @@ public class GameManager : MonoBehaviour
     public bool hasBeatPachinko;
     public bool hasBeatClaw;
 
+    [Header("PlayerSkins")]
+    public Material currentPlayerSkin;
+    public Material DefaultSkin;
+    public Material GreenSkin;
+    public Material PurpleSkin;
+    public Material TransSkin;
+    public Material GreySkin;
+    public Material GundamSkin;
+
 
     // Start is called before the first frame update
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-    }
-    void Start()
-    {
-        
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+        currentPlayerSkin = DefaultSkin;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        SkinnedMeshRenderer PlayerMeshRenderer = GameObject.FindWithTag("CharacterBody").GetComponent<SkinnedMeshRenderer>();
+        if (PlayerMeshRenderer.material == currentPlayerSkin && skinCheck)
+        {
+            PlayerMeshRenderer.material = currentPlayerSkin;
+            skinCheck = false;
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // This function will be called every time a new scene is loaded
+        Debug.Log("Scene loaded: " + scene.name);
+
+        // Call your function here
+       SkinnedMeshRenderer PlayerMeshRenderer = GameObject.FindWithTag("CharacterBody").GetComponent<SkinnedMeshRenderer>();
+        PlayerMeshRenderer.material = currentPlayerSkin;
+
+        skinCheck = true;
     }
 }

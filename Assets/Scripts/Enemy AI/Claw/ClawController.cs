@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ClawController : MonoBehaviour
@@ -11,19 +12,19 @@ public class ClawController : MonoBehaviour
     public float speedBetweenTargets;
     public float descentSpeed;
     public int findToDescendDelay;
-    public int bossHP;
 
+    [Header("TARGET REFERENCES")]
     [SerializeField] Transform clawTargets; // Target spots the claw will aim between. 
     [SerializeField] int clawTargetIndex; // Index of the target array that the claw is headed towards.    
     [SerializeField] Transform[] clawTargetsArray;
     Queue<Transform> clawTargetsQueue = new Queue<Transform>();
 
-    [SerializeField] enum StateOfClaw { Hunting, Distracted, Stuck, Damaged } // Enum that trafcks the state of the claw and controls movement patterns.
-    StateOfClaw currentState;
+    public enum StateOfClaw { Hunting, Distracted, Damaged } // Enum that trafcks the state of the claw and controls movement patterns.
+    public StateOfClaw currentState;
 
     [Header("HOLOGRAM POSITIONS")]
     [SerializeField] Transform[] hologramArray = new Transform[2];
-    [SerializeField] int hologramIndex; // Index of the hologram array that the claw is headed towards.
+    public int bossHitsTaken; // Index of the hologram array that the claw is headed towards.
     [SerializeField] Collider clawHurtbox;
     [SerializeField] Collider clawHitbox;
 
@@ -31,14 +32,18 @@ public class ClawController : MonoBehaviour
     void Start()
     {
         currentState = StateOfClaw.Hunting;
-        hologramIndex = 0;
+        bossHitsTaken = 0;
+
+        clawHurtbox.gameObject.SetActive(false);
+        clawHitbox.gameObject.SetActive(false);
+
         SetClawTargetsForFirstPhase();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hologramArray[hologramIndex].gameObject.activeSelf)
+        if (hologramArray[bossHitsTaken].gameObject.activeSelf)
         {
             currentState = StateOfClaw.Distracted;
         }
@@ -89,14 +94,14 @@ public class ClawController : MonoBehaviour
         }
         else if (currentState == StateOfClaw.Distracted) 
         {
-            positionAboveTarget = new Vector3(hologramArray[hologramIndex].position.x, fullClaw.position.y, hologramArray[hologramIndex].position.z);
+            positionAboveTarget = new Vector3(hologramArray[bossHitsTaken].position.x, fullClaw.position.y, hologramArray[bossHitsTaken].position.z);
 
             if (clawAnimator.GetBool("isRaised"))
             {
                 fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
             }
 
-            if (fullClaw.position.x == hologramArray[hologramIndex].position.x && fullClaw.position.z == hologramArray[hologramIndex].position.z)
+            if (fullClaw.position.x == hologramArray[bossHitsTaken].position.x && fullClaw.position.z == hologramArray[bossHitsTaken].position.z)
             {
                 clawAnimator.SetBool("isOpen", true);
 
@@ -120,16 +125,35 @@ public class ClawController : MonoBehaviour
     void ClawHeadClose() 
     {
         //Debug.Log("CLAW CLOSES!");
+        clawHitbox.gameObject.SetActive(true);
+
         clawAnimator.SetBool("isDescending", false);
         clawAnimator.SetBool("isOpen", false);
 
-        Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
+        Invoke(nameof(TurnOffHitbox), findToDescendDelay);
+
+        if (currentState == StateOfClaw.Hunting)
+        {
+            Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
+        }
+        else if (currentState == StateOfClaw.Distracted) 
+        {            
+            clawHurtbox.gameObject.SetActive(true);
+            //Invoke(nameof(ClawHeadGetsHit), findToDescendDelay);
+        }
+
     }
 
     void ClawHeadReturnToIdle() 
     {
         //Debug.Log("Claw returns to neutral.");
         clawAnimator.SetBool("isRaised", true);        
+    }
+
+    public void ClawHeadGetsHit() 
+    {
+        clawAnimator.SetBool("isDamaged", true);
+        Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
     }
 
     void SetNextClawTarget() 
@@ -143,4 +167,10 @@ public class ClawController : MonoBehaviour
             clawTargetIndex = 0;
         }
     }
+
+    void TurnOffHitbox() 
+    {
+        clawHitbox.gameObject.SetActive(false);
+    }
+
 }

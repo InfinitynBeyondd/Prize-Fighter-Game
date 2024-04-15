@@ -4,9 +4,9 @@ CONTROLS (KEYBOARD):
 •WASD/Arrow Keys - Movement
 •Mouse - Camera Controls (Levels only)
 •Spacebar - Jump (Double Jump in midair, Wall Jump against walls)
-•Left Shift - Attack (Standing Punch on ground, Dive Punch in midair)
-•E - Grapple (Shoots grapple beam from arm and pulls towards grappable surfaces on contact)
-•Q - Change Scene (Hub World Only)
+•Left Click - Attack (Standing Punch on ground, Dive Punch in midair)
+•Right Click - Grapple (Shoots grapple beam from arm and pulls towards grappable surfaces on contact)
+•Spacebar - Change Scene (Hub World Only)
 •P - Pause Game
 •ESC - Quit Game
 
@@ -17,20 +17,27 @@ CONTROLS (XBOX CONTROLLER)
 •X - Attack (Standing Punch on ground)
 •B - Dive Punch (Midair only)
 •Right Trigger - Grapple (Shoots grapple beam from arm and pulls towards grappable surfaces on contact)
-•Y - Change Scene (Hub World Only)
+•Y/A - Change Scene (Hub World Only)
 •Start - Pause Game
 
 HOW TO PLAY:
-•Players enter levels from the hub world, pressing Q inside the portal to begin.
-•Levels contain tokens used to progress to new levels, as well as stickers to unlock things in the Gallery Mode.
-•Players must clear levels by making it to the end, and the tokens they gather will unlock new levels.
+•Players enter levels from the hub world, pressing Space/Y/A inside the portal to begin.
+•Players must clear levels by making it to the end, and the tokens they gather will unlock new cosmetics.
+•Stickers can be used to unlock features in the gallery mode.
 
 AREAS FOR FEEDBACK:
 •Level difficulty
 •Frog Jump implementation
-•Lighting 
-•Drop Shadow Spot Light
+•Lighting
 •Model updates
+•Collision issues
+
+RELEASE NOTES (SPRINT 3 - Alpha Build):
+•Major physics changes implemented; no more frog softlocks or inconsistent jumps!
+•Pachinko (Level 2) and Claw Machine (Level 3) are now playable.
+•New enemy types: Enemy Frog, Patrolling Cone and Claw, adding a practical use for combat mechanics
+•Levels can now be influenced by hitting certain buttons with attacks
+•Player’s Animation Controller refined
 
 RELEASE NOTES (SPRINT 2 - Vertical Slice): 
 •All assets implemented; no more proxy assets!
@@ -52,6 +59,8 @@ RELEASE NOTES (SPRINT 1 - Prototype):
 •Sloped surfaces must have Slope physics material applied
 
 KNOWN BUGS:
-•Animation Controller - Player animations are triggered incorrectly. Due to time constraints, not all work as intended.
-•Physics - Sometimes, the frogs will infinitely ascend due to a check meant to bypass softlocking the player. 
-In these instances, players will have to find other ways to get around frog-based platforming challenges.
+•Animation Controller - Player animations for grappling and dive punching are occasionally triggered incorrectly.
+•Frogs - The frog enemies turn very abruptly in midair, causing some issues with their positioning.
+•Claw Boss - If the claw is already descending when the hologram triggered to distract it is set active, it will not target the hologram and get stuck. It is still able to be attacked in this case, and hitting the boss will trigger the end of the fight.
+•Collision Detection - Collision can be inconsistent, as players will sometimes be treated as if they are airborne on a ledge and fall until being considered on solid ground. Players can escape by utilizing the reset gravity of the dive punch and grapple, but it feels tedious and buggy.
+•Cones - Cones are not deleted on attack, and instead fall over because the wrong transform is deleted.

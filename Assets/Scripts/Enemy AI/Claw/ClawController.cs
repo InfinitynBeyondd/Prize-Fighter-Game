@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClawController : MonoBehaviour
 {
@@ -46,6 +47,12 @@ public class ClawController : MonoBehaviour
         if (hologramArray[bossHitsTaken].gameObject.activeSelf)
         {
             currentState = StateOfClaw.Distracted;
+        }
+
+        //Checks if the player has beaten the boss
+        if (bossHitsTaken > 0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(7);
         }
     }
 

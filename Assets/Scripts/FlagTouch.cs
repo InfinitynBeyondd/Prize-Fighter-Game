@@ -21,27 +21,31 @@ public class FlagTouch : MonoBehaviour
             if (currentSceneIndex == 5)
             {
                 GameManager.hasBeatTutorial = true;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+                //Change later to a little screen that pops that you say you beat the specific level
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             }
             //Checks if we're in CoinPusher
             if (currentSceneIndex == 2)
             {
                 GameManager.hasBeatCoinPusher = true;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+                //Change later to a little screen that pops that you say you beat the specific level
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             }
 
             //Checks if we're in Pachinko
             if (currentSceneIndex == 4)
             {
                 GameManager.hasBeatPachinko = true;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+                //Change later to a little screen that pops that you say you beat the specific level
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             }
 
             //Checks if we're in Claw
             if (currentSceneIndex == 6)
             {
                 GameManager.hasBeatClaw = true;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+                //Change later to a little screen that pops that you say you beat the specific level
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             }
         }
     }

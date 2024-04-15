@@ -31,7 +31,7 @@ Transform:
   - {fileID: 5229577928621072102}
   - {fileID: 2607864393816966202}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3337659817141229462
 GameObject:
@@ -239,6 +239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: frogEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698918190600366667, guid: 4439a05cb50698e428c93366f09ddf7d,
+        type: 3}
+      propertyPath: dispelForce
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5757374657834875978, guid: 4439a05cb50698e428c93366f09ddf7d,
         type: 3}

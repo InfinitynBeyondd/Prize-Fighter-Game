@@ -9,7 +9,9 @@ public class ButtonPressing : MonoBehaviour
 
     [Header("SET THIS IN THE INSPECTOR!")]
     [SerializeField] Transform partneredAsset; // Transform affected by whichever button this is. SET THIS IN THE INSPECTOR!
-    
+
+    [SerializeField] private AudioClip buttonPressed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,9 @@ public class ButtonPressing : MonoBehaviour
     {
         if (other.CompareTag("Attack")) 
         {
-            buttonIsPressed = true;            
+            buttonIsPressed = true;
+            SoundFXManager.Instance.PlaySoundFXClip(buttonPressed, transform, 0.6f);
+
         }
     }
 

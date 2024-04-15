@@ -368,8 +368,6 @@ MonoBehaviour:
   freeze: 0
   activeGrapple: 0
   enableMovementOnNextTouch: 0
-  jumpKey: 32
-  attackKey: 304
   player: {fileID: 7783715760353345192}
   playerCharacter: {fileID: 7783715760353345192}
   orientation: {fileID: 1761879701594457643}
@@ -440,14 +438,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518249bb8782db24b9f2764d9de806b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pA: {fileID: 0}
   cam: {fileID: 7924981267383440514}
   gunTip: {fileID: 7924981267383440514}
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 64
   lr: {fileID: 2741045048869181857}
-  hexdogGrapple: {fileID: 8300000, guid: 7a1450442d061354ca101b228b3bf5a1, type: 3}
+  hexdogGrapple: {fileID: 8300000, guid: 65d7b2e6bc593414eab603ddd91038a2, type: 3}
   maxGrappleDistance: 40.6
   grappleDelayTime: 0.25
   overshootYAxis: 2
@@ -466,7 +463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallFaceCheck: 0
   wallJumping: 0
-  pA: {fileID: 0}
   pB: {fileID: 3015112013192362088}
   rB: {fileID: 7491821974659576580}
   faceCollider: {fileID: 0}

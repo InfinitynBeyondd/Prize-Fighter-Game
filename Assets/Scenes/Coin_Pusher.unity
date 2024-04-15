@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gM: {fileID: 0}
   coinCollect: {fileID: 8300000, guid: 56b2dfbceabc4494a9d53637425499c2, type: 3}
-  stickerCollect: {fileID: 8300000, guid: ac3ad333b25009941b2899f2ca2724f8, type: 3}
+  stickerCollect: {fileID: 8300000, guid: 2e5c1cfa2526dc94e98ccb8a831a54a0, type: 3}
 --- !u!4 &9513922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dc561d35882e6bf4bb475535d6262e0a,
@@ -11248,7 +11248,7 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.069955304
+      value: -0.06995528
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -11258,7 +11258,7 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07636339
+      value: -0.07636337
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13930,7 +13930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &725381254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14968,9 +14968,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: dc561d35882e6bf4bb475535d6262e0a,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b36ccea5f37a3c499c7150e743527a5, type: 2}
+    - target: {fileID: -7511558181221131132, guid: dc561d35882e6bf4bb475535d6262e0a,
+        type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 95e0f82391f18c447aa2fb8e18cb6020, type: 2}
+      objectReference: {fileID: 2100000, guid: 5b36ccea5f37a3c499c7150e743527a5, type: 2}
     - target: {fileID: 919132149155446097, guid: dc561d35882e6bf4bb475535d6262e0a,
         type: 3}
       propertyPath: m_Name
@@ -23395,7 +23400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 3.5, y: 0.7999878}
+  m_AnchoredPosition: {x: -1060, y: 630}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203539641
@@ -24046,7 +24051,7 @@ PrefabInstance:
     - target: {fileID: 2627672862565647163, guid: 5c67179bd9e88a140b0621221f7aa830,
         type: 3}
       propertyPath: m_Volume
-      value: 0.06
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2627672862565647163, guid: 5c67179bd9e88a140b0621221f7aa830,
         type: 3}

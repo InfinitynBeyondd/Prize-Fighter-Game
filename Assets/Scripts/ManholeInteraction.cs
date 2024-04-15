@@ -8,6 +8,7 @@ public class ManholeInteraction : MonoBehaviour
     [SerializeField] float yAxisMaxRotationSpeed; // Max speed the manhole will rotate around the Y Axis by.
     [SerializeField] float yAxisRotationSpeed; // Speed the manhole will rotate around the Y Axis by; it should eventually slow to a stop.
     [SerializeField] bool spinInitiated; // Boolean that controls when the manhole spins or not.
+    [SerializeField] private AudioClip manholeSpin;
 
     public GameObject coinPrefab;
     public int coinsToSpawn;
@@ -19,6 +20,7 @@ public class ManholeInteraction : MonoBehaviour
         {
             spinInitiated = true;
             yAxisRotationSpeed = yAxisMaxRotationSpeed;
+            SoundFXManager.Instance.PlaySoundFXClip(manholeSpin, transform, 0.6f);
             Debug.Log("Manhole Punched. Spin Begin!");
         }
     }

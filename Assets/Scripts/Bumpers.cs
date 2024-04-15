@@ -8,6 +8,7 @@ public class Bumpers : MonoBehaviour
     Rigidbody playerBody;
     DivePunch playerDP;
     [SerializeField] int constantFactor; // Factor to multiply upwards force by. SET IN THE INSPECTOR!
+    [SerializeField] private AudioClip[] carbump;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class Bumpers : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             playerBody.AddForce(Vector3.up * playerGSPX.gravityScale * constantFactor, ForceMode.VelocityChange);
-
+            SoundFXManager.Instance.PlayRandomSoundFXClip(carbump, transform, 0.6f);
             Debug.Log("Bumper Bounce!");
         }        
     }

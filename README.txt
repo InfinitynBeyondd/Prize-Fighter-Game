@@ -64,3 +64,4 @@ KNOWN BUGS:
 •Claw Boss - If the claw is already descending when the hologram triggered to distract it is set active, it will not target the hologram and get stuck. It is still able to be attacked in this case, and hitting the boss will trigger the end of the fight.
 •Collision Detection - Collision can be inconsistent, as players will sometimes be treated as if they are airborne on a ledge and fall until being considered on solid ground. Players can escape by utilizing the reset gravity of the dive punch and grapple, but it feels tedious and buggy.
 •Cones - Cones are not deleted on attack, and instead fall over because the wrong transform is deleted.
+•Gallery - Sometimes, it will take the Gallery multiple opens and closes to detect the acquired stickers. The game also stops running when returning to the Title Screen after the final boss, and the only thing the player can do is quit out.

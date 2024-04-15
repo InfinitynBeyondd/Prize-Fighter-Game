@@ -62,7 +62,7 @@ public class PlayerBehavior : MonoBehaviour
 
         // Makes the cursor invisible on screen (will be used in finished release only, not during debugging).
         Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.visible = false;
 
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.        

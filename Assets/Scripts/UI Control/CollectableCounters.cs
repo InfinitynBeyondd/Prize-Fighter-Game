@@ -19,12 +19,12 @@ public class CollectableCounters : MonoBehaviour
     {
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         stickerCount.text = "Stickers: " + gM.stickersCollected.ToString();
-        coinCount.text = "Coins: " + gM.coinsCollected.ToString();
+        coinCount.text = " " + gM.coinsCollected.ToString();
     }
 
     public void UpdateCollectedCount() 
     {
         stickerCount.text = "Stickers: " + gM.stickersCollected.ToString();
-        coinCount.text = "Coins: " + gM.coinsCollected.ToString();
+        coinCount.text = " " + gM.coinsCollected.ToString();
     }
 }

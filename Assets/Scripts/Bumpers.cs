@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bumpers : MonoBehaviour
-{    
-    GravityScalePhysX playerGSPX;
-    Rigidbody playerBody;
-    DivePunch playerDP;
+{
+    [SerializeField] GravityScalePhysX playerGSPX;
+    [SerializeField] Rigidbody playerBody;
+    [SerializeField] DivePunch playerDP;
     [SerializeField] int constantFactor; // Factor to multiply upwards force by. SET IN THE INSPECTOR!
     [SerializeField] private AudioClip[] carbump;
 
@@ -20,7 +20,7 @@ public class Bumpers : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player" || collision.transform.tag == "PlayerFeet")
         {
             playerBody.AddForce(Vector3.up * playerGSPX.gravityScale * constantFactor, ForceMode.VelocityChange);
             SoundFXManager.Instance.PlayRandomSoundFXClip(carbump, transform, 0.6f);

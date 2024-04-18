@@ -18,15 +18,17 @@ public class PlayerBehavior : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] Transform groundCheck; // Empty GameObject at player's feet that casts a sphere, detecting if the ground layer is stood on.
     public LayerMask groundLayer; // Layer mask determining what is a ground layer.    
-    public float gCR = .35f; // Ground Check Radius
-    
+    [SerializeField] float gCR; // Ground Check Radius
+    [SerializeField] float playerScale; // Test variable that returns the player's scale across scenes.
+    [SerializeField] float gCRAndScaleProduct;
+
     // ANIMATION CONTROLS
     bool isWalking;
     bool isFalling;
 
     public bool IsGrounded() // Bool that says when the player is on a ground layer- a small sphere is cast at the player's feet to determine if they're standing on solid ground.
-    {        
-        return Physics.CheckSphere(groundCheck.position, gCR, groundLayer);
+    {
+        return Physics.CheckSphere(groundCheck.position, gCRAndScaleProduct, groundLayer);        
     }
 
     [SerializeField] private float groundDrag = 3f; // The amount of drag experienced when moving on the ground.
@@ -54,6 +56,8 @@ public class PlayerBehavior : MonoBehaviour
     public Animator m_Animator;
     [SerializeField] private AudioClip[] hexdogJumps;
 
+    RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +71,9 @@ public class PlayerBehavior : MonoBehaviour
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Get reference to GameManager script.
         gSPX = GetComponent<GravityScalePhysX>(); // Get reference to GravityScalePhysX script.        
         m_Animator.GetComponentInChildren<Animator>(); // Get reference to Animator.
+
+        playerScale = transform.localScale.z;
+        gCRAndScaleProduct = gCR * playerScale;
     }
 
     // Update is called once per frame
@@ -102,6 +109,8 @@ public class PlayerBehavior : MonoBehaviour
         {
             cTCounter = 0f;
         }
+
+        //Physics.SphereCast(groundCheck.position, gCR, Vector3.down, out hit);
 
     }
 
@@ -282,6 +291,12 @@ public class PlayerBehavior : MonoBehaviour
     private void ResetRestrictions() 
     { 
         activeGrapple = false; 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(groundCheck.transform.position, gCRAndScaleProduct);        
     }
 
 }

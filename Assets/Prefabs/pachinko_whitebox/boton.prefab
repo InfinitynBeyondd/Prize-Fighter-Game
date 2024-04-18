@@ -101,7 +101,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -139,7 +139,7 @@ Transform:
   - {fileID: 6821031746710006614}
   - {fileID: 8320249349545212110}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2968578893103529597
 Animator:
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 4359449480531707496}
   - component: {fileID: 6589173138922580883}
   - component: {fileID: 2969170700501991264}
+  - component: {fileID: 2342729852521500122}
   m_Layer: 3
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -264,7 +265,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -286,3 +287,24 @@ MonoBehaviour:
   buttonIsPressed: 0
   partneredAsset: {fileID: 0}
   buttonPressed: {fileID: 8300000, guid: f3ead4bc55909ba4fbd8d7c7494f3c14, type: 3}
+--- !u!65 &2342729852521500122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732015088374451381}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2244066, y: 4.110853, z: 1.219636}
+  m_Center: {x: 0.00238876, y: -0.96187395, z: -0.0047716666}

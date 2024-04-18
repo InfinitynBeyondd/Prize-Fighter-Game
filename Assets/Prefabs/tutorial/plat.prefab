@@ -219,7 +219,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9016784557062998401}
-  m_Layer: 0
+  - component: {fileID: 9200776692205587828}
+  m_Layer: 3
   m_Name: plat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,6 +245,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9200776692205587828
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5518692786911942591}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15.399445, y: 2.3325806, z: 15.852501}
+  m_Center: {x: 0.00630188, y: -0.4384079, z: 2.4263115}
 --- !u!1 &6595874682374720066
 GameObject:
   m_ObjectHideFlags: 0

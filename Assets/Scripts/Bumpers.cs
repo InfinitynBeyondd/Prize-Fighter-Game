@@ -23,7 +23,7 @@ public class Bumpers : MonoBehaviour
         if (collision.transform.tag == "Player" || collision.transform.tag == "PlayerFeet")
         {
             playerBody.AddForce(Vector3.up * playerGSPX.gravityScale * constantFactor, ForceMode.VelocityChange);
-            SoundFXManager.Instance.PlayRandomSoundFXClip(carbump, transform, 0.6f);
+            SoundFXManager.Instance.PlayRandomSoundFXClip(carbump, transform, 0.6f, 1f);
             Debug.Log("Bumper Bounce!");
         }        
     }

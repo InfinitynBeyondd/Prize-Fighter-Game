@@ -62,7 +62,7 @@ public class FrogGroundCheck : MonoBehaviour
         {
             // MULTIPLY THE ENGINE FORCES BY A PROPER VALUE - DO NOT SET IT TO ANYTHING UNDER 1!
             frogBody.AddForce(new Vector3(0, buildMultiple * frogJumpForce, 0), ForceMode.VelocityChange);
-            SoundFXManager.Instance.PlayRandomSoundFXClip(frogJumps, transform, 0.2f);            
+            SoundFXManager.Instance.PlayRandomSoundFXClip(frogJumps, transform, 0.2f, 1f);
         }
         else 
         {

@@ -31,7 +31,7 @@ public class GroundedPunch : MonoBehaviour
             attacking = groundAttackHitbox.activeSelf;
             pB.m_Animator.SetBool("isPunching", attacking);
             StartCoroutine("AttackReset");
-            SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogPunch, transform, 0.7f);
+            SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogPunch, transform, 0.7f, 0.2f);
         }
     }
 

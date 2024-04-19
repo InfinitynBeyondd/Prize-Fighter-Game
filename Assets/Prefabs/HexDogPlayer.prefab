@@ -124,6 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1761879701594457643}
+  - component: {fileID: 2300308130756128072}
   m_Layer: 7
   m_Name: Orientation
   m_TagString: Untagged
@@ -146,6 +147,14 @@ Transform:
   m_Father: {fileID: 7783715760353345192}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &2300308130756128072
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833871630333869490}
+  m_Enabled: 1
 --- !u!1 &4991780463217914629
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +367,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   gCR: 0.5
+  playerScale: 0
+  gCRAndScaleProduct: 0
   groundDrag: 3
   jumpForce: 25
   airMultiplier: 0.25

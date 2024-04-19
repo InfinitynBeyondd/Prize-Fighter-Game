@@ -33,7 +33,7 @@ public class SoundFXManager : MonoBehaviour
 
     }
 
-    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume, float spatialBlend)
     {
         int rand = Random.Range(0, audioClip.Length);
 
@@ -41,6 +41,7 @@ public class SoundFXManager : MonoBehaviour
 
         audioSource.clip = audioClip[rand];
         audioSource.volume = volume;
+        audioSource.spatialBlend = spatialBlend;
         audioSource.Play();
         float clipLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);

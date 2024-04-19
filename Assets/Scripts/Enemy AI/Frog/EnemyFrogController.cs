@@ -119,7 +119,7 @@ public class EnemyFrogController : MonoBehaviour
 
         frogBody.AddForce(new Vector3(0, buildMultiple * frogJumpForce, 0), ForceMode.VelocityChange);
 
-        SoundFXManager.Instance.PlayRandomSoundFXClip(frogJumps, transform, 0.2f);
+        SoundFXManager.Instance.PlayRandomSoundFXClip(frogJumps, transform, 0.2f, 1f);
 
     }
 

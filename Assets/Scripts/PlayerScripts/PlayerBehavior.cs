@@ -228,7 +228,7 @@ public class PlayerBehavior : MonoBehaviour
                 rB.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
                 m_Animator.SetBool("isJumpMidAir", true);
 
-                SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogJumps, transform, 0.3f);
+                SoundFXManager.Instance.PlayRandomSoundFXClip(hexdogJumps, transform, 0.3f, 0.5f);
             }
 
             // The counter for the player's midair jumps increases with each jump performed whenever IsGrounded() is false.

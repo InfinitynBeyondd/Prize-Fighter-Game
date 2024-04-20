@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6610070892226666574
+--- !u!114 &-2640439103790648116
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: innerCab
+  m_Name: coinSlotLB
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -69,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: d091cacd471c34a44bf14ee05606ac2a, type: 3}
+        m_Texture: {fileID: 2800000, guid: ffdf4fdd884dd864c8b75d2aa8791876, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -81,7 +81,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 9148e7ca5ad6286459ce1e3565bc5b8c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 30b0cf7645e203a419f66ca35abe39db, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ClippingMask:
@@ -101,7 +101,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
-        m_Texture: {fileID: 2800000, guid: eefad21fd9d397d45a0e1c4a123c8d53, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7cab9de4f1bd6b1419268b92e2d84497, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
@@ -141,7 +141,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d091cacd471c34a44bf14ee05606ac2a, type: 3}
+        m_Texture: {fileID: 2800000, guid: ffdf4fdd884dd864c8b75d2aa8791876, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -524,8 +524,8 @@ Material:
     - _utsVersionY: 9
     - _utsVersionZ: 6
     m_Colors:
-    - _1st_ShadeColor: {r: 0.5, g: 0.26640058, b: 0.034905642, a: 1}
-    - _2nd_ShadeColor: {r: 0.9339623, g: 0.6331288, b: 0.3119081, a: 1}
+    - _1st_ShadeColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+    - _2nd_ShadeColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}

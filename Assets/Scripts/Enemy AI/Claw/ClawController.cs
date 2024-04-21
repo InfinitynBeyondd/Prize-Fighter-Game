@@ -15,10 +15,11 @@ public class ClawController : MonoBehaviour
     public int findToDescendDelay;
 
     [Header("TARGET REFERENCES")]
+    [SerializeField] Transform clawTargetsParent; // Parent transform of all the target spots.
     [SerializeField] Transform clawTargets; // Target spots the claw will aim between. 
     [SerializeField] int clawTargetIndex; // Index of the target array that the claw is headed towards.    
     [SerializeField] Transform[] clawTargetsArray;
-    Queue<Transform> clawTargetsQueue = new Queue<Transform>();
+    public Queue<Transform> clawTargetsQueue = new Queue<Transform>();
 
     public enum StateOfClaw { Hunting, Distracted, Damaged } // Enum that trafcks the state of the claw and controls movement patterns.
     public StateOfClaw currentState;
@@ -38,14 +39,17 @@ public class ClawController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        currentState = StateOfClaw.Hunting;
+    {        
         bossHitsTaken = 0;
+        clawTargetsParent = GameObject.FindGameObjectWithTag("BossTargets").GetComponent<Transform>();
+        SetClawTargets();
+    }
 
+    private void Awake()
+    {
         clawHurtbox.gameObject.SetActive(false);
         clawHitbox.gameObject.SetActive(false);
-
-        SetClawTargetsForFirstPhase();
+        currentState = StateOfClaw.Hunting;
     }
 
     // Update is called once per frame
@@ -57,7 +61,7 @@ public class ClawController : MonoBehaviour
         }
 
         //Checks if the player has beaten the boss
-        if (bossHitsTaken > 0)
+        if (bossHitsTaken > 2)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(7);
         }
@@ -70,8 +74,9 @@ public class ClawController : MonoBehaviour
     }
 
     // This function enqueues all the children of claw TARGETS to clawTargetsQueue. This automatically adjusts the array size to fit all the targets.
-    private void SetClawTargetsForFirstPhase()
+    private void SetClawTargets() 
     {
+        clawTargets = clawTargetsParent.GetChild(bossHitsTaken);
 
         for (int i = 0; i < clawTargets.childCount; i++)
         {
@@ -81,7 +86,28 @@ public class ClawController : MonoBehaviour
         clawTargetsArray = new Transform[clawTargets.childCount];
 
         clawTargetsQueue.CopyTo(clawTargetsArray, 0);
+
     }
+
+
+    // When the boss is hit, clawTargets is set to the next phase's targets. The clawTargetsQueue is cleared and reset to become the proper size.
+    public void SetNewClawTargets()
+    {
+        clawTargets = clawTargetsParent.GetChild(bossHitsTaken);
+        clawTargetsQueue.Clear();
+
+        for (int i = 0; i < clawTargets.childCount; i++)
+        {
+            clawTargetsQueue.Enqueue(clawTargets.GetChild(i));
+            clawTargetsArray[i] = null;
+        }
+
+        clawTargetsArray = new Transform[clawTargets.childCount];
+
+        clawTargetsQueue.CopyTo(clawTargetsArray, 0);
+    }
+
+
 
     // Entire Claw should first move from its start position to the target's position.
     void MoveFullClawToTarget() 
@@ -103,10 +129,10 @@ public class ClawController : MonoBehaviour
                 clawAnimator.SetBool("isOpen", true);
 
                 ClawHeadDescendToTarget();
-                SetNextClawTarget();                
+                SetNextClawTarget();
             }
         }
-        else if (currentState == StateOfClaw.Distracted) 
+        else if (currentState == StateOfClaw.Distracted)
         {
             positionAboveTarget = new Vector3(hologramArray[bossHitsTaken].position.x, fullClaw.position.y, hologramArray[bossHitsTaken].position.z);
 
@@ -123,6 +149,11 @@ public class ClawController : MonoBehaviour
             }
 
         }
+        else if (currentState == StateOfClaw.Damaged) 
+        {
+
+        }
+
 
     }
 
@@ -153,7 +184,6 @@ public class ClawController : MonoBehaviour
         else if (currentState == StateOfClaw.Distracted) 
         {            
             clawHurtbox.gameObject.SetActive(true);
-            //Invoke(nameof(ClawHeadGetsHit), findToDescendDelay);
         }
 
     }
@@ -168,6 +198,8 @@ public class ClawController : MonoBehaviour
     {
         clawAnimator.SetBool("isDamaged", true);
         SoundFXManager.Instance.PlaySoundFXClip(clawDamaged, transform, 0.8f);
+        
+        SetNewClawTargets();
         Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
     }
 

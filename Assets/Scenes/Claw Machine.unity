@@ -769,6 +769,7 @@ MonoBehaviour:
   speedBetweenTargets: 0.15
   descentSpeed: 0.3
   findToDescendDelay: 1
+  clawTargetsParent: {fileID: 0}
   clawTargets: {fileID: 359060740}
   clawTargetIndex: 0
   clawTargetsArray: []
@@ -6712,7 +6713,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: abb91e2195d74b2478db7ed5bb6ccf1b, type: 3}
 --- !u!4 &295250933 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1999493510212619129, guid: abb91e2195d74b2478db7ed5bb6ccf1b,
+  m_CorrespondingSourceObject: {fileID: 141740341586440632, guid: abb91e2195d74b2478db7ed5bb6ccf1b,
     type: 3}
   m_PrefabInstance: {fileID: 295250932}
   m_PrefabAsset: {fileID: 0}
@@ -27154,7 +27155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460103799}
   m_LocalRotation: {x: 0.017388232, y: 0.9578329, z: -0.05935722, w: 0.28058964}
-  m_LocalPosition: {x: 2.0739884, y: 153.4, z: 86.39838}
+  m_LocalPosition: {x: 2.0739884, y: 151.9, z: 86.39838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36097,7 +36098,7 @@ PrefabInstance:
     - target: {fileID: 1097718401267572791, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_XAxis.m_MaxSpeed
-      value: 150
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 1097718401267572791, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -36207,7 +36208,7 @@ PrefabInstance:
     - target: {fileID: 6006668673620289316, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 153.4
+      value: 151.9
       objectReference: {fileID: 0}
     - target: {fileID: 6006668673620289316, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -36322,7 +36323,7 @@ PrefabInstance:
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.4339783
+      value: -0.43397826
       objectReference: {fileID: 0}
     - target: {fileID: 8363999128185483480, guid: d7c2cabf1a25b4149a4e52388c07f5a2,
         type: 3}
@@ -43410,6 +43411,7 @@ MonoBehaviour:
   speedBetweenTargets: 0.15
   descentSpeed: 0.3
   findToDescendDelay: 1
+  clawTargetsParent: {fileID: 0}
   clawTargets: {fileID: 359060740}
   clawTargetIndex: 0
   clawTargetsArray: []

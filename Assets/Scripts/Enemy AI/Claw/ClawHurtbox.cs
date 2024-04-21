@@ -20,6 +20,7 @@ public class ClawHurtbox : MonoBehaviour
             clawController.ClawHeadGetsHit();
 
             clawController.currentState = ClawController.StateOfClaw.Damaged;
+            //clawController.SetNewClawTargets();
 
             Debug.Log("HIT CONFIRMED!");
         }

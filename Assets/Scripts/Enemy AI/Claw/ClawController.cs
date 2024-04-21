@@ -167,6 +167,7 @@ public class ClawController : MonoBehaviour
         Invoke(nameof(ClawHeadClose), findToDescendDelay * 3f);
     }
 
+    // Once the Claw closes, it detects if it's either in the Hunting state or above the hologram. If neither are true, it returns to idle after closing.
     void ClawHeadClose() 
     {
         //Debug.Log("CLAW CLOSES!");
@@ -177,11 +178,11 @@ public class ClawController : MonoBehaviour
 
         Invoke(nameof(TurnOffHitbox), findToDescendDelay);
 
-        if (currentState == StateOfClaw.Hunting)
+        if (currentState == StateOfClaw.Hunting || (fullClaw.position.x != hologramArray[bossHitsTaken].position.x && fullClaw.position.z != hologramArray[bossHitsTaken].position.z))
         {
             Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
         }
-        else if (currentState == StateOfClaw.Distracted) 
+        if (currentState == StateOfClaw.Distracted) 
         {            
             clawHurtbox.gameObject.SetActive(true);
         }

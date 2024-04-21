@@ -15,8 +15,8 @@ public class ClawController : MonoBehaviour
     public int findToDescendDelay;
 
     [Header("TARGET REFERENCES")]
-    [SerializeField] Transform clawTargetsParent; // Parent transform of all the target spots.
-    [SerializeField] Transform clawTargets; // Target spots the claw will aim between. 
+    public Transform clawTargetsParent; // Parent transform of all the target spots.
+    public Transform clawTargets; // Target spots the claw will aim between. 
     [SerializeField] int clawTargetIndex; // Index of the target array that the claw is headed towards.    
     [SerializeField] Transform[] clawTargetsArray;
     public Queue<Transform> clawTargetsQueue = new Queue<Transform>();

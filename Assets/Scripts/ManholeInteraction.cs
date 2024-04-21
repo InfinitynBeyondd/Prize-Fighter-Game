@@ -22,6 +22,7 @@ public class ManholeInteraction : MonoBehaviour
             yAxisRotationSpeed = yAxisMaxRotationSpeed;
             SoundFXManager.Instance.PlaySoundFXClip(manholeSpin, transform, 0.6f);
             Debug.Log("Manhole Punched. Spin Begin!");
+            SpawnCoin();
         }
     }
 
@@ -30,10 +31,7 @@ public class ManholeInteraction : MonoBehaviour
     {
         //transform.Rotate(new Vector3(0, 0f, speedOfSpin), zAxisRotationSpeed * Time.deltaTime);
         transform.Rotate(new Vector3(0, speedOfSpin, 0));
-        manholeMeshCollider.enabled = false;
-        
-        SpawnCoin();
-        
+        manholeMeshCollider.enabled = false;                
     }
 
     // This function should reset the manhole to the neutral position.

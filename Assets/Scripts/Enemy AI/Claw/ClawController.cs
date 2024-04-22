@@ -112,49 +112,52 @@ public class ClawController : MonoBehaviour
     // Entire Claw should first move from its start position to the target's position.
     void MoveFullClawToTarget() 
     {
-
         Vector3 positionAboveTarget;
 
-        if (currentState == StateOfClaw.Hunting)
-        {
-            positionAboveTarget = new Vector3(clawTargetsArray[clawTargetIndex].position.x, fullClaw.position.y, clawTargetsArray[clawTargetIndex].position.z);
+        if (bossHitsTaken < 3) 
+        {               
 
-            if (clawAnimator.GetBool("isRaised"))
+            if (currentState == StateOfClaw.Hunting)
             {
-                fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
+                positionAboveTarget = new Vector3(clawTargetsArray[clawTargetIndex].position.x, fullClaw.position.y, clawTargetsArray[clawTargetIndex].position.z);
+
+                if (clawAnimator.GetBool("isRaised"))
+                {
+                    fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
+                }
+
+                if (fullClaw.position.x == clawTargetsArray[clawTargetIndex].position.x && fullClaw.position.z == clawTargetsArray[clawTargetIndex].position.z)
+                {
+                    clawAnimator.SetBool("isOpen", true);
+
+                    ClawHeadDescendToTarget();
+                    SetNextClawTarget();
+                }
+            }
+            else if (currentState == StateOfClaw.Distracted)
+            {
+                positionAboveTarget = new Vector3(hologramArray[bossHitsTaken].position.x, fullClaw.position.y, hologramArray[bossHitsTaken].position.z);
+
+                if (clawAnimator.GetBool("isRaised"))
+                {
+                    fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
+                }
+
+                if (fullClaw.position.x == hologramArray[bossHitsTaken].position.x && fullClaw.position.z == hologramArray[bossHitsTaken].position.z)
+                {
+                    clawAnimator.SetBool("isOpen", true);
+
+                    ClawHeadDescendToTarget();
+                }
+
+            }
+            else if (currentState == StateOfClaw.Damaged) 
+            {
+                clawHurtbox.enabled = false;
+                Invoke(nameof(SetStateToHunting), findToDescendDelay);
             }
 
-            if (fullClaw.position.x == clawTargetsArray[clawTargetIndex].position.x && fullClaw.position.z == clawTargetsArray[clawTargetIndex].position.z)
-            {
-                clawAnimator.SetBool("isOpen", true);
-
-                ClawHeadDescendToTarget();
-                SetNextClawTarget();
-            }
         }
-        else if (currentState == StateOfClaw.Distracted)
-        {
-            positionAboveTarget = new Vector3(hologramArray[bossHitsTaken].position.x, fullClaw.position.y, hologramArray[bossHitsTaken].position.z);
-
-            if (clawAnimator.GetBool("isRaised"))
-            {
-                fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
-            }
-
-            if (fullClaw.position.x == hologramArray[bossHitsTaken].position.x && fullClaw.position.z == hologramArray[bossHitsTaken].position.z)
-            {
-                clawAnimator.SetBool("isOpen", true);
-
-                ClawHeadDescendToTarget();
-            }
-
-        }
-        else if (currentState == StateOfClaw.Damaged) 
-        {
-
-        }
-
-
     }
 
     // Once the Claw reaches the target's coordinates from above, the head should then descend to hit the target.
@@ -185,6 +188,7 @@ public class ClawController : MonoBehaviour
         if (currentState == StateOfClaw.Distracted) 
         {            
             clawHurtbox.gameObject.SetActive(true);
+            clawHurtbox.enabled = true;
         }
 
     }
@@ -224,6 +228,11 @@ public class ClawController : MonoBehaviour
     void TurnOffHitbox() 
     {
         clawHitbox.gameObject.SetActive(false);
+    }
+
+    void SetStateToHunting() 
+    {
+        currentState = StateOfClaw.Hunting;
     }
 
 }

@@ -41,6 +41,10 @@ public class MainMenuManager : MonoBehaviour
         mainMenuScreen.SetActive(true);
     }
 
+    private void Start()
+    {
+        GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+    }
     //Gallery Functions
     public void GoToGalleryScreen()
     {

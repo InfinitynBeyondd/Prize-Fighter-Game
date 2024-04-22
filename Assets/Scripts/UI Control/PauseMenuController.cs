@@ -11,11 +11,21 @@ public class PauseMenuController : MonoBehaviour
     public GameObject PauseMenuUI;
     public GameObject GalleryMenuUI;
 
-    // Update is called once per frame
-    void Update()
+    [Header("Sticker Sprites")]
+    public Image Sticker1Image;
+    public Sprite CoinPusherSticker;
+    public Image Sticker2Image;
+    public Sprite PachinkoSticker;
+    public Image Sticker3Image;
+    public Sprite ClawSticker;
+
+    public GameManager GameManager;
+
+    private void Start()
     {
-        
+        GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
+
 
     public void ResumeOrPause(InputAction.CallbackContext context)
     {
@@ -73,6 +83,20 @@ public class PauseMenuController : MonoBehaviour
     {
         PauseMenuUI.SetActive(false);
         GalleryMenuUI.SetActive(true);
+
+        //Checks how many stickers are collected and changes the sticker showed depending on that
+        if (GameManager.stickersCollected > 0)
+        {
+            Sticker1Image.sprite = CoinPusherSticker;
+            if (GameManager.stickersCollected > 1)
+            {
+                Sticker2Image.sprite = PachinkoSticker;
+                if (GameManager.stickersCollected > 2)
+                {
+                    Sticker3Image.sprite = ClawSticker;
+                }
+            }
+        }
     }
 
     public void ExitGallery()

@@ -50,14 +50,9 @@ public class MainMenuManager : MonoBehaviour
     {
         mainMenuScreen.SetActive(false);
         gameGalleryScreen.SetActive(true);
-    }
-    public void GoToMainFromGallery()
-    {
-        gameGalleryScreen.SetActive(false);
-        mainMenuScreen.SetActive(true);
 
         //Checks how many stickers are collected and changes the sticker showed depending on that
-        if (GameManager.stickersCollected > 0 )
+        if (GameManager.stickersCollected > 0)
         {
             Sticker1Image.sprite = CoinPusherSticker;
             if (GameManager.stickersCollected > 1)
@@ -69,6 +64,11 @@ public class MainMenuManager : MonoBehaviour
                 }
             }
         }
+}
+    public void GoToMainFromGallery()
+    {
+        gameGalleryScreen.SetActive(false);
+        mainMenuScreen.SetActive(true);
     }
 
     public void GoToHub()

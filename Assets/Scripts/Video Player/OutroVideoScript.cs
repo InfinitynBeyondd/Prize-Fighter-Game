@@ -31,7 +31,7 @@ public class OutroVideoScript : MonoBehaviour
 
     public void TurnOffCutscene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(8);
     }
 
     

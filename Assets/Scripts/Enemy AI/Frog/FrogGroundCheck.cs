@@ -48,12 +48,21 @@ public class FrogGroundCheck : MonoBehaviour
     // When the frog's hitbox no longer intersects with a ground or default layer, its timer will reset to the max value.
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Default"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Default")
+            || other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             frogJumpTimer = frogJumpTimerMax;
         }
     }
 
+    // If a player gets caught under a frog, the frog will jump again to prevent a softlock.
+    private void OnCollisionExit(Collision collider)
+    {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            frogJumpTimer = frogJumpTimerMax;
+        }
+    }
 
     // The frog will jump based on the force assigned to it in the inspector. Once the timer resets, the force will stop being applied.
     private void FrogJump()

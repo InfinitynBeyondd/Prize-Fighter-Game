@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404731017401967036}
+  - component: {fileID: 1546452274538416974}
   m_Layer: 0
   m_Name: frogEnemyWithTargets
   m_TagString: Untagged
@@ -31,8 +32,29 @@ Transform:
   - {fileID: 5229577928621072102}
   - {fileID: 2607864393816966202}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1546452274538416974
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643484171799231910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78a40dbe32a66bd41be98d8c98eeddd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3337659817141229462
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5508079738756465846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -750}
+  m_LocalPosition: {x: 0, y: 0, z: -1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -180,6 +202,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 404731017401967036}
     m_Modifications:
+    - target: {fileID: 3210035925300343589, guid: 4439a05cb50698e428c93366f09ddf7d,
+        type: 3}
+      propertyPath: frogAnim
+      value: 
+      objectReference: {fileID: 1546452274538416974}
     - target: {fileID: 4367733015016493234, guid: 4439a05cb50698e428c93366f09ddf7d,
         type: 3}
       propertyPath: m_RootOrder
@@ -249,6 +276,16 @@ PrefabInstance:
         type: 3}
       propertyPath: frogTargets
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896018071987189532, guid: 4439a05cb50698e428c93366f09ddf7d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896018071987189532, guid: 4439a05cb50698e428c93366f09ddf7d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

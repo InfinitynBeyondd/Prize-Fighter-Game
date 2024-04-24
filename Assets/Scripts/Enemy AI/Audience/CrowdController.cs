@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CrowdController : MonoBehaviour
 {
-    [SerializeField] Animator clawAnimator; // Reference to the Claw Controller.
+    [SerializeField] ClawController clawController; // Reference to the Claw Controller.
     [SerializeField] Animator crowdAnimator; // Reference to the specific Crowd Animator.
 
     // Start is called before the first frame update
@@ -16,11 +16,11 @@ public class CrowdController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (clawAnimator.GetBool("isDamaged"))
+        if (clawController.currentState == ClawController.StateOfClaw.Damaged)
         {
             crowdAnimator.SetBool("bossIsDamaged", true);
         }
-        if (clawAnimator.GetBool("isRaised")) 
+        if (clawController.currentState == ClawController.StateOfClaw.Hunting) 
         {
             crowdAnimator.SetBool("bossIsDamaged", false);
         }

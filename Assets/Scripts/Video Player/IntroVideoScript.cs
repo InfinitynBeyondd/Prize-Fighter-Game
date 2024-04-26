@@ -9,6 +9,10 @@ public class IntroVideoScript : MonoBehaviour
 
     public GameObject videoImage;
     public VideoPlayer introVideoPlayer;
+    public GameObject gameMusic;
+    public bool IsCutscenePlaying = true;
+    public GameObject theProjector;
+
 
     public delegate void VideoPlayerDelegate(VideoPlayer videoPlayer);
     //public static event VideoPlayerDelegate loopPointReached;
@@ -26,11 +30,24 @@ public class IntroVideoScript : MonoBehaviour
         {
             TurnOffCutscene();
         }
+
+        if (Input.anyKeyDown && IsCutscenePlaying == true) 
+        {
+            skipCutscene();
+            IsCutscenePlaying = false;
+        }
     }
 
     public void TurnOffCutscene()
     {
         videoImage.SetActive(false);
+    }
+
+    public void skipCutscene()
+    {
+        transform.gameObject.SetActive(false);
+        gameMusic.SetActive(false);
+        theProjector.SetActive(false);
     }
 
     

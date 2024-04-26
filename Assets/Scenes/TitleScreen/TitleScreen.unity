@@ -692,6 +692,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c67179bd9e88a140b0621221f7aa830, type: 3}
+--- !u!1 &212669561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2998239826189091262, guid: 5c67179bd9e88a140b0621221f7aa830,
+    type: 3}
+  m_PrefabInstance: {fileID: 212669560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &258646820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,6 +3179,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoImage: {fileID: 2127588322}
   introVideoPlayer: {fileID: 964962765}
+  gameMusic: {fileID: 212669561}
+  IsCutscenePlaying: 1
+  theProjector: {fileID: 2127588322}
 --- !u!1 &965156947
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,8 +37,21 @@ public class GameManager : MonoBehaviour
     public void FixedUpdate()
     {
         //Test degug that gets you to other scenes
-        //if (Input.GetKeyUp(KeyCode.O)) {UnityEngine.SceneManagement.SceneManager.LoadScene(2);}
-        //if (Input.GetKeyUp(KeyCode.T)){UnityEngine.SceneManagement.SceneManager.LoadScene(4);}
+
+        //Goes to HUB
+        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad1)) {UnityEngine.SceneManagement.SceneManager.LoadScene(1);}
+
+        //Goes to TUTORIAL
+        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad2)) { UnityEngine.SceneManagement.SceneManager.LoadScene(5); }
+
+        //Goes to COIN PUSHER
+        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad3)) { UnityEngine.SceneManagement.SceneManager.LoadScene(2); }
+
+        //Goes to PACHINKO
+        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad4)) { UnityEngine.SceneManagement.SceneManager.LoadScene(4); }
+
+        //Goes to CLAW MACHINE
+        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad5)) { UnityEngine.SceneManagement.SceneManager.LoadScene(6); }
 
     }
 

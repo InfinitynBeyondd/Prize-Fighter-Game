@@ -71,11 +71,23 @@ public class PauseMenuController : MonoBehaviour
         // If we're in the hub go back to main menu
         if(currentSceneIndex == 1)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(8);
+
+            Time.timeScale = 1f;
+            GameIsPaused = false;
+
+            Cursor.lockState = CursorLockMode.None; // Unlock the cursor
+            Cursor.visible = true; // Make the cursor visible
         }
         else
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+
+            Time.timeScale = 1f;
+            GameIsPaused = false;
+
+            Cursor.lockState = CursorLockMode.Confined; // Unlock the cursor
+            Cursor.visible = false; // Make the cursor visible
         }
     }
 

@@ -9,7 +9,11 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI NPCDialogueText;
     [SerializeField] private float typeSpeed = 10;
     [SerializeField] private AudioClip[] NPCDialogueAudioClip;
+    [SerializeField] private AudioClip[] NPCGreeting;
     [SerializeField] private Animator animationController;
+
+
+    public GameManager GameManager;
 
     private Queue<string> paragraphs = new Queue<string>();
 
@@ -26,6 +30,7 @@ public class DialogueController : MonoBehaviour
     private void Start()
     {
         animationController = gameObject.GetComponent<Animator>();
+        GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
 
     }
 
@@ -71,8 +76,11 @@ public class DialogueController : MonoBehaviour
     {
         if (!gameObject.activeSelf)
         {
-            gameObject.SetActive(true);
+            SoundFXManager.Instance.PlayRandomSoundFXClip(NPCGreeting, transform, 0.7f, 0.2f);
 
+            //invoke, play NPC interaction Anim if exists
+
+            gameObject.SetActive(true);
             animationController.SetTrigger("Interact");
             Debug.Log("playing anim");
         }
@@ -97,6 +105,8 @@ public class DialogueController : MonoBehaviour
             gameObject.SetActive (false);
             
         }
+
+        ConversationEvent();
     }
 
     private IEnumerator TypeDialogueText(string p)
@@ -132,5 +142,13 @@ public class DialogueController : MonoBehaviour
         NPCDialogueText.text = p;
 
         isTyping = false;
+    }
+
+    private void ConversationEvent()
+    {
+        if (!GameManager.hasBeatTutorial)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+        }
     }
 }

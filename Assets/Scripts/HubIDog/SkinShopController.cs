@@ -53,7 +53,7 @@ public class SkinShopController : MonoBehaviour
             {
                 GameManager.coinsCollected -= 10;
                 BoughtSkin1 = true;
-                Skin1Text.text = "Change to Skin 1";
+                Skin1Text.text = "Equip";
             }
             else
             {
@@ -75,7 +75,7 @@ public class SkinShopController : MonoBehaviour
             {
                 GameManager.coinsCollected -= 20;
                 BoughtSkin2 = true;
-                Skin2Text.text = "Change to Skin 2";
+                Skin2Text.text = "Equip";
             }
             else
             {
@@ -97,7 +97,7 @@ public class SkinShopController : MonoBehaviour
             {
                 GameManager.coinsCollected -= 30;
                 BoughtSkin3 = true;
-                Skin3Text.text = "Change to Skin 3";
+                Skin3Text.text = "Equip";
             }
             else
             {
@@ -120,7 +120,7 @@ public class SkinShopController : MonoBehaviour
             {
                 GameManager.coinsCollected -= 40;
                 BoughtSkin4 = true;
-                Skin4Text.text = "Change to Skin 4";
+                Skin4Text.text = "Equip";
             }
             else
             {

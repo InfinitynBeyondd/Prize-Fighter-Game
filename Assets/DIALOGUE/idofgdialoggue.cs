@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class idofgdialoggue : NPC, ITalkable
 {
-    [SerializeField] private DialogueText dialogueText;
+    [SerializeField] public DialogueText dialogueText;
     [SerializeField] private DialogueController dialogueController;
 
     public override void Interact()

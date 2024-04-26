@@ -34,9 +34,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 955751774784009479}
-  - {fileID: 4876080641186787829}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3924145365623803367
 MeshFilter:
@@ -121,6 +120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe1be8a41cad2a4996ba58a5676a1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelPopup: {fileID: 0}
+  levelLocks:
+  - {fileID: 471267931730099004}
+  - {fileID: 0}
+  - {fileID: 0}
+  levelSelect: {fileID: 8300000, guid: 3289b617bde42864988ff859939e7b3f, type: 3}
   SpawnID: 1
   GameManager: {fileID: 0}
   SceneSwitch: {fileID: 0}
@@ -249,12 +254,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103635798810440809}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 0.01012388, y: 1.79, z: -0.7}
-  m_LocalScale: {x: 0.093685366, y: 0.093685366, z: 0.093685366}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.34638596, z: -1.59337}
+  m_LocalScale: {x: 0.6490234, y: 0.6490234, z: 0.6490234}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 168355787336328349}
+  m_Father: {fileID: 955751774784009479}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &471267931730099004
@@ -361,6 +366,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8573332479325717021}
+  - {fileID: 4876080641186787829}
   m_Father: {fileID: 168355787336328349}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

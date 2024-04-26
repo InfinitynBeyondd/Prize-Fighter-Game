@@ -6,7 +6,7 @@ CONTROLS (KEYBOARD):
 •Spacebar - Jump (Double Jump in midair, Wall Jump against walls)
 •Left Click - Attack (Standing Punch on ground, Dive Punch in midair)
 •Right Click - Grapple (Shoots grapple beam from arm and pulls towards grappable surfaces on contact)
-•Spacebar - Change Scene (Hub World Only)
+•E - Interact
 •P - Pause Game
 •ESC - Quit Game
 
@@ -17,11 +17,11 @@ CONTROLS (XBOX CONTROLLER)
 •X - Attack (Standing Punch on ground)
 •B - Dive Punch (Midair only)
 •Right Trigger - Grapple (Shoots grapple beam from arm and pulls towards grappable surfaces on contact)
-•Y/A - Change Scene (Hub World Only)
+•Y - Interact **CURRENTLY ONLY AVAILABLE ON KEYBOARD**
 •Start - Pause Game
 
 HOW TO PLAY:
-•Players enter levels from the hub world, pressing Space/Y/A inside the portal to begin.
+•Players enter levels from the hub world, talking to the NPC at the end of the hub to begin.
 •Players must clear levels by making it to the end, and the tokens they gather will unlock new cosmetics.
 •Stickers can be used to unlock features in the gallery mode.
 

@@ -6581,7 +6581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinShopScreen: {fileID: 1220368951}
-  IDogDialogue: {fileID: 1859867188}
+  IDogDialogue: {fileID: 0}
   GameManager: {fileID: 0}
   PlayerMeshRenderer: {fileID: 0}
   DefaultSkin: {fileID: 2100000, guid: 5bc42b14cfb7ce645a9c051b0cf16b37, type: 2}
@@ -7642,6 +7642,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091316751}
   m_Mesh: {fileID: 3793292951052469749, guid: 0e0d9fe9e077a974b9d1f6a9b3594659, type: 3}
+--- !u!1 &1109798968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 842107438106426683, guid: c16f8c4075e1ec744a6f96b836ca2687,
+    type: 3}
+  m_PrefabInstance: {fileID: 1112759825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1109798974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109798968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5858f4a7797bead48a28f30d3279fa74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisButtonAnimator: {fileID: 1993945789}
+  buttonIsPressed: 0
+  partneredAsset: {fileID: 1220368952}
+  buttonPressed: {fileID: 8300000, guid: f3ead4bc55909ba4fbd8d7c7494f3c14, type: 3}
 --- !u!1001 &1112759825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7717,6 +7739,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680659539678553353, guid: c16f8c4075e1ec744a6f96b836ca2687,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680659539678553353, guid: c16f8c4075e1ec744a6f96b836ca2687,
+        type: 3}
       propertyPath: partneredAsset
       value: 
       objectReference: {fileID: 1220368952}
@@ -7725,10 +7752,15 @@ PrefabInstance:
       propertyPath: buttonIsPressed
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7680659539678553353, guid: c16f8c4075e1ec744a6f96b836ca2687, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 842107438106426683, guid: c16f8c4075e1ec744a6f96b836ca2687,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1109798974}
   m_SourcePrefab: {fileID: 100100000, guid: c16f8c4075e1ec744a6f96b836ca2687, type: 3}
 --- !u!1 &1156989742
 GameObject:
@@ -8342,7 +8374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1220368952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9667,9 +9699,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 983498343}
-        m_TargetAssemblyTypeName: SkinShopController, Assembly-CSharp
-        m_MethodName: ExitShop
+      - m_Target: {fileID: 1109798974}
+        m_TargetAssemblyTypeName: ShopButtonPress, Assembly-CSharp
+        m_MethodName: TurnOffTheGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12159,6 +12191,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2636167234810041626, guid: 918c25ca08f670b4cb764bfa1e7d4923,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.8000488
+      objectReference: {fileID: 0}
     - target: {fileID: 5694529582520529621, guid: 918c25ca08f670b4cb764bfa1e7d4923,
         type: 3}
       propertyPath: m_IsActive
@@ -15024,6 +15061,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983644557}
   m_CullTransparentMesh: 1
+--- !u!95 &1993945789 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8257412519760058932, guid: c16f8c4075e1ec744a6f96b836ca2687,
+    type: 3}
+  m_PrefabInstance: {fileID: 1112759825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1995025447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4662417981931120074, guid: 10542a2bcf9ecc64ab2a857ec4c617ff,
@@ -15317,6 +15360,11 @@ PrefabInstance:
       propertyPath: DefaultSkin
       value: 
       objectReference: {fileID: 2100000, guid: 5bc42b14cfb7ce645a9c051b0cf16b37, type: 2}
+    - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
+        type: 3}
+      propertyPath: coinsCollected
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
       propertyPath: hasBeatTutorial

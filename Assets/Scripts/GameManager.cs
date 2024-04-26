@@ -34,14 +34,12 @@ public class GameManager : MonoBehaviour
         currentPlayerSkin = DefaultSkin;
     }
 
-    private void Update()
+    public void FixedUpdate()
     {
-        SkinnedMeshRenderer PlayerMeshRenderer = GameObject.FindWithTag("CharacterBody").GetComponent<SkinnedMeshRenderer>();
-        if (PlayerMeshRenderer.material == currentPlayerSkin && skinCheck)
-        {
-            PlayerMeshRenderer.material = currentPlayerSkin;
-            skinCheck = false;
-        }
+        //Test degug that gets you to other scenes
+        //if (Input.GetKeyUp(KeyCode.O)) {UnityEngine.SceneManagement.SceneManager.LoadScene(2);}
+        //if (Input.GetKeyUp(KeyCode.T)){UnityEngine.SceneManagement.SceneManager.LoadScene(4);}
+
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

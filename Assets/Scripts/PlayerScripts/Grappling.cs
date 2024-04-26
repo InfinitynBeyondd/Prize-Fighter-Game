@@ -59,7 +59,7 @@ public class Grappling : MonoBehaviour
         if (context.performed)
         {
             Debug.Log("I'm starting to grapple.");
-            SoundFXManager.Instance.PlaySoundFXClip(hexdogGrapple, transform, 0.5f);
+            SoundFXManager.Instance.PlaySoundFXClip(hexdogGrapple, transform, 0.4f, 0.2f);
             if (grapplingCdTimer > 0)
             {
                 return;

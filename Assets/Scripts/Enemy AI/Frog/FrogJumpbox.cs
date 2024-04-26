@@ -11,7 +11,7 @@ public class FrogJumpbox : MonoBehaviour
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            SoundFXManager.Instance.PlaySoundFXClip(frogJump, transform, 0.7f);
+            SoundFXManager.Instance.PlaySoundFXClip(frogJump, transform, 0.7f, 0.3f);
             Debug.Log("bounced");
 
         }

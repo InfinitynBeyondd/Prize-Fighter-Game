@@ -33,7 +33,7 @@ public abstract class TRIGGER : MonoBehaviour
     {
         Trigger();
         
-        SoundFXManager.Instance.PlaySoundFXClip(diagPopup, transform, 0.8f);
+        SoundFXManager.Instance.PlaySoundFXClip(diagPopup, transform, 0.5f, 0f);
         Tcollider.enabled = false;
     }
 

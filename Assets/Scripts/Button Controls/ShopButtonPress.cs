@@ -36,7 +36,7 @@ public class ShopButtonPress : MonoBehaviour
         if (other.CompareTag("Attack") && buttonIsPressed == false) 
         {
             buttonIsPressed = true;
-            SoundFXManager.Instance.PlaySoundFXClip(buttonPressed, transform, 0.6f);
+            SoundFXManager.Instance.PlaySoundFXClip(buttonPressed, transform, 0.4f, 0.2f);
 
         }
     }

@@ -59,7 +59,7 @@ public class DivePunch : MonoBehaviour
         gSPX.gravityScale = 0;
         divePunchCall = true;
         pB.m_Animator.SetBool("isDiveHolding", divePunchCall);
-        SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch1, transform, 0.5f);
+        SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch1, transform, 0.7f, 0.2f);
     }
     
     // Coroutine that forces the descent to be faster than the usual falling speed.
@@ -71,7 +71,7 @@ public class DivePunch : MonoBehaviour
         pB.m_Animator.SetBool("isDiveHolding", divePunchCall);
         pB.m_Animator.SetBool("isDiving", true);
         divePunchHitbox.SetActive(true);
-        SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch2, transform, 0.5f);
+        SoundFXManager.Instance.PlaySoundFXClip(hexdogdivePunch2, transform, 0.7f, 0.2f);
     }
 
     // Player has less control over the character while dive punching.

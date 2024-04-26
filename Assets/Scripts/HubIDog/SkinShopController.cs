@@ -49,9 +49,9 @@ public class SkinShopController : MonoBehaviour
         if (BoughtSkin1 == false)
         {
             //If the player has the minimum amount of coins tyhen it subtract them
-            if (GameManager.coinsCollected >= 10)
+            if (GameManager.coinsCollected >= 25)
             {
-                GameManager.coinsCollected -= 10;
+                GameManager.coinsCollected -= 25;
                 BoughtSkin1 = true;
                 Skin1Text.text = "Equip";
             }
@@ -71,9 +71,9 @@ public class SkinShopController : MonoBehaviour
     {
         if (BoughtSkin2 == false)
         {
-            if (GameManager.coinsCollected >= 20)
+            if (GameManager.coinsCollected >= 30)
             {
-                GameManager.coinsCollected -= 20;
+                GameManager.coinsCollected -= 30;
                 BoughtSkin2 = true;
                 Skin2Text.text = "Equip";
             }
@@ -93,9 +93,9 @@ public class SkinShopController : MonoBehaviour
     {
         if (BoughtSkin3 == false)
         {
-            if (GameManager.coinsCollected >= 30)
+            if (GameManager.coinsCollected >= 35)
             {
-                GameManager.coinsCollected -= 30;
+                GameManager.coinsCollected -= 35;
                 BoughtSkin3 = true;
                 Skin3Text.text = "Equip";
             }

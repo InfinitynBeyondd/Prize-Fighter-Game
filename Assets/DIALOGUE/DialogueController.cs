@@ -82,7 +82,7 @@ public class DialogueController : MonoBehaviour
 
             gameObject.SetActive(true);
             animationController.SetTrigger("Interact");
-            Debug.Log("playing anim");
+
         }
 
 
@@ -127,7 +127,10 @@ public class DialogueController : MonoBehaviour
             displayedText = NPCDialogueText.text.Insert(alphaIndex, HTML_ALPHA);
             NPCDialogueText.text = displayedText;
 
-            SoundFXManager.Instance.PlayRandomSoundFXClip(NPCDialogueAudioClip, transform, 0.1f, 0f);
+            if (alphaIndex % 2 == 0)
+            {
+                SoundFXManager.Instance.PlayRandomSoundFXClip(NPCDialogueAudioClip, transform, 0.1f, 0f);
+            }
 
             yield return new WaitForSeconds(MAX_TYPE_TIME / typeSpeed);
         }

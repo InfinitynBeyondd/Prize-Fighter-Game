@@ -47,7 +47,7 @@ public class LevelSelect : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame && WithinInteract())
         {
             //Scene transition
-            SoundFXManager.Instance.PlaySoundFXClip(levelSelect, transform, 0.3f);
+            SoundFXManager.Instance.PlaySoundFXClip(levelSelect, transform, 0.4f, 0f);
             Debug.Log("level selected");
         }
 

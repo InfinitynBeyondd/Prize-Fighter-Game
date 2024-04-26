@@ -20,7 +20,7 @@ public class ManholeInteraction : MonoBehaviour
         {
             spinInitiated = true;
             yAxisRotationSpeed = yAxisMaxRotationSpeed;
-            SoundFXManager.Instance.PlaySoundFXClip(manholeSpin, transform, 0.6f);
+            SoundFXManager.Instance.PlaySoundFXClip(manholeSpin, transform, 0.4f, 0.2f);
             Debug.Log("Manhole Punched. Spin Begin!");
             SpawnCoin();
         }

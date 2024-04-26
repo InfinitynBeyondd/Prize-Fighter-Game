@@ -17,7 +17,7 @@ public class FrogHitbox : MonoBehaviour
             playerVelocity = playerBody.velocity;
 
             playerBody.AddForce(new Vector3(dispelForce, dispelForce, dispelForce) + playerVelocity, ForceMode.Impulse);
-            SoundFXManager.Instance.PlaySoundFXClip(playerHit, transform, 0.5f);
+            SoundFXManager.Instance.PlaySoundFXClip(playerHit, transform, 0.4f, 0.8f);
             Debug.Log("Frog Hitbox Entered: Flinging back!");
         }
     }

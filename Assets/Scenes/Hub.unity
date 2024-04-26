@@ -240,12 +240,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 594955512}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &74855497 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
-    type: 3}
-  m_PrefabInstance: {fileID: 594955512}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &74855498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &143222519
 Transform:
   m_ObjectHideFlags: 0
@@ -578,12 +572,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 74855497}
   - {fileID: 1918427449}
   - {fileID: 837615493}
   - {fileID: 848773440}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &174671366
 PrefabInstance:
@@ -3149,13 +3142,13 @@ PrefabInstance:
     - target: {fileID: 2627672862565647163, guid: 5c67179bd9e88a140b0621221f7aa830,
         type: 3}
       propertyPath: m_Volume
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2627672862565647163, guid: 5c67179bd9e88a140b0621221f7aa830,
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: fed0c1295e30cfb459e864f6a101c959, type: 3}
+      objectReference: {fileID: 8300000, guid: c552787a090f07641b92f54df421738a, type: 3}
     - target: {fileID: 2627672862565647163, guid: 5c67179bd9e88a140b0621221f7aa830,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -4296,7 +4289,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 143222519}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 31965916459754823, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
@@ -4306,32 +4299,32 @@ PrefabInstance:
     - target: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.1781983
+      value: 6.178199
       objectReference: {fileID: 0}
     - target: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 6.1781983
+      value: 6.178199
       objectReference: {fileID: 0}
     - target: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -36.46
       objectReference: {fileID: 0}
     - target: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 57.35
       objectReference: {fileID: 0}
     - target: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.21
       objectReference: {fileID: 0}
     - target: {fileID: 907230000433086733, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
@@ -4388,6 +4381,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2508125134144780319, guid: c16756803f7998045a12cb47a7557855,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 11400000, guid: b9b1c28140fd7aa418139df80924e1b6,
+        type: 2}
     - target: {fileID: 2508125134144780319, guid: c16756803f7998045a12cb47a7557855,
         type: 3}
       propertyPath: isNPC.m_Bits
@@ -5554,7 +5553,7 @@ Transform:
   m_Children:
   - {fileID: 1375238828}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 50.601, z: 0}
 --- !u!114 &852172998
 MonoBehaviour:
@@ -7887,7 +7886,7 @@ Transform:
   - {fileID: 7897457907615331810}
   - {fileID: 325643732}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1069188932 stripped
 Transform:
@@ -7962,7 +7961,7 @@ PrefabInstance:
     - target: {fileID: 5714136455210719974, guid: c16f8c4075e1ec744a6f96b836ca2687,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5714136455210719974, guid: c16f8c4075e1ec744a6f96b836ca2687,
         type: 3}
@@ -8582,7 +8581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "20\xA2"
+  m_text: "25\xA2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09dd5489b03c9004aa9efbb4eb39173c, type: 2}
   m_sharedMaterial: {fileID: -7875337616156956903, guid: 09dd5489b03c9004aa9efbb4eb39173c,
@@ -9045,7 +9044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "40\xA2"
+  m_text: "35\xA2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09dd5489b03c9004aa9efbb4eb39173c, type: 2}
   m_sharedMaterial: {fileID: -7875337616156956903, guid: 09dd5489b03c9004aa9efbb4eb39173c,
@@ -9131,6 +9130,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 82534126332941988, guid: 88f0cd8243791ae40aa0421fb9f0cc7b,
+        type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1080202283}
     - target: {fileID: 82534126332941988, guid: 88f0cd8243791ae40aa0421fb9f0cc7b,
         type: 3}
       propertyPath: NPCGreeting
@@ -10809,7 +10813,7 @@ PrefabInstance:
     - target: {fileID: 7783715760353345192, guid: abb91e2195d74b2478db7ed5bb6ccf1b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7783715760353345192, guid: abb91e2195d74b2478db7ed5bb6ccf1b,
         type: 3}
@@ -14664,7 +14668,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "50\xA2"
+  m_text: "40\xA2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09dd5489b03c9004aa9efbb4eb39173c, type: 2}
   m_sharedMaterial: {fileID: -7875337616156956903, guid: 09dd5489b03c9004aa9efbb4eb39173c,

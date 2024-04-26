@@ -34,7 +34,7 @@ public class ItemCollection : MonoBehaviour
         if (other.transform.CompareTag("Player") && this.transform.CompareTag("Sticker"))
         {
             Debug.Log("Got a Sticker!");
-            SoundFXManager.Instance.PlaySoundFXClip(stickerCollect, transform, 0.6f);
+            SoundFXManager.Instance.PlaySoundFXClip(stickerCollect, transform, 0.7f, 0f);
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
             this.gameObject.GetComponent<MeshCollider>().enabled = false;
             gM.stickersCollected++;
@@ -53,7 +53,7 @@ public class ItemCollection : MonoBehaviour
             this.gameObject.SetActive(false);
             gM.coinsCollected++;
             cCounters.UpdateCollectedCount();
-            SoundFXManager.Instance.PlaySoundFXClip(coinCollect, transform, 0.7f);
+            SoundFXManager.Instance.PlaySoundFXClip(coinCollect, transform, 0.5f, 0f);
         }
     }
 

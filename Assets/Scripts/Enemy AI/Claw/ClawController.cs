@@ -175,7 +175,7 @@ public class ClawController : MonoBehaviour
     {
         //Debug.Log("CLAW CLOSES!");
         Invoke(nameof(TurnOnHitbox), findToDescendDelay / 2f);
-        SoundFXManager.Instance.PlaySoundFXClip(clawClose, transform, 0.8f);
+        //SoundFXManager.Instance.PlaySoundFXClip(clawClose, transform, 0.7f, 0.2f);
         clawAnimator.SetBool("isDescending", false);
         clawAnimator.SetBool("isOpen", false);
 
@@ -202,7 +202,7 @@ public class ClawController : MonoBehaviour
     public void ClawHeadGetsHit() 
     {
         clawAnimator.SetBool("isDamaged", true);
-        SoundFXManager.Instance.PlaySoundFXClip(clawDamaged, transform, 0.8f);
+        //SoundFXManager.Instance.PlaySoundFXClip(clawDamaged, transform, 0.7f, 0.2f);
         
         SetNewClawTargets();
         Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);

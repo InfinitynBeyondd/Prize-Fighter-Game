@@ -31,7 +31,7 @@ public class ButtonPressing : MonoBehaviour
         if (other.CompareTag("Attack")) 
         {
             buttonIsPressed = true;
-            SoundFXManager.Instance.PlaySoundFXClip(buttonPressed, transform, 0.6f);
+            SoundFXManager.Instance.PlaySoundFXClip(buttonPressed, transform, 0.5f, 0.2f);
 
         }
     }

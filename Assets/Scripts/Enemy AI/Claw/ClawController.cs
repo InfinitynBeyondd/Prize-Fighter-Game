@@ -128,7 +128,7 @@ public class ClawController : MonoBehaviour
 
                 if (fullClaw.position.x == clawTargetsArray[clawTargetIndex].position.x && fullClaw.position.z == clawTargetsArray[clawTargetIndex].position.z)
                 {
-                    clawAnimator.SetBool("isOpen", true);
+                    //clawAnimator.SetBool("isOpen", true);
 
                     ClawHeadDescendToTarget();
                     SetNextClawTarget();
@@ -140,12 +140,12 @@ public class ClawController : MonoBehaviour
 
                 if (clawAnimator.GetBool("isRaised"))
                 {
-                    fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, speedBetweenTargets);
+                    fullClaw.position = Vector3.MoveTowards(fullClaw.position, positionAboveTarget, .5f);
                 }
 
                 if (fullClaw.position.x == hologramArray[bossHitsTaken].position.x && fullClaw.position.z == hologramArray[bossHitsTaken].position.z)
                 {
-                    clawAnimator.SetBool("isOpen", true);
+                    //clawAnimator.SetBool("isOpen", true);
 
                     ClawHeadDescendToTarget();
                 }
@@ -164,6 +164,7 @@ public class ClawController : MonoBehaviour
     void ClawHeadDescendToTarget() 
     {
         //Debug.Log("DESCENT BEGINS NOW!");
+        //speedBetweenTargets = 0f;
         clawAnimator.SetBool("isRaised", false);
         clawAnimator.SetBool("isDescending", true);
         //SoundFXManager.Instance.PlaySoundFXClip(clawDescend, transform, 0.7f);
@@ -196,7 +197,9 @@ public class ClawController : MonoBehaviour
     void ClawHeadReturnToIdle() 
     {
         //Debug.Log("Claw returns to neutral.");
-        clawAnimator.SetBool("isRaised", true);        
+        clawAnimator.SetBool("isRaised", true);
+        clawAnimator.SetBool("isDamaged", false);
+        //speedBetweenTargets = 0.5f;
     }
 
     public void ClawHeadGetsHit() 

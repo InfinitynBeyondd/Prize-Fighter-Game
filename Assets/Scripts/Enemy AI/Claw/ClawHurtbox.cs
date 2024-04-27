@@ -7,7 +7,7 @@ public class ClawHurtbox : MonoBehaviour
     ClawController clawController;
     [SerializeField] GameObject clawPlatformParent;
     [SerializeField] GameObject[] clawPlatforms;
-    [SerializeField] private Animator phaseAC;
+    [SerializeField] private Animator phaseAC;    
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,7 @@ public class ClawHurtbox : MonoBehaviour
             clawController.ClawHeadGetsHit();
 
             clawController.currentState = ClawController.StateOfClaw.Damaged;
+            //clawController.clawMatIndex = 1;
             //Invoke("ClawPhaseSet", 2.0f);
 
             //clawController.SetNewClawTargets();

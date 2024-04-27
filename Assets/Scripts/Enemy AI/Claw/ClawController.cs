@@ -13,6 +13,9 @@ public class ClawController : MonoBehaviour
     public float speedBetweenTargets;
     public float descentSpeed;
     public int findToDescendDelay;
+    //public int clawMatIndex;
+    [SerializeField] Material[] clawMaterials;
+    [SerializeField] Renderer clawRenderer;
 
     [Header("TARGET REFERENCES")]
     public Transform clawTargetsParent; // Parent transform of all the target spots.
@@ -41,6 +44,7 @@ public class ClawController : MonoBehaviour
     void Start()
     {        
         bossHitsTaken = 0;
+        //clawMatIndex = 0;
         clawTargetsParent = GameObject.FindGameObjectWithTag("BossTargets").GetComponent<Transform>();
         SetClawTargets();
     }
@@ -50,6 +54,7 @@ public class ClawController : MonoBehaviour
         clawHurtbox.gameObject.SetActive(false);
         clawHitbox.gameObject.SetActive(false);
         currentState = StateOfClaw.Hunting;
+        clawRenderer.sharedMaterial = clawMaterials[0];
     }
 
     // Update is called once per frame
@@ -119,6 +124,7 @@ public class ClawController : MonoBehaviour
 
             if (currentState == StateOfClaw.Hunting)
             {
+                clawRenderer.sharedMaterial = clawMaterials[0];
                 positionAboveTarget = new Vector3(clawTargetsArray[clawTargetIndex].position.x, fullClaw.position.y, clawTargetsArray[clawTargetIndex].position.z);
 
                 if (clawAnimator.GetBool("isRaised"))
@@ -133,9 +139,12 @@ public class ClawController : MonoBehaviour
                     ClawHeadDescendToTarget();
                     SetNextClawTarget();
                 }
+
+
             }
             else if (currentState == StateOfClaw.Distracted)
             {
+                clawRenderer.sharedMaterial = clawMaterials[0];
                 positionAboveTarget = new Vector3(hologramArray[bossHitsTaken].position.x, fullClaw.position.y, hologramArray[bossHitsTaken].position.z);
 
                 if (clawAnimator.GetBool("isRaised"))
@@ -153,6 +162,8 @@ public class ClawController : MonoBehaviour
             }
             else if (currentState == StateOfClaw.Damaged) 
             {
+                clawRenderer.sharedMaterial = clawMaterials[1];
+                TurnOffHitbox();
                 clawHurtbox.enabled = false;
                 Invoke(nameof(SetStateToHunting), findToDescendDelay);
             }
@@ -184,7 +195,8 @@ public class ClawController : MonoBehaviour
 
         if (currentState == StateOfClaw.Hunting || (fullClaw.position.x != hologramArray[bossHitsTaken].position.x && fullClaw.position.z != hologramArray[bossHitsTaken].position.z))
         {
-            Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
+            //Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
+            Invoke(nameof(ClawHeadOpen), findToDescendDelay);
         }
         if (currentState == StateOfClaw.Distracted) 
         {            
@@ -194,12 +206,18 @@ public class ClawController : MonoBehaviour
 
     }
 
+    void ClawHeadOpen() 
+    {
+        clawAnimator.SetBool("isOpen", true);
+        Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
+    }
+
     void ClawHeadReturnToIdle() 
     {
         //Debug.Log("Claw returns to neutral.");
         clawAnimator.SetBool("isRaised", true);
         clawAnimator.SetBool("isDamaged", false);
-        //speedBetweenTargets = 0.5f;
+        //clawMatIndex = 0;
     }
 
     public void ClawHeadGetsHit() 

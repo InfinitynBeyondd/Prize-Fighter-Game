@@ -44,13 +44,13 @@ public class ClawNPCSpawn : MonoBehaviour
     void ClawIdle()
     {
         bossWalls.gameObject.SetActive(true);
-        clawNPC.transform.position = new Vector3(0f, -5f, 0f);
+        //clawNPC.transform.position = new Vector3(0f, -5f, 0f);
 
         clawAC.SetBool("isIdle", true);
     }
     private IEnumerator ClawLeave()
     {
-        clawNPC.transform.position = new Vector3(0f, 0f, 0f);
+        //clawNPC.transform.position = new Vector3(0f, 0f, 0f);
         clawAC.SetBool("isLeaving", true);
         yield return new WaitForSeconds((float)2.5f);
         clawNPC.gameObject.SetActive(false);

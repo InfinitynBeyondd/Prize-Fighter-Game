@@ -392,6 +392,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6128663544551259362}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fdf703b45bf92044898ff9161a532e60,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 180882692491086139}
     - targetCorrespondingSourceObject: {fileID: -8138608133709177847, guid: fdf703b45bf92044898ff9161a532e60,
         type: 3}
       insertIndex: -1
@@ -436,6 +440,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &180882692491086139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393875580335676754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c870d6f996c39e4fa60b54ddddb47c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footsteps:
+  - {fileID: 8300000, guid: 453742883a3382e418f36e3233a6ae5f, type: 3}
+  clawClose: {fileID: 8300000, guid: 453742883a3382e418f36e3233a6ae5f, type: 3}
+  clawDescend: {fileID: 8300000, guid: 453742883a3382e418f36e3233a6ae5f, type: 3}
+  clawHunting: {fileID: 8300000, guid: 453742883a3382e418f36e3233a6ae5f, type: 3}
+  coneHit: {fileID: 8300000, guid: 7d261135189af7a4e9f46ec48706b205, type: 3}
+  coneMove:
+  - {fileID: 8300000, guid: fa257241614d40d489b0b9be196c5623, type: 3}
+  - {fileID: 8300000, guid: f3fd4b96738e87f4a8be56381652d2f4, type: 3}
 --- !u!1 &2518765618283822090 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8138608133709177847, guid: fdf703b45bf92044898ff9161a532e60,

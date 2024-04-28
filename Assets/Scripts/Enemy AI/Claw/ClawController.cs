@@ -34,11 +34,9 @@ public class ClawController : MonoBehaviour
     [SerializeField] Collider clawHitbox;
 
     [Header("SFX")]
-    [SerializeField] private AudioClip clawClose;
-    [SerializeField] private AudioClip clawOpen;
     [SerializeField] private AudioClip clawDamaged;
-    [SerializeField] private AudioClip clawDescend;
-    [SerializeField] private AudioClip clawHunting;
+    [SerializeField] private AudioClip[] audienceCheer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -178,7 +176,6 @@ public class ClawController : MonoBehaviour
         //speedBetweenTargets = 0f;
         clawAnimator.SetBool("isRaised", false);
         clawAnimator.SetBool("isDescending", true);
-        //SoundFXManager.Instance.PlaySoundFXClip(clawDescend, transform, 0.7f);
         Invoke(nameof(ClawHeadClose), findToDescendDelay * 3f);
     }
 
@@ -187,7 +184,6 @@ public class ClawController : MonoBehaviour
     {
         //Debug.Log("CLAW CLOSES!");
         Invoke(nameof(TurnOnHitbox), findToDescendDelay / 2f);
-        //SoundFXManager.Instance.PlaySoundFXClip(clawClose, transform, 0.7f, 0.2f);
         clawAnimator.SetBool("isDescending", false);
         clawAnimator.SetBool("isOpen", false);
 
@@ -223,8 +219,9 @@ public class ClawController : MonoBehaviour
     public void ClawHeadGetsHit() 
     {
         clawAnimator.SetBool("isDamaged", true);
-        //SoundFXManager.Instance.PlaySoundFXClip(clawDamaged, transform, 0.7f, 0.2f);
-        
+        SoundFXManager.Instance.PlaySoundFXClip(clawDamaged, transform, 0.7f, 0.2f);
+        SoundFXManager.Instance.PlayRandomSoundFXClip(audienceCheer, transform, 0.8f, 0.2f);
+
         SetNewClawTargets();
         Invoke(nameof(ClawHeadReturnToIdle), findToDescendDelay);
     }

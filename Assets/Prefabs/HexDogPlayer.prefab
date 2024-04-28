@@ -497,6 +497,7 @@ MonoBehaviour:
   respawnPoint: {fileID: 0}
   pathToRespawn: {x: 0, y: 0, z: 0}
   hexdogFall: {fileID: 8300000, guid: f057b7419c2e0c0499acdbcdca086201, type: 3}
+  checkpoint: {fileID: 8300000, guid: f6f05e74e0c8bce42a5cddf62e987fc9, type: 3}
 --- !u!65 &8389062655759633908
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1151,7 +1152,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a0842d9cb0a0ad4bb50c7fbc3606c31,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8250835940952736916}
   m_SourcePrefab: {fileID: 100100000, guid: 7a0842d9cb0a0ad4bb50c7fbc3606c31, type: 3}
 --- !u!4 &141740341586440632 stripped
 Transform:
@@ -1159,6 +1164,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 467575478138918483}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &773564405423696642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a0842d9cb0a0ad4bb50c7fbc3606c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 467575478138918483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8250835940952736916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773564405423696642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c870d6f996c39e4fa60b54ddddb47c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footsteps:
+  - {fileID: 8300000, guid: c2f104437dc31c74aaf5e62b27c59b73, type: 3}
+  - {fileID: 8300000, guid: 8c4f3920477909c44967ff406ae0bc4e, type: 3}
+  - {fileID: 8300000, guid: 413054fdc07d5b34689277bcb20b5e71, type: 3}
+  - {fileID: 8300000, guid: 2b6e7d93f1aa5a94d88a7e1395c4d0a7, type: 3}
+  - {fileID: 8300000, guid: 0a02322ecefa7aa438da2d1bb81c5b32, type: 3}
+  - {fileID: 8300000, guid: abd9b5ddd742c1748b378ff0781f1346, type: 3}
+  - {fileID: 8300000, guid: 50647462be881fe4b9e30f5414d14f05, type: 3}
+  - {fileID: 8300000, guid: 75d5ff1238011cc45bea8540da730284, type: 3}
+  clawClose: {fileID: 8300000, guid: 453742883a3382e418f36e3233a6ae5f, type: 3}
+  clawDescend: {fileID: 8300000, guid: 453742883a3382e418f36e3233a6ae5f, type: 3}
+  clawHunting: {fileID: 8300000, guid: 453742883a3382e418f36e3233a6ae5f, type: 3}
+  coneHit: {fileID: 0}
+  coneMove: []
 --- !u!95 &6275692149118331842 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 7a0842d9cb0a0ad4bb50c7fbc3606c31,

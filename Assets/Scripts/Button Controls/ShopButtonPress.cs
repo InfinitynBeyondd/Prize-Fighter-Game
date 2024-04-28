@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class ShopButtonPress : MonoBehaviour
@@ -16,12 +18,20 @@ public class ShopButtonPress : MonoBehaviour
     [SerializeField] Transform partneredAsset; // Transform affected by whichever button this is. SET THIS IN THE INSPECTOR!
 
     [SerializeField] private AudioClip buttonPressed;
+    [SerializeField] private AudioClip shopEnter;
+
+    [SerializeField] private AudioSource hubMusic;
+    //[SerializeField] private AudioSource shopMusic;
 
     // Start is called before the first frame update
     void Start()
     {
         thisButtonAnimator = GetComponentInParent<Animator>();
         SetPartneredAssetAtStart();
+        //shopMusic = shopMusic.GetComponent<AudioSource>();
+        hubMusic = hubMusic.GetComponent<AudioSource>();
+        hubMusic.volume = 0.5f;
+        //shopMusic.volume = 0f;
     }
 
     // Update is called once per frame
@@ -37,7 +47,12 @@ public class ShopButtonPress : MonoBehaviour
         {
             buttonIsPressed = true;
             SoundFXManager.Instance.PlaySoundFXClip(buttonPressed, transform, 0.4f, 0.2f);
-
+            SoundFXManager.Instance.PlaySoundFXClip(shopEnter, transform, 0.7f, 0f);
+            hubMusic.volume = 0f;
+            GameObject.Find("HexDogPlayer").GetComponent<PlayerBehavior>().enabled = false;
+            GameObject.Find("HexDogPlayer").GetComponent<GroundedPunch>().enabled = false;
+            GameObject.Find("HexDogPlayer").GetComponent<Grappling>().enabled = false;
+            GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = false;
         }
     }
 
@@ -66,10 +81,12 @@ public class ShopButtonPress : MonoBehaviour
         {
             //Debug.Log("Button pressed - TURN OFF THIS TRANSFORM!");
             partneredAsset.gameObject.SetActive(!buttonIsPressed);
+            
         }
         else if (buttonIsPressed && partneredAsset.CompareTag("ButtonAnimated")) 
         {
             partneredAsset.GetComponent<Animator>().SetBool("isButtonPressed", buttonIsPressed);
+            
         }
     }
 
@@ -77,7 +94,11 @@ public class ShopButtonPress : MonoBehaviour
     {
         partneredAsset.gameObject.SetActive(false);
         buttonIsPressed = false;
-
+        hubMusic.volume = 0.5f;
+        GameObject.Find("HexDogPlayer").GetComponent<PlayerBehavior>().enabled = true;
+        GameObject.Find("HexDogPlayer").GetComponent<GroundedPunch>().enabled = true;
+        GameObject.Find("HexDogPlayer").GetComponent<Grappling>().enabled = true;
+        GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = true;
     }
 
 }

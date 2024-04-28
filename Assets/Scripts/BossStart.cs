@@ -19,7 +19,7 @@ public class BossStart : MonoBehaviour
         //phaseAC.SetBool("phaseStart", false);
     }
 
-    private void OnTriggerEnter(Collider enemy)
+    private void OnTriggerEnter(Collider other)
     {
         claw.gameObject.SetActive(true);
         bossMusic.gameObject.SetActive(true);
@@ -27,9 +27,4 @@ public class BossStart : MonoBehaviour
         //phaseAC.SetBool("phaseStart", true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class DialogueController : MonoBehaviour
 {
@@ -41,12 +42,18 @@ public class DialogueController : MonoBehaviour
         if (!conversationEnded)
             {
                 GameObject.Find("HexDogPlayer").GetComponent<PlayerBehavior>().enabled = false;
+                GameObject.Find("HexDogPlayer").GetComponent<GroundedPunch>().enabled = false;
+                GameObject.Find("HexDogPlayer").GetComponent<Grappling>().enabled = false;
+                GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = false;
                 StartConverstaion(dialogueText);
             }
 
             else if (conversationEnded && !isTyping)
             {
                 GameObject.Find("HexDogPlayer").GetComponent<PlayerBehavior>().enabled = true;
+                GameObject.Find("HexDogPlayer").GetComponent<GroundedPunch>().enabled = true;
+                GameObject.Find("HexDogPlayer").GetComponent<Grappling>().enabled = true;
+                GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = true;
                 EndConverstaion();
                 return;
             }
@@ -129,7 +136,7 @@ public class DialogueController : MonoBehaviour
 
             if (alphaIndex % 2 == 0)
             {
-                SoundFXManager.Instance.PlayRandomSoundFXClip(NPCDialogueAudioClip, transform, 0.1f, 0f);
+                SoundFXManager.Instance.PlayRandomSoundFXClip(NPCDialogueAudioClip, transform, 0.2f, 0f);
             }
 
             yield return new WaitForSeconds(MAX_TYPE_TIME / typeSpeed);

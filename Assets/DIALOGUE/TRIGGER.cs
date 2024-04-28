@@ -22,14 +22,14 @@ public abstract class TRIGGER : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && !ConversationEnded())
+        if (Keyboard.current.eKey.wasPressedThisFrame && !ConversationEnded() )
         {
             Trigger();
     
         }
     }
 
-    private void OnTriggerEnter(Collider enemy)
+    private void OnTriggerEnter(Collider other)
     {
         Trigger();
         
@@ -43,7 +43,9 @@ public abstract class TRIGGER : MonoBehaviour
     {
         if (TriggerDialogueController.conversationEnded)
         {
+            Debug.Log("convo ended");
             return true;
+            
         }
         else
         {

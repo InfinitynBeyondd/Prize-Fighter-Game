@@ -9,6 +9,8 @@ public class RespawnController : MonoBehaviour
     public Vector3 pathToRespawn;
 
     [SerializeField] private AudioClip hexdogFall;
+    [SerializeField] private AudioClip checkpoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class RespawnController : MonoBehaviour
         {
             respawnPoint = other.gameObject;
             pathToRespawn = other.transform.position;
+            SoundFXManager.Instance.PlaySoundFXClip(checkpoint, transform, 0.3f, 0.1f);
             Debug.Log("CHECKPOINT CROSSED - Respawn position has been set to: " + other.transform.position);
             other.GetComponent<Collider>().enabled = false;
         }

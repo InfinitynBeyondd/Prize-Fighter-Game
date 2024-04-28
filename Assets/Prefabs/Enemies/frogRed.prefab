@@ -137,7 +137,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744990786053933720}
   serializedVersion: 4
-  m_Mass: 20
+  m_Mass: 300
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6564bad3162e8e438678d1a7d9af4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frogAnim: {fileID: 0}
 --- !u!1 &4301305648632407943
 GameObject:
   m_ObjectHideFlags: 0

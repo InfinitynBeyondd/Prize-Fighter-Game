@@ -32,6 +32,8 @@ public class OutroVideoScript : MonoBehaviour
     public void TurnOffCutscene()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(8);
+        Cursor.lockState = CursorLockMode.Confined; // Unlock the cursor
+        Cursor.visible = false; // Make the cursor visible
     }
 
     

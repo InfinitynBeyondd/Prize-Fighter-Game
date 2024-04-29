@@ -2281,6 +2281,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &357576456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6220904821423259018, guid: 5212cfe5ed81d5d4ab678fdfa7c1e88c,
+    type: 3}
+  m_PrefabInstance: {fileID: 670366134152065853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &360029987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf322a13a9fb0e4eb139ebb42208e3b,
@@ -4047,7 +4053,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 509837834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983498343}
+        m_TargetAssemblyTypeName: SkinShopController, Assembly-CSharp
+        m_MethodName: ChangeSkinToDefault
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &509837834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6847,16 +6865,14 @@ MonoBehaviour:
   TransSkin: {fileID: 2100000, guid: da8734e08d7bdf243a3d163c910f27a1, type: 2}
   GreySkin: {fileID: 2100000, guid: ce73f5f1d1f7c0b41bb969a2e97bc7a3, type: 2}
   GundamSkin: {fileID: 2100000, guid: 7ff8a8860fd162b438d9dc27248cb653, type: 2}
-  BoughtSkin1: 0
-  BoughtSkin2: 0
-  BoughtSkin3: 0
-  BoughtSkin4: 0
   Skin1Text: {fileID: 1181349234}
   Skin2Text: {fileID: 1172888285}
   Skin3Text: {fileID: 1251164696}
   Skin4Text: {fileID: 1791612903}
   shopBuy: {fileID: 8300000, guid: 4e096cb24fd0d0640ae666d22e96a1de, type: 3}
   shopPoor: {fileID: 8300000, guid: 70cb69e5d72ba784c8238aa56f603725, type: 3}
+  CoinCounter: {fileID: 357576456}
+  CoinText: {fileID: 0}
 --- !u!1001 &989692966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16970,7 +16986,7 @@ PrefabInstance:
     - target: {fileID: 5011298511219077676, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
@@ -17005,7 +17021,7 @@ PrefabInstance:
     - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
       propertyPath: coinsCollected
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
@@ -17025,7 +17041,7 @@ PrefabInstance:
     - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
       propertyPath: stickersCollected
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

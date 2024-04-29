@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
     public Material GreySkin;
     public Material GundamSkin;
 
+    [Header("Buy Checks")]
+    public bool BoughtSkin1;
+    public bool BoughtSkin2;
+    public bool BoughtSkin3;
+    public bool BoughtSkin4;
+
 
     // Start is called before the first frame update
 

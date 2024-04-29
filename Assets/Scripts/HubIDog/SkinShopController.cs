@@ -19,12 +19,6 @@ public class SkinShopController : MonoBehaviour
     public Material GreySkin;
     public Material GundamSkin;
 
-    [Header("Buy Checks")]
-    public bool BoughtSkin1;
-    public bool BoughtSkin2;
-    public bool BoughtSkin3;
-    public bool BoughtSkin4;
-
     [Header("SkinBuyButtons")]
     public TextMeshProUGUI Skin1Text;
     public TextMeshProUGUI Skin2Text;
@@ -35,11 +29,16 @@ public class SkinShopController : MonoBehaviour
     [SerializeField] private AudioClip shopBuy;
     [SerializeField] private AudioClip shopPoor;
 
+    [Header("Coin Counter")]
+    public GameObject CoinCounter;
+    public TMP_Text CoinText;
+
     // Start is called before the first frame update
     void Start()
     {
         GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();    
         PlayerMeshRenderer = GameObject.FindWithTag("CharacterBody").GetComponent<SkinnedMeshRenderer>();
+        CoinText = CoinCounter.GetComponent<TMP_Text>();
     }
 
     public void ExitShop()
@@ -51,15 +50,16 @@ public class SkinShopController : MonoBehaviour
 
     public void BuySkin1()
     {
-        if (BoughtSkin1 == false)
+        if (GameManager.BoughtSkin1 == false)
         {
             //If the player has the minimum amount of coins tyhen it subtract them
             if (GameManager.coinsCollected >= 25)
             {
                 GameManager.coinsCollected -= 25;
-                BoughtSkin1 = true;
+                GameManager.BoughtSkin1 = true;
                 Skin1Text.text = "Equip";
                 SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.5f, 0f);
+                CoinText.text = GameManager.coinsCollected.ToString();
             }
             else
             {
@@ -76,14 +76,15 @@ public class SkinShopController : MonoBehaviour
 
     public void BuySkin2()
     {
-        if (BoughtSkin2 == false)
+        if (GameManager.BoughtSkin2 == false)
         {
             if (GameManager.coinsCollected >= 30)
             {
                 GameManager.coinsCollected -= 30;
-                BoughtSkin2 = true;
+                GameManager.BoughtSkin2 = true;
                 Skin2Text.text = "Equip";
                 SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.7f, 0f);
+                CoinText.text = GameManager.coinsCollected.ToString();
             }
             else
             {
@@ -100,14 +101,15 @@ public class SkinShopController : MonoBehaviour
     }
     public void BuySkin3()
     {
-        if (BoughtSkin3 == false)
+        if (GameManager.BoughtSkin3 == false)
         {
             if (GameManager.coinsCollected >= 35)
             {
                 GameManager.coinsCollected -= 35;
-                BoughtSkin3 = true;
+                GameManager.BoughtSkin3 = true;
                 Skin3Text.text = "Equip";
                 SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.5f, 0f);
+                CoinText.text = GameManager.coinsCollected.ToString();
             }
             else
             {
@@ -125,14 +127,15 @@ public class SkinShopController : MonoBehaviour
 
     public void BuySkin4()
     {
-        if (BoughtSkin4 == false)
+        if (GameManager.BoughtSkin4 == false)
         {
             if (GameManager.coinsCollected >= 40)
             {
                 GameManager.coinsCollected -= 40;
-                BoughtSkin4 = true;
+                GameManager.BoughtSkin4 = true;
                 Skin4Text.text = "Equip";
                 SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.5f, 0f);
+                CoinText.text = GameManager.coinsCollected.ToString();
             }
             else
             {

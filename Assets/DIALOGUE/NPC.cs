@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,32 +28,27 @@ public abstract class NPC : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (interact.gameObject.activeSelf && !WithinInteract())
-        {
-            interact.gameObject.SetActive(false);
-        }
+             if (interact.gameObject.activeSelf && !WithinInteract())
+            {
+                interact.gameObject.SetActive(false);
+            }
 
-        else if (!interact.gameObject.activeSelf && WithinInteract())
-        {
-            interact.gameObject.SetActive(true);
-        }
+            else if (!interact.gameObject.activeSelf && WithinInteract())
+            {
+                interact.gameObject.SetActive(true);
+            }
 
-        if (Keyboard.current.eKey.wasPressedThisFrame && WithinInteract())
-        {
-            Interact();
-            
-            //RaycastHit hit;
-            //if (Physics.Raycast(hexdogFace.position, hexdogFace.forward, out hit, interactDistance, isNPC))
-            //{
+            if (Keyboard.current.eKey.wasPressedThisFrame && WithinInteract())
+            {
+                Interact();
 
-            //Debug.Log("interacted");
-            //Interact();
-            //}
-        }
+            }
     }
 
     public abstract void Interact();
 
+
+    
     private bool WithinInteract()
     {
         if (Vector3.Distance(hexdogTransform.position, transform.position) < interactDistance)

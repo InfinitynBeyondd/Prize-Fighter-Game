@@ -257,18 +257,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneSwitch, Assembly-CSharp
-        m_MethodName: SwitchScenestoNewLevel
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 007c755c-b2d4-441f-8a56-b014c8421c01
     m_ActionName: Gameplay/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
@@ -331,8 +319,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
-        m_MethodName: ResumeOrPause
-        m_Mode: 0
+        m_MethodName: Pause
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -343,6 +331,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bde46769-9ee8-4d1e-a523-9698940da080
     m_ActionName: Gameplay/Pause[/DualShock4GamepadHID/start,/XInputControllerWindows/start,/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 86e1d4bb-08e5-45f8-a149-8fb4d5af2f9f
+    m_ActionName: Gameplay/Interact[/Keyboard/e,/DualSenseGamepadHID/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -498,6 +490,8 @@ MonoBehaviour:
   pathToRespawn: {x: 0, y: 0, z: 0}
   hexdogFall: {fileID: 8300000, guid: f057b7419c2e0c0499acdbcdca086201, type: 3}
   checkpoint: {fileID: 8300000, guid: f6f05e74e0c8bce42a5cddf62e987fc9, type: 3}
+  respawnTransition: {fileID: 0}
+  respawnTransitionAC: {fileID: 0}
 --- !u!65 &8389062655759633908
 BoxCollider:
   m_ObjectHideFlags: 0

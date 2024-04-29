@@ -135,6 +135,7 @@ public class HubLevelSelectController : MonoBehaviour
         if (SpawnID == 2 && GameManager.hasBeatCoinPusher)
         {
             transitionObject.SetActive(true);
+            transitionObjectAC.SetTrigger("Start");
             yield return new WaitForSeconds(2f);
             UnityEngine.SceneManagement.SceneManager.LoadScene(4);
 
@@ -144,6 +145,7 @@ public class HubLevelSelectController : MonoBehaviour
         if (SpawnID == 3 && GameManager.hasBeatPachinko)
         {
             transitionObject.SetActive(true);
+            transitionObjectAC.SetTrigger("Start");
             yield return new WaitForSeconds(2f);
             UnityEngine.SceneManagement.SceneManager.LoadScene(6);
 

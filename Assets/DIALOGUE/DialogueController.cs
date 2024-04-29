@@ -44,7 +44,7 @@ public class DialogueController : MonoBehaviour
                 GameObject.Find("HexDogPlayer").GetComponent<PlayerBehavior>().enabled = false;
                 GameObject.Find("HexDogPlayer").GetComponent<GroundedPunch>().enabled = false;
                 GameObject.Find("HexDogPlayer").GetComponent<Grappling>().enabled = false;
-                GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = false;
+                //GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = false;
                 StartConverstaion(dialogueText);
             }
 
@@ -53,7 +53,7 @@ public class DialogueController : MonoBehaviour
                 GameObject.Find("HexDogPlayer").GetComponent<PlayerBehavior>().enabled = true;
                 GameObject.Find("HexDogPlayer").GetComponent<GroundedPunch>().enabled = true;
                 GameObject.Find("HexDogPlayer").GetComponent<Grappling>().enabled = true;
-                GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = true;
+                //GameObject.Find("HexDogPlayer").GetComponent<PlayerInput>().enabled = true;
                 EndConverstaion();
                 return;
             }

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         currentPlayerSkin = DefaultSkin;
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         //Test degug that gets you to other scenes
 

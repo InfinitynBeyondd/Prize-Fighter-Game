@@ -10,6 +10,7 @@ public class PauseMenuController : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
     public GameObject GalleryMenuUI;
+    public GameObject HTPMenuUI;
 
     [Header("Sticker Sprites")]
     public Image Sticker1Image;
@@ -42,6 +43,7 @@ public class PauseMenuController : MonoBehaviour
     public void Resume()
     {
         PauseMenuUI.SetActive(false);
+        HTPMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
 
@@ -116,4 +118,11 @@ public class PauseMenuController : MonoBehaviour
         PauseMenuUI.SetActive(true);
         GalleryMenuUI.SetActive(false);
     }
+
+    public void GoToHowToPlay()
+    {
+        PauseMenuUI.SetActive(false);
+        HTPMenuUI.SetActive(true);
+    }
+
 }

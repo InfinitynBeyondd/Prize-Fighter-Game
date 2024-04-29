@@ -43,6 +43,10 @@ public abstract class NPC : MonoBehaviour, IInteractable
                 Interact();
 
             }
+            if (Gamepad.current.buttonNorth.wasPressedThisFrame && WithinInteract())
+            {
+            Interact();
+            }
     }
 
     public abstract void Interact();

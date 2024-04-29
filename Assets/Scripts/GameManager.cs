@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public int stickersCollected;
     public int coinsCollected;
+    private bool devMode = false;
     private bool skinCheck;
 
     [Header("Check if level beaten")]
@@ -36,22 +37,34 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        //Test degug that gets you to other scenes
+        //Gets you in and out of devmod
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (devMode == false)
+            {
+                Debug.Log("Dev Mode on"); devMode = true;
+            }
+            else if (devMode == true)
+            {
+                Debug.Log("Dev Mode off"); devMode = false;
+            }
+        }
 
         //Goes to HUB
-        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad1)) {UnityEngine.SceneManagement.SceneManager.LoadScene(1);}
+        if (Input.GetKeyDown(KeyCode.Alpha1) && devMode == true) {UnityEngine.SceneManagement.SceneManager.LoadScene(1);}
 
         //Goes to TUTORIAL
-        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad2)) { UnityEngine.SceneManagement.SceneManager.LoadScene(5); }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && devMode == true) { UnityEngine.SceneManagement.SceneManager.LoadScene(5); }
 
         //Goes to COIN PUSHER
-        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad3)) { UnityEngine.SceneManagement.SceneManager.LoadScene(2); }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && devMode == true) { UnityEngine.SceneManagement.SceneManager.LoadScene(2); }
 
         //Goes to PACHINKO
-        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad4)) { UnityEngine.SceneManagement.SceneManager.LoadScene(4); }
+        if (Input.GetKeyDown(KeyCode.Alpha4) && devMode == true) { UnityEngine.SceneManagement.SceneManager.LoadScene(4); }
 
         //Goes to CLAW MACHINE
-        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Keypad5)) { UnityEngine.SceneManagement.SceneManager.LoadScene(6); }
+        if (Input.GetKeyDown(KeyCode.Alpha5) && devMode == true) { UnityEngine.SceneManagement.SceneManager.LoadScene(6); }
 
     }
 

@@ -33,38 +33,7 @@ public class HubLevelSelectController : MonoBehaviour
         //levelUnlocked = GameManager.hasBeatTutorial;
     }
 
-    //void OnTriggerStay(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-            //Goes to Coin Pusher
-    //        if (SpawnID == 1 && GameManager.hasBeatTutorial)
-    //        {
-    //            if (SceneSwitch.LevelStart == true)
-    //            {
-    //                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-    //            }
-    //        }
-
-            //Goes to Pachinko
-    //       if (SpawnID == 2 && GameManager.hasBeatCoinPusher)
-    //        {
-    //            if (SceneSwitch.LevelStart == true)
-    //            {
-    //                UnityEngine.SceneManagement.SceneManager.LoadScene(4);
-    //            }
-    //        }
-
-            //Goes to Claw
-    //        if (SpawnID == 3 && GameManager.hasBeatPachinko)
-    //        {
-    //            if (SceneSwitch.LevelStart == true)
-    //            {
-    //               UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-    //            }
-    //       }
-    //   }
-    //}
+   
 
     private void Update()
     {
@@ -93,20 +62,14 @@ public class HubLevelSelectController : MonoBehaviour
             }
         }
 
-        if (Keyboard.current.eKey.wasPressedThisFrame && WithinInteract())
+        if ((Keyboard.current.eKey.wasPressedThisFrame || Gamepad.current.buttonNorth.wasPressedThisFrame) && WithinInteract())
         {
             LevelTransition();
             SoundFXManager.Instance.PlaySoundFXClip(levelSelect, transform, 0.7f, 0f);
             //scenetransitionAnim
             Debug.Log("level selected");
         }
-        if (Gamepad.current.buttonNorth.wasPressedThisFrame && WithinInteract())
-        {
-           LevelTransition();
-            SoundFXManager.Instance.PlaySoundFXClip(levelSelect, transform, 0.7f, 0f);
-            //scenetransitionAnim
-            Debug.Log("level selected");
-        }
+        
     }
 
     void LevelTransition()

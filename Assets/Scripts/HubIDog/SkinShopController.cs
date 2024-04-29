@@ -30,6 +30,11 @@ public class SkinShopController : MonoBehaviour
     public TextMeshProUGUI Skin2Text;
     public TextMeshProUGUI Skin3Text;
     public TextMeshProUGUI Skin4Text;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip shopBuy;
+    [SerializeField] private AudioClip shopPoor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,10 +59,12 @@ public class SkinShopController : MonoBehaviour
                 GameManager.coinsCollected -= 25;
                 BoughtSkin1 = true;
                 Skin1Text.text = "Equip";
+                SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.5f, 0f);
             }
             else
             {
                 Debug.Log("You need more money!!!");
+                SoundFXManager.Instance.PlaySoundFXClip(shopPoor, transform, 0.5f, 0f);
             }
         }
         else
@@ -76,10 +83,12 @@ public class SkinShopController : MonoBehaviour
                 GameManager.coinsCollected -= 30;
                 BoughtSkin2 = true;
                 Skin2Text.text = "Equip";
+                SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.7f, 0f);
             }
             else
             {
                 Debug.Log("You need more money!!!");
+                SoundFXManager.Instance.PlaySoundFXClip(shopPoor, transform, 0.5f, 0f);
             }
         }
         else
@@ -98,10 +107,12 @@ public class SkinShopController : MonoBehaviour
                 GameManager.coinsCollected -= 35;
                 BoughtSkin3 = true;
                 Skin3Text.text = "Equip";
+                SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.5f, 0f);
             }
             else
             {
                 Debug.Log("You need more money!!!");
+                SoundFXManager.Instance.PlaySoundFXClip(shopPoor, transform, 0.5f, 0f);
             }
         }
         else
@@ -121,10 +132,12 @@ public class SkinShopController : MonoBehaviour
                 GameManager.coinsCollected -= 40;
                 BoughtSkin4 = true;
                 Skin4Text.text = "Equip";
+                SoundFXManager.Instance.PlaySoundFXClip(shopBuy, transform, 0.5f, 0f);
             }
             else
             {
                 Debug.Log("You need more money!!!");
+                SoundFXManager.Instance.PlaySoundFXClip(shopPoor, transform, 0.5f, 0f);
             }
         }
         else

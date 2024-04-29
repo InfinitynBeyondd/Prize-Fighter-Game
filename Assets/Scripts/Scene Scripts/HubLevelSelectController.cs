@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class HubLevelSelectController : MonoBehaviour
 {
     [SerializeField] private GameObject levelPopup;
+    [SerializeField] private GameObject transitionObject;
+    [SerializeField] private Animator transitionObjectAC;
     [SerializeField] private SpriteRenderer[] levelLocks;
     //[SerializeField] private AudioClip uiPopup;
     [SerializeField] private AudioClip levelSelect;
@@ -27,6 +29,7 @@ public class HubLevelSelectController : MonoBehaviour
     {
         GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         hexdogTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
         //levelUnlocked = GameManager.hasBeatTutorial;
     }
 
@@ -93,7 +96,7 @@ public class HubLevelSelectController : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame && WithinInteract())
         {
             LevelTransition();
-            SoundFXManager.Instance.PlaySoundFXClip(levelSelect, transform, 0.5f, 0f);
+            SoundFXManager.Instance.PlaySoundFXClip(levelSelect, transform, 0.7f, 0f);
             //scenetransitionAnim
             Debug.Log("level selected");
         }
@@ -101,28 +104,7 @@ public class HubLevelSelectController : MonoBehaviour
 
     void LevelTransition()
     {
-        if (SpawnID == 1 && GameManager.hasBeatTutorial)
-        {
-            
-                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-            
-        }
-
-        //Goes to Pachinko
-        if (SpawnID == 2 && GameManager.hasBeatCoinPusher)
-        {
-            
-                UnityEngine.SceneManagement.SceneManager.LoadScene(4);
-            
-        }
-
-        //Goes to Claw
-        if (SpawnID == 3 && GameManager.hasBeatPachinko)
-        {
-            
-                UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-            
-        }
+        StartCoroutine(SceneTransition());
     }
 
     private bool WithinInteract()
@@ -134,6 +116,37 @@ public class HubLevelSelectController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    IEnumerator SceneTransition()
+    {
+        if (SpawnID == 1 && GameManager.hasBeatTutorial)
+        {
+
+            transitionObject.SetActive(true);
+            transitionObjectAC.SetTrigger("Start");
+            yield return new WaitForSeconds(2f);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+
+        }
+
+        //Goes to Pachinko
+        if (SpawnID == 2 && GameManager.hasBeatCoinPusher)
+        {
+            transitionObject.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+
+        }
+
+        //Goes to Claw
+        if (SpawnID == 3 && GameManager.hasBeatPachinko)
+        {
+            transitionObject.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(6);
+
         }
     }
 

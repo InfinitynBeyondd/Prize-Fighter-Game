@@ -15,7 +15,6 @@ public class ClawNPCSpawn : MonoBehaviour
     {
         clawNPC.gameObject.SetActive(false);
         bossWalls.gameObject.SetActive(false);
-        clawInteract.gameObject.SetActive(false);
         clawAC.SetBool("isIdle", false);
         clawAC.SetBool("isEntering", false);
         clawAC.SetBool("isLeaving", false);
@@ -36,8 +35,8 @@ public class ClawNPCSpawn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            bossWalls.gameObject.SetActive(false);
-            StartCoroutine("ClawLeave", 1f);
+            clawAC.SetBool("isLeaving", true);
+            StartCoroutine("ClawLeave", 0.2f);
         }
     }
   
@@ -51,10 +50,11 @@ public class ClawNPCSpawn : MonoBehaviour
     private IEnumerator ClawLeave()
     {
         //clawNPC.transform.position = new Vector3(0f, 0f, 0f);
-        clawAC.SetBool("isLeaving", true);
+        bossWalls.gameObject.SetActive(false);
+        clawInteract.gameObject.GetComponent<idofgdialoggue>().enabled = false;
+        clawInteract.gameObject.SetActive(false);
         yield return new WaitForSeconds((float)2.5f);
         clawNPC.gameObject.SetActive(false);
-        bossWalls.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
     }
 }

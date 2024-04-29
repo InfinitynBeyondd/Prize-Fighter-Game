@@ -11,6 +11,8 @@ public class RespawnController : MonoBehaviour
     [SerializeField] private AudioClip hexdogFall;
     [SerializeField] private AudioClip checkpoint;
 
+    [SerializeField] private GameObject respawnTransition;
+    [SerializeField] private Animator respawnTransitionAC;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +23,8 @@ public class RespawnController : MonoBehaviour
     // Once the player collides with anything forcing a respawn, it will be sent back to the level's designated spawn point.
     private void OnCollisionEnter(Collision other)
     {
-        if (other.transform.CompareTag("ForceRespawn"))
-        {
-            Debug.Log("OUT OF BOUNDS - Moving back to spawn point!");
-            transform.position = pathToRespawn;
-            SoundFXManager.Instance.PlaySoundFXClip(hexdogFall, transform, 0.6f, 0f);
-        }
+
+        StartCoroutine(RespawnTransition(other));
     }
 
     // Detect when a checkpoint is crossed, then set the respawn coordinates to that checkpoint's position.
@@ -38,14 +36,27 @@ public class RespawnController : MonoBehaviour
             pathToRespawn = other.transform.position;
             SoundFXManager.Instance.PlaySoundFXClip(checkpoint, transform, 0.3f, 0.1f);
             Debug.Log("CHECKPOINT CROSSED - Respawn position has been set to: " + other.transform.position);
-            other.GetComponent<Collider>().enabled = false;
+            //other.GetComponent<Collider>().enabled = false;
+            other.gameObject.SetActive(false);
         }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    //respawn transition
+
+    IEnumerator RespawnTransition(Collision other)
     {
-        
+        if (other.transform.CompareTag("ForceRespawn"))
+        {
+            Debug.Log("OUT OF BOUNDS - Moving back to spawn point!");
+            SoundFXManager.Instance.PlaySoundFXClip(hexdogFall, transform, 0.6f, 0f);
+            respawnTransition.SetActive(true);
+            respawnTransitionAC.SetTrigger("Start");
+            yield return new WaitForSeconds(0.8f);
+            transform.position = pathToRespawn;
+            yield return new WaitForSeconds(1f);
+            respawnTransition.SetActive(false);
+
+        }
     }
 }

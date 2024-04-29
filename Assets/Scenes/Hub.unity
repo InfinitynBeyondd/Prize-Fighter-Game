@@ -3012,6 +3012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level2SelectSticker
       objectReference: {fileID: 0}
+    - target: {fileID: 955722042453111768, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2103635798810440809, guid: 0008017f4a818924c8b21eb4a1d1db38,
         type: 3}
       propertyPath: m_Name
@@ -3055,6 +3060,16 @@ PrefabInstance:
       objectReference: {fileID: 1171716551}
     - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
         type: 3}
+      propertyPath: transitionObject
+      value: 
+      objectReference: {fileID: 2090093831}
+    - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
+      propertyPath: transitionObjectAC
+      value: 
+      objectReference: {fileID: 2090093833}
+    - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
       propertyPath: levelLocks.Array.data[0]
       value: 
       objectReference: {fileID: 1747963461}
@@ -3068,7 +3083,8 @@ PrefabInstance:
       propertyPath: levelLocks.Array.data[2]
       value: 
       objectReference: {fileID: 469421716}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4278808713430234728, guid: 0008017f4a818924c8b21eb4a1d1db38, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6850,6 +6866,8 @@ MonoBehaviour:
   Skin2Text: {fileID: 1172888285}
   Skin3Text: {fileID: 1251164696}
   Skin4Text: {fileID: 1791612903}
+  shopBuy: {fileID: 8300000, guid: 4e096cb24fd0d0640ae666d22e96a1de, type: 3}
+  shopPoor: {fileID: 8300000, guid: 70cb69e5d72ba784c8238aa56f603725, type: 3}
 --- !u!1001 &989692966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12840,7 +12858,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: aaa79fbd2ad3c8a49901a535ff8de827, type: 3}
+      objectReference: {fileID: 8300000, guid: 5873b09ee47c88449b7d9d6e939105ad, type: 3}
     - target: {fileID: 2627672862565647163, guid: 5c67179bd9e88a140b0621221f7aa830,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -13743,6 +13761,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 639286222138423301, guid: 918c25ca08f670b4cb764bfa1e7d4923,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2636167234810041626, guid: 918c25ca08f670b4cb764bfa1e7d4923,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16003,6 +16026,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level3SelectSticker
       objectReference: {fileID: 0}
+    - target: {fileID: 955722042453111768, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2103635798810440809, guid: 0008017f4a818924c8b21eb4a1d1db38,
         type: 3}
       propertyPath: m_Name
@@ -16041,6 +16069,16 @@ PrefabInstance:
       objectReference: {fileID: 1171716551}
     - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
         type: 3}
+      propertyPath: transitionObject
+      value: 
+      objectReference: {fileID: 2090093831}
+    - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
+      propertyPath: transitionObjectAC
+      value: 
+      objectReference: {fileID: 2090093833}
+    - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
       propertyPath: levelLocks.Array.data[0]
       value: 
       objectReference: {fileID: 1747963461}
@@ -16054,7 +16092,8 @@ PrefabInstance:
       propertyPath: levelLocks.Array.data[2]
       value: 
       objectReference: {fileID: 469421716}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4278808713430234728, guid: 0008017f4a818924c8b21eb4a1d1db38, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -17170,7 +17209,7 @@ PrefabInstance:
     - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
       propertyPath: hasBeatTutorial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384842234431412869, guid: d129361f4f967a843bf7316a7c3a4465,
         type: 3}
@@ -17586,7 +17625,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -18759,6 +18798,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 955722042453111768, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2103635798810440809, guid: 0008017f4a818924c8b21eb4a1d1db38,
         type: 3}
       propertyPath: m_Name
@@ -18801,9 +18845,14 @@ PrefabInstance:
       objectReference: {fileID: 1747963461}
     - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
         type: 3}
-      propertyPath: levelSelect
+      propertyPath: transitionObject
       value: 
-      objectReference: {fileID: 8300000, guid: 3289b617bde42864988ff859939e7b3f, type: 3}
+      objectReference: {fileID: 2090093831}
+    - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
+        type: 3}
+      propertyPath: transitionObjectAC
+      value: 
+      objectReference: {fileID: 2090093833}
     - target: {fileID: 7385578530748662392, guid: 0008017f4a818924c8b21eb4a1d1db38,
         type: 3}
       propertyPath: levelLocks.Array.data[1]

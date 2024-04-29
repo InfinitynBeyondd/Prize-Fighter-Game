@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3464689961988525611}
   - component: {fileID: 2501262588206027322}
   - component: {fileID: 7385578530748662392}
-  - component: {fileID: 4278808713430234728}
   m_Layer: 0
   m_Name: Level1Select
   m_TagString: Untagged
@@ -35,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 955751774784009479}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3924145365623803367
 MeshFilter:
@@ -121,30 +120,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPopup: {fileID: 0}
+  transitionObject: {fileID: 0}
+  transitionObjectAC: {fileID: 0}
   levelLocks:
   - {fileID: 471267931730099004}
   - {fileID: 0}
   - {fileID: 0}
-  levelSelect: {fileID: 8300000, guid: 3289b617bde42864988ff859939e7b3f, type: 3}
+  levelSelect: {fileID: 8300000, guid: 6ddbfa0c011139742893ce42f35654d5, type: 3}
   SpawnID: 1
   GameManager: {fileID: 0}
   SceneSwitch: {fileID: 0}
   LevelStart: 0
---- !u!114 &4278808713430234728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716247123611750414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2135e00844094d54581a3e30bceac341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelPopup: {fileID: 3476556218573648244}
-  levelLocked: {fileID: 471267931730099004}
-  levelSelect: {fileID: 8300000, guid: 3289b617bde42864988ff859939e7b3f, type: 3}
 --- !u!1 &955722042453111768
 GameObject:
   m_ObjectHideFlags: 0

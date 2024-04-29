@@ -11,6 +11,7 @@ public class ItemCollection : MonoBehaviour
 
     [SerializeField] private AudioClip coinCollect;
     [SerializeField] private AudioClip stickerCollect;
+    [SerializeField] private AudioSource levelMusic;
     private GameObject GotStickerImageGO;
 
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class ItemCollection : MonoBehaviour
         if (other.transform.CompareTag("Player") && this.transform.CompareTag("Sticker"))
         {
             Debug.Log("Got a Sticker!");
+            levelMusic.volume = 0f;
             SoundFXManager.Instance.PlaySoundFXClip(stickerCollect, transform, 0.7f, 0f);
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
             this.gameObject.GetComponent<MeshCollider>().enabled = false;
@@ -62,6 +64,7 @@ public class ItemCollection : MonoBehaviour
         GotStickerImage.color = new Color(255, 255, 255, 255);
         yield return new WaitForSeconds(seconds);
         GotStickerImage.color = new Color(255, 255, 255, 0);
+        levelMusic.volume = 0.5f;
         this.gameObject.SetActive(false) ;
     }
 }

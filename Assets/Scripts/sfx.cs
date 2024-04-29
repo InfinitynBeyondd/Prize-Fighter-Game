@@ -35,17 +35,17 @@ public class sfx : MonoBehaviour
 
     public void ClawClose()
     {
-        SoundFXManager.Instance.PlaySoundFXClip(clawClose, transform, 0.7f, 0.2f);
+        SoundFXManager.Instance.PlaySoundFXClip(clawClose, transform, 0.6f, 0.4f);
     }
     public void ClawDescend()
     {
 
-        SoundFXManager.Instance.PlaySoundFXClip(clawDescend, transform, 0.7f, 0.2f);
+        SoundFXManager.Instance.PlaySoundFXClip(clawDescend, transform, 0.6f, 0.4f);
     }
     public void ClawHunting()
     {
 
-        SoundFXManager.Instance.PlaySoundFXClip(clawHunting, transform, 0.7f, 0.2f);
+        SoundFXManager.Instance.PlaySoundFXClip(clawHunting, transform, 0.7f, 0.4f);
     }
     public void ConeHit()
     {
@@ -53,6 +53,6 @@ public class sfx : MonoBehaviour
     }
     public void ConeMove()
     {
-        SoundFXManager.Instance.PlayRandomSoundFXClip(coneMove, transform, 0.7f, 0.2f);
+        SoundFXManager.Instance.PlayRandomSoundFXClip(coneMove, transform, 0.7f, 0.6f);
     }
 }

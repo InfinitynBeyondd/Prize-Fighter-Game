@@ -38,7 +38,7 @@ public abstract class NPC : MonoBehaviour, IInteractable
                 interact.gameObject.SetActive(true);
             }
 
-            if (Keyboard.current.eKey.wasPressedThisFrame && WithinInteract())
+            if (Keyboard.current.eKey.wasPressedThisFrame || Gamepad.current.buttonNorth.wasPressedThisFrame && WithinInteract())
             {
                 Interact();
 

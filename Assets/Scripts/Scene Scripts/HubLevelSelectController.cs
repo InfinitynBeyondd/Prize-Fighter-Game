@@ -93,7 +93,7 @@ public class HubLevelSelectController : MonoBehaviour
             }
         }
 
-        if (Keyboard.current.eKey.wasPressedThisFrame && WithinInteract())
+        if (Keyboard.current.eKey.wasPressedThisFrame || Gamepad.current.buttonNorth.wasPressedThisFrame && WithinInteract())
         {
             LevelTransition();
             SoundFXManager.Instance.PlaySoundFXClip(levelSelect, transform, 0.7f, 0f);

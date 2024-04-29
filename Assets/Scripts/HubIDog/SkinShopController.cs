@@ -39,6 +39,11 @@ public class SkinShopController : MonoBehaviour
         GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();    
         PlayerMeshRenderer = GameObject.FindWithTag("CharacterBody").GetComponent<SkinnedMeshRenderer>();
         CoinText = CoinCounter.GetComponent<TMP_Text>();
+
+        if(GameManager.BoughtSkin1 == true) { Skin1Text.text = "Equip"; }
+        if (GameManager.BoughtSkin2 == true) { Skin2Text.text = "Equip"; }
+        if (GameManager.BoughtSkin3 == true) { Skin3Text.text = "Equip"; }
+        if (GameManager.BoughtSkin4 == true) { Skin4Text.text = "Equip"; }
     }
 
     public void ExitShop()

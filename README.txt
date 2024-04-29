@@ -32,6 +32,16 @@ AREAS FOR FEEDBACK:
 •Model updates
 •Collision issues
 
+RELEASE NOTES (SPRINT 4 - Release-To-Manufacturing Build:)
+•The frog softlock no longer occurs
+•The Claw Machine now has 2 new phases added to the boss fight
+•Level layout updates across all stages
+•Update to Ground Checker to reduce instances of players getting stuck on terrain
+•Functional dialogue for NPCs, including iDog, Black Frog and the Claw
+•Shop and Gallery fixes implemented; game no longer breaks after a finished run
+•Camera sensitivity fixes
+•All SFX and final OST versions implemented
+
 RELEASE NOTES (SPRINT 3 - Alpha Build):
 •Major physics changes implemented; no more frog softlocks or inconsistent jumps!
 •Pachinko (Level 2) and Claw Machine (Level 3) are now playable.
@@ -59,9 +69,8 @@ RELEASE NOTES (SPRINT 1 - Prototype):
 •Sloped surfaces must have Slope physics material applied
 
 KNOWN BUGS:
-•Animation Controller - Player animations for grappling and dive punching are occasionally triggered incorrectly.
-•Frogs - The frog enemies turn very abruptly in midair, causing some issues with their positioning.
-•Claw Boss - If the claw is already descending when the hologram triggered to distract it is set active, it will not target the hologram and get stuck. It is still able to be attacked in this case, and hitting the boss will trigger the end of the fight.
-•Collision Detection - Collision can be inconsistent, as players will sometimes be treated as if they are airborne on a ledge and fall until being considered on solid ground. Players can escape by utilizing the reset gravity of the dive punch and grapple, but it feels tedious and buggy.
-•Cones - Cones are not deleted on attack, and instead fall over because the wrong transform is deleted.
-•Gallery - Sometimes, it will take the Gallery multiple opens and closes to detect the acquired stickers. The game also stops running when returning to the Title Screen after the final boss, and the only thing the player can do is quit out.
+•Animation Controller - Dive Punching while grappling does not trigger the animation properly.
+•Collision Detection - If a player lands on the edge of a platform, they may occasionally get stuck and will need to reset their gravity scale using the Grapple mechanic to get unstuck.
+•Gallery - The gallery does not function as intended in the Hub World, but works fine within levels.
+•Shop - The shop does not detract coins when purchasing skins, and going back to the shop when a skin is bought after completing a level will make the game think the skin has not been purchased. Changing back to the Default Skin does not work as intended.
+•Respawn Transition - Depending on the level, the respawn transition may be offset and may not always animate properly.
